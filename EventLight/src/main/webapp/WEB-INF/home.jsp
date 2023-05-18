@@ -8,5 +8,7 @@
 </head>
 <body>
 <h1>WELCOME TO EVENT LIGHT</h1>
+
+${SMOKETEST }
 </body>
 </html>

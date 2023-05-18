@@ -68,5 +68,10 @@ public class User {
 		User other = (User) obj;
 		return id == other.id;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
+				+ ", role=" + role + "]";
+	}
 
 }

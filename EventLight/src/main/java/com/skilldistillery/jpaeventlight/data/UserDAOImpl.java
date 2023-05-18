@@ -17,8 +17,17 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User findByUsernameAndPassword(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+		String jpql = "SELECT u FROM User u WHERE u.username = :un AND u.password = :pw AND u.enabled = true";
+		try{
+			user = em.createQuery(jpql, User.class)
+				.setParameter("un", username)
+				.setParameter("pw", password)
+				.getSingleResult();
+		} catch(Exception e) {
+			System.err.println("Invalid login");
+		}
+		return user;
 	}
 
 }
