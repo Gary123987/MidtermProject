@@ -42,11 +42,14 @@ class UserTest {
 		user = null;
 	}
 
+	
 	@Test
 	void test_User_basic_mapping() {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
 		assertEquals("Gary", user.getFirstName());
+		assertTrue(user.getFavoriteBands().contains(em.find(Band.class, 1)));
+		assertTrue(user.getFavoriteEvents().contains(em.find(Event.class,1)));
 	}
 	
 	@Test

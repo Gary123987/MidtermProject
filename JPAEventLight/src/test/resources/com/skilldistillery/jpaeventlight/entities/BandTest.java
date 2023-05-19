@@ -46,6 +46,7 @@ class BandTest {
 	void test() {
 		assertNotNull(band);
 		assertTrue(band.getArtists().size() == 4);
+		assertTrue(band.getUsersFavorited().contains(em.find(User.class, 1)));
 	}
 
 }

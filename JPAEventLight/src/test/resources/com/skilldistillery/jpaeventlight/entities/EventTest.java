@@ -46,6 +46,7 @@ class EventTest {
 	void test_Event_basic_mapping() {
 		assertNotNull(event);
 		assertEquals(Month.JULY, event.getEventDate().getMonth());
+		assertTrue(event.getUsersFavorited().contains(em.find(User.class, 1)));
 	}
 	@Test
 	void test_Event_to_Venue_ManyToOne() {

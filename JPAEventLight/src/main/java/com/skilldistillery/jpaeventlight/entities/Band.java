@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -29,6 +30,17 @@ public class Band {
 	
 	@OneToMany (mappedBy = "bandArtist")
 	private List<Artist> artists;
+	
+	@ManyToMany(mappedBy = "favoriteBands")
+	private List<User> usersFavorited;
+
+	public List<User> getUsersFavorited() {
+		return usersFavorited;
+	}
+
+	public void setUsersFavorited(List<User> usersFavorited) {
+		this.usersFavorited = usersFavorited;
+	}
 
 	public Band() {
 

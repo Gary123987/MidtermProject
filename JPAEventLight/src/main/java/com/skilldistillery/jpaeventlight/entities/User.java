@@ -10,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -57,7 +58,43 @@ public class User {
 
 	@OneToMany(mappedBy = "user")
 	private List<VenueComment> venueComments;
+	
+	@ManyToMany
+	@JoinTable(name="favorite_band",
+		joinColumns=@JoinColumn(name="user_id"),
+		inverseJoinColumns=@JoinColumn(name="band_id"))
+	private List<Band>favoriteBands;
+	
+	@ManyToMany
+	@JoinTable(name="favorite_events",
+		joinColumns=@JoinColumn(name="user_id"),
+		inverseJoinColumns=@JoinColumn(name="event_id"))
+	private List<Event> favoriteEvents;
 
+
+	public List<BandComment> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<BandComment> comment) {
+		this.comment = comment;
+	}
+
+	public List<Band> getFavoriteBands() {
+		return favoriteBands;
+	}
+
+	public void setFavoriteBands(List<Band> favoriteBands) {
+		this.favoriteBands = favoriteBands;
+	}
+
+	public List<Event> getFavoriteEvents() {
+		return favoriteEvents;
+	}
+
+	public void setFavoriteEvents(List<Event> favoriteEvents) {
+		this.favoriteEvents = favoriteEvents;
+	}
 
 	public User() {
 		super();
