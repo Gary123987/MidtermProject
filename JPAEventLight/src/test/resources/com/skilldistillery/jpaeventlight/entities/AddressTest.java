@@ -44,6 +44,7 @@ class AddressTest {
 	void test_Address_basic_mapping() {
 		assertNotNull(address);
 		assertEquals("123 Fake St", address.getStreet());
+		assertEquals(address.getUser().getFirstName(), "Gary");
 	
 //		assertEquals("admin", address.getUsername());
 	}

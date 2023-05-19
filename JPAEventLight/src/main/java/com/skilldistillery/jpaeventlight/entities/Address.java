@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -22,6 +24,10 @@ public class Address {
 	private String zip;
 	
 	private String country;
+	
+	@OneToOne(mappedBy="address")
+	private User user;
+	
 
 	public Address() {
 		super();
@@ -29,6 +35,14 @@ public class Address {
 
 	public int getId() {
 		return id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public void setId(int id) {
