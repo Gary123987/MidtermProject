@@ -41,9 +41,9 @@ class VenueTest {
 	}
 
 	@Test
-	void test() {
+	void test_venue_basic_mapping() {
 		assertNotNull(venue);
-//		assertEquals("admin", user.getUsername());
+		assertEquals("FreeBird", venue.getName());
 	}
 
 }
