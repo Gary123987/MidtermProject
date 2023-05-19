@@ -7,6 +7,10 @@
 
 		<!--  being entities -->
 		<class>com.skilldistillery.jpaeventlight.entities.User</class>
+		<class>com.skilldistillery.jpaeventlight.entities.Address</class>
+		<class>com.skilldistillery.jpaeventlight.entities.Venue</class>
+		<class>com.skilldistillery.jpaeventlight.entities.VenueComment</class>
+		<class>com.skilldistillery.jpaeventlight.entities.Event</class>
 
 
 		<!--  end entities -->
