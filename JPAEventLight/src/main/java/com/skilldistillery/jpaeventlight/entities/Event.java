@@ -5,11 +5,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 @Entity
 public class Event {
@@ -18,7 +18,7 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@JoinColumn(name="event_date")
+	@Column(name="event_date")
 	private LocalDate eventDate;
 	
 	private String title;
@@ -27,16 +27,16 @@ public class Event {
 	
 	private String image;
 	
-	@JoinColumn(name="created_at")
+	@Column(name="created_at")
 	private LocalDateTime createdAt;
 
-	@JoinColumn(name="last_update")
+	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
-	@JoinColumn(name="start_time")
+	@Column(name="start_time")
 	private LocalTime startTime;
 
-	@JoinColumn(name="end_time")
+	@Column(name="end_time")
 	private LocalTime endTime;
 
 	public Event() {

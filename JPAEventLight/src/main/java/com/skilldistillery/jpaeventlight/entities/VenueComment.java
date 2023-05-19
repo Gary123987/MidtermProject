@@ -3,11 +3,11 @@ package com.skilldistillery.jpaeventlight.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +19,7 @@ public class VenueComment {
 	
 	private String comment;
 	
-	@JoinColumn(name="comment_date")
+	@Column(name="comment_date")
 	private LocalDateTime commentDate;
 
 	public VenueComment() {
