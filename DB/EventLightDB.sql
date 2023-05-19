@@ -371,7 +371,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`) VALUES (1, '20230730', 1, 'The most amazing show ever', 'Metallica playing at FreeBird', NULL, '2023-05-01 07:22', '2023-05-01 07:22', '20:00', '23:00');
+INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`) VALUES (1, '2023-07-30', 1, 'The most amazing show ever', 'Metallica playing at FreeBird', NULL, '2023-05-01 07:22', '2023-05-01 07:22', '20:00', '23:00');
+INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`) VALUES (2, '2023-08-12', 1, 'A cool band plays cool music', 'Metallica again', NULL, '2023-06-14 02:55', '2023-06-14 02:55', '19:00', '22:00');
 
 COMMIT;
 
@@ -455,6 +456,7 @@ COMMIT;
 START TRANSACTION;
 USE `eventlightdb`;
 INSERT INTO `event_rating` (`user_id`, `event_id`, `rating`, `rating_comment`, `rating_date`) VALUES (1, 1, 5, 'This event is going to be awesome I\'m so excited!', '2023-05-18 06:15');
+INSERT INTO `event_rating` (`user_id`, `event_id`, `rating`, `rating_comment`, `rating_date`) VALUES (1, 2, 3, 'Kinda boring.', '2023-02-18 05:45');
 
 COMMIT;
 
