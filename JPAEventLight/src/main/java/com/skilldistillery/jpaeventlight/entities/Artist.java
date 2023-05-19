@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Artist {
@@ -25,6 +27,10 @@ public class Artist {
 	private String stageName;
 	
 	private String instrument;
+	
+	@ManyToOne
+	@JoinColumn(name = "band_id")
+	private Band bandArtist;
 
 	public Artist() {
 	
@@ -68,6 +74,16 @@ public class Artist {
 
 	public void setInstrument(String instrument) {
 		this.instrument = instrument;
+	}
+	
+	
+
+	public Band getBandArtist() {
+		return bandArtist;
+	}
+
+	public void setBandArtist(Band bandArtist) {
+		this.bandArtist = bandArtist;
 	}
 
 	@Override

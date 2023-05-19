@@ -1,5 +1,6 @@
 package com.skilldistillery.jpaeventlight.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
@@ -44,6 +45,8 @@ class ArtistTest {
 	@Test
 	void test() {
 		assertNotNull(artist);
+		assertEquals("Robert", artist.getFirstName());
+		assertEquals("Metallica", artist.getBandArtist().getName());
 	}
 
 }

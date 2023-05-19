@@ -25,7 +25,10 @@ public class Band {
 	private String description;
 	
 	@OneToMany (mappedBy = "band")
-	private List<BandComment> comment;
+	private List<BandComment> comments;
+	
+	@OneToMany (mappedBy = "bandArtist")
+	private List<Artist> artists;
 
 	public Band() {
 
@@ -71,6 +74,23 @@ public class Band {
 		this.description = description;
 	}
 
+	
+
+	public List<BandComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<BandComment> comments) {
+		this.comments = comments;
+	}
+
+	public List<Artist> getArtists() {
+		return artists;
+	}
+
+	public void setArtists(List<Artist> artists) {
+		this.artists = artists;
+	}
 
 	@Override
 	public int hashCode() {

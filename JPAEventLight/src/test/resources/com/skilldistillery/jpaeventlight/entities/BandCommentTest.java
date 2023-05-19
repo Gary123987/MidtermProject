@@ -44,6 +44,8 @@ class BandCommentTest {
 	@Test
 	void test() {
 		assertNotNull(bandComment);
+		assertEquals("This is my favorite band", bandComment.getComment());
+		assertEquals(1, bandComment.getUser().getId());
 	}
 
 }

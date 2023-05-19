@@ -86,6 +86,23 @@ public class BandComment {
 	}
 	
 	
+	
+
+	public Band getBand() {
+		return band;
+	}
+
+	public void setBand(Band band) {
+		this.band = band;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {

@@ -1,6 +1,7 @@
 package com.skilldistillery.jpaeventlight.entities;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -44,6 +45,7 @@ class BandTest {
 	@Test
 	void test() {
 		assertNotNull(band);
+		assertTrue(band.getArtists().size() == 4);
 	}
 
 }
