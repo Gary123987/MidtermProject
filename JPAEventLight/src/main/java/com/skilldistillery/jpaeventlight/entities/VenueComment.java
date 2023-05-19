@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +23,15 @@ public class VenueComment {
 	
 	@Column(name="comment_date")
 	private LocalDateTime commentDate;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
+	@ManyToOne
+	@JoinColumn(name="venue_id")
+	private Venue venue;
+	
 	public VenueComment() {
 		super();
 	}
@@ -50,6 +60,22 @@ public class VenueComment {
 		this.commentDate = commentDate;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Venue getVenue() {
+		return venue;
+	}
+
+	public void setVenue(Venue venue) {
+		this.venue = venue;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -69,7 +95,8 @@ public class VenueComment {
 
 	@Override
 	public String toString() {
-		return "VenueComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + "]";
+		return "VenueComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", user=" + user
+				+ ", venue=" + venue + "]";
 	}
 	
 	

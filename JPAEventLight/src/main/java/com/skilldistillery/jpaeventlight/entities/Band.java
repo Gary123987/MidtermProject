@@ -1,11 +1,13 @@
 package com.skilldistillery.jpaeventlight.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Band {
@@ -21,6 +23,9 @@ public class Band {
 	private String image; 
 	
 	private String description;
+	
+	@OneToMany (mappedBy = "band")
+	private List<BandComment> comment;
 
 	public Band() {
 
@@ -66,11 +71,6 @@ public class Band {
 		this.description = description;
 	}
 
-	@Override
-	public String toString() {
-		return "Band [id=" + id + ", name=" + name + ", genre=" + genre + ", image=" + image + ", description="
-				+ description + "]";
-	}
 
 	@Override
 	public int hashCode() {

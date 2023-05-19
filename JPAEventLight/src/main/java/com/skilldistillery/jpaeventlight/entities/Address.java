@@ -28,6 +28,8 @@ public class Address {
 	@OneToOne(mappedBy="address")
 	private User user;
 	
+	@OneToOne(mappedBy="address")
+	private Venue venue;
 
 	public Address() {
 		super();
@@ -89,6 +91,14 @@ public class Address {
 		this.country = country;
 	}
 
+	public Venue getVenue() {
+		return venue;
+	}
+
+	public void setVenue(Venue venue) {
+		this.venue = venue;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -109,7 +119,7 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", country=" + country + "]";
+				+ ", country=" + country + ", user=" + user + ", venue=" + venue + "]";
 	}
 	
 	

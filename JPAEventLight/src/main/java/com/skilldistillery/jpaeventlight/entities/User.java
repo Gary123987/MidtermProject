@@ -1,6 +1,7 @@
 package com.skilldistillery.jpaeventlight.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,7 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+<<<<<<< HEAD
+import javax.persistence.ManyToOne;
+=======
+>>>>>>> 998befe87760f4d4035cde2a8d63a57a0252eb21
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 
 
 @Entity
@@ -44,6 +51,17 @@ public class User {
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
+	
+<<<<<<< HEAD
+	@OneToMany (mappedBy = "user")
+	private List<BandComment> comment;
+=======
+	@OneToOne(mappedBy="user")
+	private Venue venue;
+	
+	@OneToMany(mappedBy="user")
+	private List<VenueComment> venueComments;
+>>>>>>> 998befe87760f4d4035cde2a8d63a57a0252eb21
 	
 	public User() {
 		super();
@@ -121,6 +139,19 @@ public class User {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	public Venue getVenue() {
+		return venue;
+	}
+	public void setVenue(Venue venue) {
+		this.venue = venue;
+	}
+	
+	public List<VenueComment> getVenueComments() {
+		return venueComments;
+	}
+	public void setVenueComments(List<VenueComment> venueComments) {
+		this.venueComments = venueComments;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -141,7 +172,7 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName + ", createdAt=" + createdAt
 				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe
-				+ ", address=" + address + "]";
+				+ ", address=" + address + ", venue=" + venue + ", venueComments=" + venueComments + "]";
 	}
 
 }

@@ -54,5 +54,15 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("Jacksonville", user.getAddress().getCity());
 	}
+	@Test
+	void test_User_to_venue_OnetoOne() {
+		assertNotNull(user);
+		assertEquals("FreeBird", user.getVenue().getName());
+	}
+	@Test
+	void test_User_to_VenueComment_OnetoMany() {
+		assertNotNull(user);
+		assertTrue(user.getVenueComments().size() > 0);
+	}
 
 }

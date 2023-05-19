@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Event {
@@ -39,6 +41,10 @@ public class Event {
 	@Column(name="end_time")
 	private LocalTime endTime;
 
+	@ManyToOne
+	@JoinColumn(name="venue_id")
+	private Venue venue;
+	
 	public Event() {
 		super();
 	}
@@ -115,6 +121,14 @@ public class Event {
 		this.endTime = endTime;
 	}
 
+	public Venue getVenue() {
+		return venue;
+	}
+
+	public void setVenue(Venue venue) {
+		this.venue = venue;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -136,7 +150,7 @@ public class Event {
 	public String toString() {
 		return "Event [id=" + id + ", eventDate=" + eventDate + ", title=" + title + ", description=" + description
 				+ ", image=" + image + ", createdAt=" + createdAt + ", lastUpdate=" + lastUpdate + ", startTime="
-				+ startTime + ", endTime=" + endTime + "]";
+				+ startTime + ", endTime=" + endTime + ", venue=" + venue + "]";
 	}
 	
 	

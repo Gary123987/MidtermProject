@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,14 +25,19 @@ public class BandComment {
 	@Column(name = "comment_date")
 	private LocalDateTime commentDate;
 	
-	@Column(name = "band_id")
-	private int bandId;
+	@ManyToOne
+	@JoinColumn(name = "band_id")
+	private Band band;
+
+	
 	
 	@Column(name = "band_comment_id")
-	private int bandCommentId;
+	private Integer bandCommentId;
 	
-	@Column(name = "user_id")
-	private int userId;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	
 	
 
@@ -62,13 +69,7 @@ public class BandComment {
 		this.commentDate = commentDate;
 	}
 
-	public int getBandId() {
-		return bandId;
-	}
 
-	public void setBandId(int bandId) {
-		this.bandId = bandId;
-	}
 
 	public int getBandCommentId() {
 		return bandCommentId;
@@ -77,19 +78,19 @@ public class BandComment {
 	public void setBandCommentId(int bandCommentId) {
 		this.bandCommentId = bandCommentId;
 	}
+	
 
-	public int getUserId() {
-		return userId;
-	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setBandCommentId(Integer bandCommentId) {
+		this.bandCommentId = bandCommentId;
 	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "BandComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", bandId=" + bandId
-				+ ", bandCommentId=" + bandCommentId + ", userId=" + userId + "]";
+		return "BandComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", bandCommentId="
+				+ bandCommentId + "]";
 	}
 
 	@Override
