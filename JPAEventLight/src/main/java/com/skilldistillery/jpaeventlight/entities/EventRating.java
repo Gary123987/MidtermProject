@@ -3,16 +3,28 @@ package com.skilldistillery.jpaeventlight.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class EventRating {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
+	@Column(name = "event_id")
 	private int eventId; 
 	
 	private int rating; 
 	
+	@Column(name = "rating_comment")
 	private String ratingComment; 
 	
+	@Column(name = "rating_date")
 	private LocalDateTime ratingDate;
 
 	public EventRating() {

@@ -2,14 +2,26 @@ package com.skilldistillery.jpaeventlight.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Artist {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	
+	@Column(name = "first_name")
 	private String firstName; 
 	
+	@Column(name = "last_name")
 	private String lastName; 
 	
+	@Column(name = "stage_name")
 	private String stageName;
 	
 	private String instrument;
