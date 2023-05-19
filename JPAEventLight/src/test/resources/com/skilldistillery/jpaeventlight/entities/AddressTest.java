@@ -43,6 +43,7 @@ class AddressTest {
 	@Test
 	void test_Address_basic_mapping() {
 		assertNotNull(address);
+		assertEquals("123 Fake St", address.getStreet());
 	
 //		assertEquals("admin", address.getUsername());
 	}

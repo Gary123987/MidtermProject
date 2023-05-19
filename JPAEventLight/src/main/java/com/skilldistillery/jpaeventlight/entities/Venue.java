@@ -3,11 +3,11 @@ package com.skilldistillery.jpaeventlight.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 @Entity
 public class Venue {
@@ -16,7 +16,7 @@ public class Venue {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@JoinColumn(name="phone_number")
+	@Column(name="phone_number")
 	private String phoneNumber;
 	
 	private String description;
@@ -25,13 +25,13 @@ public class Venue {
 	
 	private String picture;
 	
-	@JoinColumn(name="picture_logo")
+	@Column(name="picture_logo")
 	private String pictureLogo;
 	
-	@JoinColumn(name="created_at")
+	@Column(name="created_at")
 	private LocalDateTime createdAt;
 	
-	@JoinColumn(name="last_update")
+	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 
 	public Venue() {

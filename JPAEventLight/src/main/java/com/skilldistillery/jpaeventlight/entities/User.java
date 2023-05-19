@@ -3,6 +3,7 @@ package com.skilldistillery.jpaeventlight.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,22 +22,22 @@ public class User {
 	private String password;
 	private Boolean enabled;
 	private String role;
-	@JoinColumn(name="first_name")
+	@Column(name="first_name")
 	private String firstName;
 	
-	@JoinColumn(name="last_name")
+	@Column(name="last_name")
 	private String lastName;
 	
-	@JoinColumn(name="created_at")
+	@Column(name="created_at")
 	private LocalDateTime createdAt;
 	
-	@JoinColumn(name="last_update")
+	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
-	@JoinColumn(name="profile_picture")
+	@Column(name="profile_picture")
 	private String profilePicture;
 	
-	@JoinColumn(name="about_me")
+	@Column(name="about_me")
 	private String aboutMe;
 	
 	public User() {

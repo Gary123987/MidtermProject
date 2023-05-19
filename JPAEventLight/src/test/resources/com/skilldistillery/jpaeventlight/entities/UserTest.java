@@ -43,9 +43,10 @@ class UserTest {
 	}
 
 	@Test
-	void test() {
+	void test_User_basic_mapping() {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
+		assertEquals("Gary", user.getFirstName());
 	}
 
 }

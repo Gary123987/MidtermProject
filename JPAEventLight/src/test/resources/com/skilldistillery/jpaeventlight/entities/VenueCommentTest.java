@@ -2,6 +2,8 @@ package com.skilldistillery.jpaeventlight.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Month;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -41,9 +43,9 @@ class VenueCommentTest {
 	}
 
 	@Test
-	void test() {
+	void test_VenueComment_basic_mapping() {
 		assertNotNull(venueComment);
-//		assertEquals("admin", user.getUsername());
+		assertEquals(Month.MARCH, venueComment.getCommentDate().getMonth());
 	}
 
 }
