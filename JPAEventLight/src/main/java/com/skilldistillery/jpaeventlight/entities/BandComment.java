@@ -1,6 +1,7 @@
 package com.skilldistillery.jpaeventlight.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,15 +33,38 @@ public class BandComment {
 
 	
 	
-	@Column(name = "reply_id")
-	private Integer bandCommentId;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@OneToMany(mappedBy="parentComment")
+	private List<BandComment> replies;
+	
+	@ManyToOne
+	@JoinColumn(name="reply_id")
+	private BandComment parentComment;
 	
 	
+	
+	
+
+	public List<BandComment> getReplies() {
+		return replies;
+	}
+
+	public void setReplies(List<BandComment> replies) {
+		this.replies = replies;
+	}
+
+	public BandComment getParentComment() {
+		return parentComment;
+	}
+
+	public void setParentComment(BandComment parentComment) {
+		this.parentComment = parentComment;
+	}
 
 	public BandComment() {
 		
@@ -71,19 +96,7 @@ public class BandComment {
 
 
 
-	public int getBandCommentId() {
-		return bandCommentId;
-	}
 
-	public void setBandCommentId(int bandCommentId) {
-		this.bandCommentId = bandCommentId;
-	}
-	
-
-
-	public void setBandCommentId(Integer bandCommentId) {
-		this.bandCommentId = bandCommentId;
-	}
 	
 	
 	
@@ -107,7 +120,7 @@ public class BandComment {
 	@Override
 	public String toString() {
 		return "BandComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", bandCommentId="
-				+ bandCommentId + "]";
+				 + "]";
 	}
 
 	@Override

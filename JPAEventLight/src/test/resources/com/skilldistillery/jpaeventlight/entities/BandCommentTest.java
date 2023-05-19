@@ -47,5 +47,10 @@ class BandCommentTest {
 		assertEquals("This is my favorite band", bandComment.getComment());
 		assertEquals(1, bandComment.getUser().getId());
 	}
+	@Test
+	void replyTest() {
+		bandComment = em.find(BandComment.class, 2);
+		assertEquals(bandComment.getParentComment(), em.find(BandComment.class, 1));
+	}
 
 }
