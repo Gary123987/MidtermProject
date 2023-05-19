@@ -4,22 +4,19 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="event_rating")
 public class EventRating {
 	
-	@Id
-	@Column(name="user_id")
-	private int userId;
-	
-	@Column(name = "event_id")
-	private int eventId; 
+	@EmbeddedId
+	private EventRatingId id;
 	
 	private int rating; 
 	
@@ -29,16 +26,27 @@ public class EventRating {
 	@Column(name = "rating_date")
 	private LocalDateTime ratingDate;
 
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@MapsId(value = "userId")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	@MapsId(value = "eventId")
+	private Event event;
+	
+	
 	public EventRating() {
 		
 	}
 
-	public int getUserId() {
-		return userId;
+	public EventRatingId getId() {
+		return id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(EventRatingId id) {
+		this.id = id;
 	}
 
 	public int getRating() {
@@ -64,10 +72,34 @@ public class EventRating {
 	public void setRatingDate(LocalDateTime ratingDate) {
 		this.ratingDate = ratingDate;
 	}
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	@Override
+	public String toString() {
+		return "EventRating [id=" + id + ", rating=" + rating + ", ratingComment=" + ratingComment + ", ratingDate="
+				+ ratingDate + "]";
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(rating, ratingComment, ratingDate, userId);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -79,9 +111,10 @@ public class EventRating {
 		if (getClass() != obj.getClass())
 			return false;
 		EventRating other = (EventRating) obj;
-		return rating == other.rating && Objects.equals(ratingComment, other.ratingComment)
-				&& Objects.equals(ratingDate, other.ratingDate) && userId == other.userId;
+		return Objects.equals(id, other.id);
 	}
+
+	
 
 	
 	

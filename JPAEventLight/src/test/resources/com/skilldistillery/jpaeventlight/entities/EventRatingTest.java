@@ -32,7 +32,11 @@ class EventRatingTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		eventRating = em.find(EventRating.class, 1);
+		EventRatingId eid = new EventRatingId();
+		eid.setEventId(1);
+		eid.setUserId(1);
+		eventRating = em.find(EventRating.class, eid);
+		
 	}
 
 	@AfterEach
