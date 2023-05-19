@@ -11,6 +11,10 @@
 		<class>com.skilldistillery.jpaeventlight.entities.Venue</class>
 		<class>com.skilldistillery.jpaeventlight.entities.VenueComment</class>
 		<class>com.skilldistillery.jpaeventlight.entities.Event</class>
+		<class>com.skilldistillery.jpaeventlight.entities.Artist</class>
+		<class>com.skilldistillery.jpaeventlight.entities.Band</class>
+		<class>com.skilldistillery.jpaeventlight.entities.BandComment</class>
+		<class>com.skilldistillery.jpaeventlight.entities.EventRating</class>
 
 
 		<!--  end entities -->
