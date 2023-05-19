@@ -43,6 +43,6 @@ class EventRatingTest {
 
 	@Test
 	void test() {
-		assertNotNull(eventRating);
+		assertEquals(5, eventRating.getRating());
 	}
 }

@@ -1,6 +1,7 @@
 package com.skilldistillery.jpaeventlight.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -44,6 +47,9 @@ public class User {
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
+	
+	@OneToMany (mappedBy = "user")
+	private List<BandComment> comment;
 	
 	public User() {
 		super();

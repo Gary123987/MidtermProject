@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class EventRating {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private int userId;
 	
 	@Column(name = "event_id")
@@ -39,14 +39,6 @@ public class EventRating {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-
-	public int getEventId() {
-		return eventId;
-	}
-
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
 	}
 
 	public int getRating() {
@@ -74,14 +66,8 @@ public class EventRating {
 	}
 
 	@Override
-	public String toString() {
-		return "EventRating [userId=" + userId + ", eventId=" + eventId + ", rating=" + rating + ", ratingComment="
-				+ ratingComment + ", ratingDate=" + ratingDate + "]";
-	}
-
-	@Override
 	public int hashCode() {
-		return Objects.hash(eventId);
+		return Objects.hash(rating, ratingComment, ratingDate, userId);
 	}
 
 	@Override
@@ -93,8 +79,11 @@ public class EventRating {
 		if (getClass() != obj.getClass())
 			return false;
 		EventRating other = (EventRating) obj;
-		return eventId == other.eventId;
-	} 
+		return rating == other.rating && Objects.equals(ratingComment, other.ratingComment)
+				&& Objects.equals(ratingDate, other.ratingDate) && userId == other.userId;
+	}
+
+	
 	
 	
 	
