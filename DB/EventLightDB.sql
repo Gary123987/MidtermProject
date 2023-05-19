@@ -271,11 +271,11 @@ CREATE TABLE IF NOT EXISTS `band_comment` (
   `comment` TEXT NOT NULL,
   `comment_date` DATETIME NULL,
   `band_id` INT NOT NULL,
-  `band_comment_id` INT NULL,
+  `reply_id` INT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_band_comment_band1_idx` (`band_id` ASC),
-  INDEX `fk_band_comment_band_comment1_idx` (`band_comment_id` ASC),
+  INDEX `fk_band_comment_band_comment1_idx` (`reply_id` ASC),
   INDEX `fk_band_comment_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_band_comment_band1`
     FOREIGN KEY (`band_id`)
@@ -283,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `band_comment` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_band_comment_band_comment1`
-    FOREIGN KEY (`band_comment_id`)
+    FOREIGN KEY (`reply_id`)
     REFERENCES `band_comment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -436,6 +436,7 @@ COMMIT;
 START TRANSACTION;
 USE `eventlightdb`;
 INSERT INTO `venue_comment` (`id`, `comment`, `comment_date`, `user_id`, `venue_id`, `reply_to_id`) VALUES (1, 'This place is awesome, favorite venue ever', '2023-03-16 15:22', 1, 1, NULL);
+INSERT INTO `venue_comment` (`id`, `comment`, `comment_date`, `user_id`, `venue_id`, `reply_to_id`) VALUES (2, 'I agree!', '2023-03-17 14:00', 2, 1, 1);
 
 COMMIT;
 
@@ -445,7 +446,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `band_comment` (`id`, `comment`, `comment_date`, `band_id`, `band_comment_id`, `user_id`) VALUES (1, 'This is my favorite band', '2023-05-02 10:59', 1, NULL, 1);
+INSERT INTO `band_comment` (`id`, `comment`, `comment_date`, `band_id`, `reply_id`, `user_id`) VALUES (1, 'This is my favorite band', '2023-05-02 10:59', 1, NULL, 1);
+INSERT INTO `band_comment` (`id`, `comment`, `comment_date`, `band_id`, `reply_id`, `user_id`) VALUES (2, 'Mine too!', '2023-05-03 15:20', 1, 1, 2);
 
 COMMIT;
 
