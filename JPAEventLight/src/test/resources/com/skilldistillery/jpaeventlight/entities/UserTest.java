@@ -50,6 +50,7 @@ class UserTest {
 		assertEquals("Gary", user.getFirstName());
 		assertTrue(user.getFavoriteBands().contains(em.find(Band.class, 1)));
 		assertTrue(user.getFavoriteEvents().contains(em.find(Event.class,1)));
+		assertTrue(user.getBandComments().contains(em.find(BandComment.class, 1)));
 	}
 	
 	@Test

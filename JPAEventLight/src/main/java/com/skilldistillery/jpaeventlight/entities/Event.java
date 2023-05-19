@@ -51,18 +51,18 @@ public class Event {
 	@ManyToMany(mappedBy = "favoriteEvents")
 	private List<User> usersFavorited;
 	
-	public List<User> getUsersFavorited() {
-		return usersFavorited;
-	}
-
-	public void setUsersFavorited(List<User> usersFavorited) {
-		this.usersFavorited = usersFavorited;
-	}
 
 
 	@ManyToMany(mappedBy = "events")
 	private List<Band> bands;
 	
+	public List<User> getUsersFavorited() {
+		return usersFavorited;
+	}
+	
+	public void setUsersFavorited(List<User> usersFavorited) {
+		this.usersFavorited = usersFavorited;
+	}
 
 	public Event() {
 		super();

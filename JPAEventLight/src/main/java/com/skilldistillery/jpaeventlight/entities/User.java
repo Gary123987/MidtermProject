@@ -51,7 +51,7 @@ public class User {
 
 
 	@OneToMany(mappedBy = "user")
-	private List<BandComment> comment;
+	private List<BandComment> bandComments;
 	
 	@OneToOne(mappedBy = "user")
 	private Venue venue;
@@ -72,12 +72,14 @@ public class User {
 	private List<Event> favoriteEvents;
 
 
-	public List<BandComment> getComment() {
-		return comment;
+
+
+	public List<BandComment> getBandComments() {
+		return bandComments;
 	}
 
-	public void setComment(List<BandComment> comment) {
-		this.comment = comment;
+	public void setBandComments(List<BandComment> bandComments) {
+		this.bandComments = bandComments;
 	}
 
 	public List<Band> getFavoriteBands() {
@@ -237,7 +239,7 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName + ", createdAt=" + createdAt
 				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe
-				+ ", address=" + address + ", comment=" + comment + ", venue=" + venue + ", venueComments="
+				+ ", address=" + address + ", comment=" +  ", venue=" + venue + ", venueComments="
 				+ venueComments + "]";
 	}
 
