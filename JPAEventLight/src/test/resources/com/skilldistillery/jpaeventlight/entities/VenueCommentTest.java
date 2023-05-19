@@ -59,6 +59,7 @@ class VenueCommentTest {
 	}
 	@Test
 	void test_VenueComment_to_ParentComment_ManyToOne() {
+		venueComment = em.find(VenueComment.class, 2);
 		assertNotNull(venueComment);
 		assertNotNull(venueComment.getParentComment());
 		assertEquals(1, venueComment.getParentComment().getId());
@@ -68,7 +69,7 @@ class VenueCommentTest {
 	void test_VenueComment_to_Replies_OneToMany(){
 		assertNotNull(venueComment);
 		assertNotNull(venueComment.getReplies());
-		assertNotNull(venueComment.getReplies().size() > 0);
+		assertTrue(venueComment.getReplies().size() > 0);
 		
 	}
 
