@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `address` ;
 
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `street` VARCHAR(45) NOT NULL,
+  `street` VARCHAR(200) NOT NULL,
   `city` VARCHAR(45) NOT NULL,
   `state` VARCHAR(45) NOT NULL,
   `zip` VARCHAR(20) NULL,
@@ -338,6 +338,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `eventlightdb`;
 INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`) VALUES (1, '123 Fake St', 'Jacksonville', 'FL', '32205', 'US');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`) VALUES (2, '567 Kings Road', 'Jacksonville', 'FL', '32205', 'US');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip`, `country`) VALUES (3, '888 Lane Ln', 'Jacksonville', 'FL', '32205', 'US');
 
 COMMIT;
 
@@ -347,7 +349,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (1, 'admin', '1234', 1, 'admin', 'Gary', 'Fultz', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (1, 'admin', '1234', 1, 'admin', 'Gary', 'Fultz', '2023-01-05 10:34', '2023-01-10 05:25', NULL, 'Just a dude that likes music', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (2, 'NoOne', 'NoOne25', 1, 'vo', 'Arya', 'Stark', '2023-02-15 11:55', '2023-02-15 11:55', NULL, 'Likes vacationing down south.', 2);
 
 COMMIT;
 
@@ -357,7 +360,91 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `venue` (`id`, `user_id`, `phone_number`, `address_id`, `description`, `name`, `picture`, `picture_logo`, `created_at`, `last_update`) VALUES (1, 1, '(555)555-5555', 1, NULL, 'FreeBird', NULL, NULL, NULL, NULL);
+INSERT INTO `venue` (`id`, `user_id`, `phone_number`, `address_id`, `description`, `name`, `picture`, `picture_logo`, `created_at`, `last_update`) VALUES (1, 1, '(555)555-5555', 1, '\"Small dive bar atmosphere with one main stage\"', 'FreeBird', NULL, NULL, '2023-04-18 22:58', '2023-04-18 22:58');
+INSERT INTO `venue` (`id`, `user_id`, `phone_number`, `address_id`, `description`, `name`, `picture`, `picture_logo`, `created_at`, `last_update`) VALUES (2, 2, '(123)456-7890', 3, 'Indoor/Outdoor seating with a main stage inside', 'Lions', NULL, NULL, '2023-05-16 13:13', '2023-05-16 13:13');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `event`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`) VALUES (1, '20230730', 1, 'The most amazing show ever', 'Metallica playing at FreeBird', NULL, '2023-05-01 07:22', '2023-05-01 07:22', '20:00', '23:00');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `band`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `band` (`id`, `name`, `genre`, `image`, `description`) VALUES (1, 'Metallica', 'Metal', NULL, 'Old School metal band');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `artist`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (1, 1, 'Robert', 'Trujilo', NULL, 'Bass');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (2, 1, 'James', 'Hetfield', NULL, 'Vocals');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (3, 1, 'Lars', 'Ulrich', NULL, 'Drums');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (4, 1, 'Kirk', 'Hammett', NULL, 'Lead Guitar');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `band_has_event`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `band_has_event` (`band_id`, `event_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite_events`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `favorite_events` (`user_id`, `event_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite_band`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `favorite_band` (`user_id`, `band_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `venue_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `venue_comment` (`id`, `comment`, `comment_date`, `user_id`, `venue_id`, `reply_to_id`) VALUES (1, 'This place is awesome, favorite venue ever', '2023-03-16 15:22', 1, 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `event_rating`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `event_rating` (`user_id`, `event_id`, `rating`, `rating_comment`, `rating_date`) VALUES (1, 1, 5, 'This event is going to be awesome I\'m so excited!', '2023-05-18 06:15');
 
 COMMIT;
 
