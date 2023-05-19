@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -39,6 +40,10 @@ public class User {
 	
 	@Column(name="about_me")
 	private String aboutMe;
+	
+	@OneToOne
+	@JoinColumn(name="address_id")
+	private Address address;
 	
 	public User() {
 		super();
@@ -110,6 +115,12 @@ public class User {
 	public void setAboutMe(String aboutMe) {
 		this.aboutMe = aboutMe;
 	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -129,7 +140,8 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName + ", createdAt=" + createdAt
-				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe + "]";
+				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe
+				+ ", address=" + address + "]";
 	}
 
 }

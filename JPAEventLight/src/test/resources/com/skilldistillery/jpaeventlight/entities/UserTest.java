@@ -48,5 +48,11 @@ class UserTest {
 		assertEquals("admin", user.getUsername());
 		assertEquals("Gary", user.getFirstName());
 	}
+	
+	@Test
+	void test_User_to_Address_OneToOne() {
+		assertNotNull(user);
+		assertEquals("Jacksonville", user.getAddress().getCity());
+	}
 
 }
