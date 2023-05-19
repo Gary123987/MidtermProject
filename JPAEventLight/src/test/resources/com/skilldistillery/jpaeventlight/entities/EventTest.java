@@ -52,5 +52,12 @@ class EventTest {
 		assertNotNull(event);
 		assertEquals("FreeBird", event.getVenue().getName());
 	}
+	
+	@Test
+	void test_Event_ManyToMany() {
+		assertNotNull(event);
+		assertNotNull(event.getBands());
+		assertTrue(event.getBands().size()  == 1);
+	}
 
 }

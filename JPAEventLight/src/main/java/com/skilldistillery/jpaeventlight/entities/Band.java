@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -29,6 +32,12 @@ public class Band {
 	
 	@OneToMany (mappedBy = "bandArtist")
 	private List<Artist> artists;
+	
+	@ManyToMany
+	@JoinTable(name = "band_has_event", 
+	joinColumns = @JoinColumn(name = "band_id"),
+	inverseJoinColumns = @JoinColumn(name = "event_id"))
+	private List<Event> events;
 
 	public Band() {
 
@@ -90,6 +99,16 @@ public class Band {
 
 	public void setArtists(List<Artist> artists) {
 		this.artists = artists;
+	}
+	
+	
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 
 	@Override
