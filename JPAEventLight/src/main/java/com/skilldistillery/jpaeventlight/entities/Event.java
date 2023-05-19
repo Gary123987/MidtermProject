@@ -47,6 +47,7 @@ public class Event {
 	@JoinColumn(name="venue_id")
 	private Venue venue;
 	
+
 	@ManyToMany(mappedBy = "favoriteEvents")
 	private List<User> usersFavorited;
 	
@@ -57,6 +58,11 @@ public class Event {
 	public void setUsersFavorited(List<User> usersFavorited) {
 		this.usersFavorited = usersFavorited;
 	}
+
+
+	@ManyToMany(mappedBy = "events")
+	private List<Band> bands;
+	
 
 	public Event() {
 		super();
@@ -140,6 +146,16 @@ public class Event {
 
 	public void setVenue(Venue venue) {
 		this.venue = venue;
+	}
+	
+	
+
+	public List<Band> getBands() {
+		return bands;
+	}
+
+	public void setBands(List<Band> bands) {
+		this.bands = bands;
 	}
 
 	@Override

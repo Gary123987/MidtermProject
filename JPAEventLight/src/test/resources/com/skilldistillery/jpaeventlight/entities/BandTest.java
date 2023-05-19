@@ -48,5 +48,12 @@ class BandTest {
 		assertTrue(band.getArtists().size() == 4);
 		assertTrue(band.getUsersFavorited().contains(em.find(User.class, 1)));
 	}
+	
+	@Test
+	void test_band_to_manytomanny_mapping() {
+		assertNotNull(band);
+		assertNotNull(band.getEvents());
+		assertTrue(band.getEvents().size()  == 1);
 
+	}
 }
