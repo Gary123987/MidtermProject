@@ -20,9 +20,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-<<<<<<< HEAD
 
-=======
 
 	private String username;
 	private String password;
@@ -204,7 +202,7 @@ public class User {
 				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe
 				+ ", address=" + address + ", venue=" + venue + ", venueComments=" + venueComments + "]";
 	}
->>>>>>> 28d86247167bdae143a16758c2c67223ab0be9f8
+
 
 
 }
