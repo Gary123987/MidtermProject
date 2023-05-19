@@ -1,11 +1,13 @@
 package com.skilldistillery.jpaeventlight.entities;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 
 @Entity
@@ -19,6 +21,24 @@ public class User {
 	private String password;
 	private Boolean enabled;
 	private String role;
+	@JoinColumn(name="first_name")
+	private String firstName;
+	
+	@JoinColumn(name="last_name")
+	private String lastName;
+	
+	@JoinColumn(name="created_at")
+	private LocalDateTime createdAt;
+	
+	@JoinColumn(name="last_update")
+	private LocalDateTime lastUpdate;
+	
+	@JoinColumn(name="profile_picture")
+	private String profilePicture;
+	
+	@JoinColumn(name="about_me")
+	private String aboutMe;
+	
 	public User() {
 		super();
 	}
@@ -53,6 +73,42 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+	public LocalDateTime getLastUpdate() {
+		return lastUpdate;
+	}
+	public void setLastUpdate(LocalDateTime lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
+	}
+	public String getAboutMe() {
+		return aboutMe;
+	}
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -71,7 +127,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", role=" + role + "]";
+				+ ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName + ", createdAt=" + createdAt
+				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe + "]";
 	}
 
 }
