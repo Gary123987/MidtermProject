@@ -57,5 +57,20 @@ class VenueCommentTest {
 		assertNotNull(venueComment);
 		assertEquals("FreeBird", venueComment.getVenue().getName());
 	}
+	@Test
+	void test_VenueComment_to_ParentComment_ManyToOne() {
+		venueComment = em.find(VenueComment.class, 2);
+		assertNotNull(venueComment);
+		assertNotNull(venueComment.getParentComment());
+		assertEquals(1, venueComment.getParentComment().getId());
+		
+	}
+	@Test
+	void test_VenueComment_to_Replies_OneToMany(){
+		assertNotNull(venueComment);
+		assertNotNull(venueComment.getReplies());
+		assertTrue(venueComment.getReplies().size() > 0);
+		
+	}
 
 }
