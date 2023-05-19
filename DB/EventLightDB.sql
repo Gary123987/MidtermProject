@@ -440,6 +440,16 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `band_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `eventlightdb`;
+INSERT INTO `band_comment` (`id`, `comment`, `comment_date`, `band_id`, `band_comment_id`, `user_id`) VALUES (1, 'This is my favorite band', '2023-05-02 10:59', 1, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `event_rating`
 -- -----------------------------------------------------
 START TRANSACTION;
