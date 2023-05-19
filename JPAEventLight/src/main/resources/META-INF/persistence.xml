@@ -15,6 +15,7 @@
 		<class>com.skilldistillery.jpaeventlight.entities.Band</class>
 		<class>com.skilldistillery.jpaeventlight.entities.BandComment</class>
 		<class>com.skilldistillery.jpaeventlight.entities.EventRating</class>
+		<class>com.skilldistillery.jpaeventlight.entities.EventRatingId</class>
 
 
 		<!--  end entities -->
