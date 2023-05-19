@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Event {
@@ -47,9 +46,6 @@ public class Event {
 	@ManyToOne
 	@JoinColumn(name="venue_id")
 	private Venue venue;
-	
-	@OneToMany(mappedBy = "event")
-	private List<EventRating> eventRatings;
 	
 
 	@ManyToMany(mappedBy = "favoriteEvents")
@@ -160,16 +156,6 @@ public class Event {
 
 	public void setBands(List<Band> bands) {
 		this.bands = bands;
-	}
-	
-	
-
-	public List<EventRating> getEventRatings() {
-		return eventRatings;
-	}
-
-	public void setEventRatings(List<EventRating> eventRatings) {
-		this.eventRatings = eventRatings;
 	}
 
 	@Override
