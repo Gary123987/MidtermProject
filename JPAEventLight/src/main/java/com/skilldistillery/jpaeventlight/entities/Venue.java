@@ -1,6 +1,7 @@
 package com.skilldistillery.jpaeventlight.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Venue {
@@ -33,6 +37,20 @@ public class Venue {
 	
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
+	
+	@OneToMany(mappedBy= "venue")
+	private List<VenueComment> venueComments;
+	
+	@OneToMany(mappedBy="venue")
+	private List<Event> events;
 
 	public Venue() {
 		super();
@@ -102,6 +120,40 @@ public class Venue {
 		this.lastUpdate = lastUpdate;
 	}
 
+	
+
+	public List<VenueComment> getVenueComments() {
+		return venueComments;
+	}
+
+	public void setVenueComments(List<VenueComment> venueComments) {
+		this.venueComments = venueComments;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -123,7 +175,8 @@ public class Venue {
 	public String toString() {
 		return "Venue [id=" + id + ", phoneNumber=" + phoneNumber + ", description=" + description + ", name=" + name
 				+ ", picture=" + picture + ", pictureLogo=" + pictureLogo + ", createdAt=" + createdAt + ", lastUpdate="
-				+ lastUpdate + "]";
+				+ lastUpdate + ", user=" + user + ", address=" + address + ", venueComments=" + venueComments
+				+ ", events=" + events + "]";
 	}
 
 	

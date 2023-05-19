@@ -45,5 +45,33 @@ class VenueTest {
 		assertNotNull(venue);
 		assertEquals("FreeBird", venue.getName());
 	}
+	
+	@Test
+	void test_venue_to_user_OneToOne() {
+		assertNotNull(venue);
+		assertEquals("Fultz", venue.getUser().getLastName());
+	}
+	
+	@Test
+	void test_venue_to_address_OneToOne() {
+		assertNotNull(venue);
+		assertEquals("123 Fake St", venue.getAddress().getStreet());
+		
+	}
+	
+	@Test
+	void test_venue_to_VenueComment_OneToMany() {
+		assertNotNull(venue);
+		assertNotNull(venue.getVenueComments());
+		assertTrue(venue.getVenueComments().size() > 0);
+		
+	}
 
+	@Test
+	void test_venue_to_Event_OneToMany() {
+		assertNotNull(venue);
+		assertNotNull(venue.getEvents());
+		assertTrue(venue.getEvents().size() > 0);
+		
+	}
 }

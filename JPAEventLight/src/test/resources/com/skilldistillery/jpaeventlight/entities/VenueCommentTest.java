@@ -47,5 +47,15 @@ class VenueCommentTest {
 		assertNotNull(venueComment);
 		assertEquals(Month.MARCH, venueComment.getCommentDate().getMonth());
 	}
+	@Test
+	void test_VenueComment_to_User_ManyToOne() {
+		assertNotNull(venueComment);
+		assertEquals("Gary", venueComment.getUser().getFirstName());
+	}
+	@Test
+	void test_VenueComment_to_Venue_ManyToOne() {
+		assertNotNull(venueComment);
+		assertEquals("FreeBird", venueComment.getVenue().getName());
+	}
 
 }

@@ -47,5 +47,10 @@ class EventTest {
 		assertNotNull(event);
 		assertEquals(Month.JULY, event.getEventDate().getMonth());
 	}
+	@Test
+	void test_Event_to_Venue_ManyToOne() {
+		assertNotNull(event);
+		assertEquals("FreeBird", event.getVenue().getName());
+	}
 
 }
