@@ -41,8 +41,9 @@ class AddressTest {
 	}
 
 	@Test
-	void test() {
+	void test_Address_basic_mapping() {
 		assertNotNull(address);
+	
 //		assertEquals("admin", address.getUsername());
 	}
 
