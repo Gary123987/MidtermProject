@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Event {
@@ -63,6 +64,9 @@ public class Event {
 	public void setUsersFavorited(List<User> usersFavorited) {
 		this.usersFavorited = usersFavorited;
 	}
+	
+	@OneToMany(mappedBy = "event")
+	private List<EventRating> eventRatings;
 
 	public Event() {
 		super();
@@ -156,6 +160,17 @@ public class Event {
 
 	public void setBands(List<Band> bands) {
 		this.bands = bands;
+	}
+	
+	
+	
+
+	public List<EventRating> getEventRatings() {
+		return eventRatings;
+	}
+
+	public void setEventRatings(List<EventRating> eventRatings) {
+		this.eventRatings = eventRatings;
 	}
 
 	@Override
