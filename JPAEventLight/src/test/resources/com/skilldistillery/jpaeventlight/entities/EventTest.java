@@ -60,5 +60,12 @@ class EventTest {
 		assertNotNull(event.getBands());
 		assertTrue(event.getBands().size()  == 1);
 	}
+	
+	@Test
+	void test_User_to_EventRatings_OnetoMany() {
+		assertNotNull(event);
+		assertTrue(event.getEventRatings().size() > 0);
+
+	}
 
 }

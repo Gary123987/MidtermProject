@@ -71,8 +71,8 @@ public class User {
 		inverseJoinColumns=@JoinColumn(name="event_id"))
 	private List<Event> favoriteEvents;
 
-
-
+	@OneToMany(mappedBy = "user")
+	private List<EventRating> eventRatings;
 
 	public List<BandComment> getBandComments() {
 		return bandComments;
@@ -215,6 +215,14 @@ public class User {
 		this.venueComments = venueComments;
 	}
 
+
+	public List<EventRating> getEventRatings() {
+		return eventRatings;
+	}
+
+	public void setEventRatings(List<EventRating> eventRatings) {
+		this.eventRatings = eventRatings;
+	}
 
 	@Override
 	public int hashCode() {

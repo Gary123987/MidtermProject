@@ -63,10 +63,18 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("FreeBird", user.getVenue().getName());
 	}
+	
 	@Test
 	void test_User_to_VenueComment_OnetoMany() {
 		assertNotNull(user);
 		assertTrue(user.getVenueComments().size() > 0);
+	}
+	
+	@Test
+	void test_User_to_EventRatings_OnetoMany() {
+		assertNotNull(user);
+		assertTrue(user.getEventRatings().size() > 0);
+
 	}
 
 }
