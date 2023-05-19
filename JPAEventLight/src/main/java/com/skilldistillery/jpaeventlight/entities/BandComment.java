@@ -31,7 +31,7 @@ public class BandComment {
 
 	
 	
-	@Column(name = "band_comment_id")
+	@Column(name = "reply_id")
 	private Integer bandCommentId;
 	
 	@ManyToOne

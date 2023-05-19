@@ -17,6 +17,7 @@ class EventRatingTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private EventRating eventRating;
+	private EventRating eventRating2;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -36,6 +37,10 @@ class EventRatingTest {
 		eid.setEventId(1);
 		eid.setUserId(1);
 		eventRating = em.find(EventRating.class, eid);
+		EventRatingId eid2 = new EventRatingId();
+		eid2.setEventId(2);
+		eid2.setUserId(1);
+		eventRating2 = em.find(EventRating.class, eid2);
 		
 	}
 
@@ -48,5 +53,6 @@ class EventRatingTest {
 	@Test
 	void test() {
 		assertEquals(5, eventRating.getRating());
+		assertEquals(eventRating2.getRating(), 3);
 	}
 }
