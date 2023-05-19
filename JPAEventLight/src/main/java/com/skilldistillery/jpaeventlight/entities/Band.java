@@ -39,6 +39,13 @@ public class Band {
 	@ManyToMany(mappedBy = "favoriteBands")
 	private List<User> usersFavorited;
 
+	@ManyToMany
+	@JoinTable(name = "band_has_event", 
+	joinColumns = @JoinColumn(name = "band_id"),
+	inverseJoinColumns = @JoinColumn(name = "event_id"))
+	private List<Event> events;
+	
+	
 	public List<User> getUsersFavorited() {
 		return usersFavorited;
 	}
@@ -47,11 +54,6 @@ public class Band {
 		this.usersFavorited = usersFavorited;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "band_has_event", 
-	joinColumns = @JoinColumn(name = "band_id"),
-	inverseJoinColumns = @JoinColumn(name = "event_id"))
-	private List<Event> events;
 
 
 	public Band() {
