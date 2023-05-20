@@ -16,6 +16,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Event {
 	
@@ -33,9 +36,11 @@ public class Event {
 	private String image;
 	
 	@Column(name="created_at")
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 
 	@Column(name="last_update")
+	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 	
 	@Column(name="start_time")

@@ -1,5 +1,7 @@
 package com.skilldistillery.jpaeventlight.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpaeventlight.data.UserDAO;
+import com.skilldistillery.jpaeventlight.entities.Event;
 import com.skilldistillery.jpaeventlight.entities.User;
 
 @Controller
@@ -23,7 +26,19 @@ public class UserController {
 	private String home(Model model) {
 		User TEST= userDao.findByUsernameAndPassword("admin", "1234");
 		model.addAttribute("SMOKETEST", TEST);
+		model.addAttribute("eventList", userDao.findAllEvents());
 		return "home";
+	}
+//	@GetMapping(path = {"/", "home.do"})
+//	private String home(Model model) {
+//		model.addAttribute("eventList", userDao.findAllEvents());
+//		return "home";
+//	}
+	@RequestMapping(path = "listAll.do", method = RequestMethod.GET)
+	public String listAllEvents(Model model) {
+		List<Event> events = userDao.findAllEvents();
+		model.addAttribute(events);
+		return "listAllEvents";
 	}
 	
 	@GetMapping("login.do")

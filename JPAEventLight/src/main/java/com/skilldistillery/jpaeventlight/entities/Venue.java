@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Venue {
 	
@@ -33,9 +36,11 @@ public class Venue {
 	private String pictureLogo;
 	
 	@Column(name="created_at")
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 	
 	@Column(name="last_update")
+	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 	
 	@OneToOne
