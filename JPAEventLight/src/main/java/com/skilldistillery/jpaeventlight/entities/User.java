@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class User {
 
@@ -34,9 +37,11 @@ public class User {
 	private String lastName;
 
 	@Column(name = "created_at")
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 
 	@Column(name = "last_update")
+	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 
 	@Column(name = "profile_picture")
@@ -247,8 +252,9 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName + ", createdAt=" + createdAt
 				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe
-				+ ", address=" + address + ", comment=" +  ", venue=" + venue + ", venueComments="
-				+ venueComments + "]";
+				+ ", address=" + address + ", bandComments=" + bandComments + ", venue=" + venue + ", venueComments="
+				+ venueComments + ", favoriteBands=" + favoriteBands + ", favoriteEvents=" + favoriteEvents
+				+ ", eventRatings=" + eventRatings + "]";
 	}
 
 

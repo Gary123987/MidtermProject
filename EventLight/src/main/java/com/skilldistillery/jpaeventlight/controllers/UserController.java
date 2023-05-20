@@ -26,20 +26,20 @@ public class UserController {
 	private String home(Model model) {
 		User TEST= userDao.findByUsernameAndPassword("admin", "1234");
 		model.addAttribute("SMOKETEST", TEST);
-		model.addAttribute("eventList", userDao.findAllEvents());
+//		model.addAttribute("eventList", userDao.findAllEvents());
 		return "home";
 	}
-//	@GetMapping(path = {"/", "home.do"})
+//	@RequestMapping(path = {"/", "home.do"})
 //	private String home(Model model) {
 //		model.addAttribute("eventList", userDao.findAllEvents());
 //		return "home";
 //	}
-	@RequestMapping(path = "listAll.do", method = RequestMethod.GET)
-	public String listAllEvents(Model model) {
-		List<Event> events = userDao.findAllEvents();
-		model.addAttribute(events);
-		return "listAllEvents";
-	}
+//	@RequestMapping(path = "listAll.do", method = RequestMethod.GET)
+//	public String listAllEvents(Model model) {
+//		List<Event> events = userDao.findAllEvents();
+//		model.addAttribute(events);
+//		return "listAllEvents";
+//	}
 	
 	@GetMapping("login.do")
 	public ModelAndView userLogin(String userName, String password, HttpSession session) {

@@ -17,6 +17,13 @@ import javax.persistence.OneToMany;
 @Entity
 public class Band {
 
+	@Override
+	public String toString() {
+		return "Band [id=" + id + ", name=" + name + ", genre=" + genre + ", image=" + image + ", description="
+				+ description + ", comments=" + comments + ", artists=" + artists + ", usersFavorited=" + usersFavorited
+				+ ", events=" + events + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 

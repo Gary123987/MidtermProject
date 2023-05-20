@@ -95,7 +95,7 @@ public class EventRating {
 	@Override
 	public String toString() {
 		return "EventRating [id=" + id + ", rating=" + rating + ", ratingComment=" + ratingComment + ", ratingDate="
-				+ ratingDate + "]";
+				+ ratingDate + ", user=" + user + ", event=" + event + "]";
 	}
 
 	@Override

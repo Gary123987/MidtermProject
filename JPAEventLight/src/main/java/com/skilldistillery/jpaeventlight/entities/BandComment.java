@@ -119,8 +119,8 @@ public class BandComment {
 
 	@Override
 	public String toString() {
-		return "BandComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", bandCommentId="
-				 + "]";
+		return "BandComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", band=" + band
+				+ ", user=" + user + ", replies=" + replies + ", parentComment=" + parentComment + "]";
 	}
 
 	@Override
