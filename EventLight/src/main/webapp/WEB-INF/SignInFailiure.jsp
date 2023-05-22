@@ -8,7 +8,5 @@
 </head>
 <body>
 
-you are an attendee
-
 </body>
 </html>
