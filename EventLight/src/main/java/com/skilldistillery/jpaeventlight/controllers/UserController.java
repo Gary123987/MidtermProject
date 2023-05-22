@@ -1,5 +1,6 @@
 package com.skilldistillery.jpaeventlight.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -71,6 +71,28 @@ public class UserController {
 		session.removeAttribute("user");
 		mv.setViewName("index");
 		return mv;
+	}
+	
+	@RequestMapping(path = "signUp.do")
+	public String signUp(HttpSession session, Model model,
+			@RequestParam("username") String username,
+			@RequestParam("password") String password,
+			@RequestParam("role") String role,
+			@RequestParam("firstName") String fName,
+			@RequestParam("lastName") String lName,
+			@RequestParam("profilePicture") String profilePicture,
+			@RequestParam("aboutMe") String aboutMe) {
+		User user = new User();
+		user.setAboutMe(aboutMe);
+		user.setCreatedAt(LocalDateTime.now());
+		user.setEnabled(true);
+		user.setFirstName(fName);
+		user.setLastName(lName);
+		user.setRole(role);
+		user = userDao.signUp(user);
+		
+		
+		return "SignUp";
 	}
 
 	@GetMapping(path = "favorites.do")
@@ -139,10 +161,6 @@ public class UserController {
 		return null;
 	}
 
-	@GetMapping(path = "signUp.do")
-	public String signUp() {
-		return "SignUp";
-	}
 
 	@GetMapping(path = "filter.do")
 	public ModelAndView filterBy() {
