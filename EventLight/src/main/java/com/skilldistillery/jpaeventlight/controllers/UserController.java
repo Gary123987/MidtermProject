@@ -240,15 +240,18 @@ public class UserController {
 	public String updateEvent(HttpSession session, 
 			@RequestParam("title") String title,
 			@RequestParam("description") String description,
-			@RequestParam("eventDate") LocalDate eventDate,
-			@RequestParam("startTime") LocalTime startTime, 
-			@RequestParam("endTime") LocalTime endTime,
+			@RequestParam("eventDate") String stringEventDate,
+			@RequestParam("startTime") String stringStartTime, 
+			@RequestParam("endTime") String stringEndTime,
 			@RequestParam("image") String image) {
 		Event event = (Event) session.getAttribute("event");
 		event.setTitle(title);
 		event.setDescription(description);
+		LocalDate eventDate = LocalDate.parse(stringEventDate);
 		event.setEventDate(eventDate);
+		LocalTime startTime = LocalTime.parse(stringStartTime);
 		event.setStartTime(startTime);
+		LocalTime endTime = LocalTime.parse(stringEndTime);
 		event.setEndTime(endTime);
 		event.setImage(image);
 		event = userDao.updateEvent(event);
