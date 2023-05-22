@@ -22,5 +22,10 @@ ${SMOKETEST}
 
 </form> 
 
+<form action="SignUpPage.do" method="GET">
+		<input type="submit" value="Sign Up" />
+
+</form> 
+
 </body>
 </html>

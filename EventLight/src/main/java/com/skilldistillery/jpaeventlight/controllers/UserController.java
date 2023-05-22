@@ -74,6 +74,11 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "SignUpPage.do")
+	public String signUpPage() {
+		return "SignUp";
+	}
+	
 	@RequestMapping(path = "signUp.do")
 	public String signUp(HttpSession session, Model model,
 			@RequestParam("username") String username,
@@ -105,7 +110,8 @@ public class UserController {
 
 		user = userDao.signUp(user);
 		
-		return "SignUp";
+		//CREATE A PAGE TELLING THE USER THAT THE USERNAME WAS CREATED!!!!
+		return "redirect:home";
 	}
 
 	@GetMapping(path = "favorites.do")
