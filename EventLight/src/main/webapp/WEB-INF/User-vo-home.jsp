@@ -18,7 +18,11 @@ update a venue
 
 you currently own the venue ${user.venue.name }
 
-<a href="updateVenuePage.do">Update Venue</a>
+<a href="updateVenuePage.do">Update Venue</a><br>
+<a href="SeeMyEvents.do">See My Events</a>
+
+
+
 </c:when>
 
 <c:otherwise>

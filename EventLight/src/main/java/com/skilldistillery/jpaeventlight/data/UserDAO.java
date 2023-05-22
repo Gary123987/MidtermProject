@@ -31,7 +31,7 @@ public interface UserDAO {
 
 	boolean deleteUser(int userId);
 
-	Event updateEvent(int eventId, Event updatedEvent);
+	Event updateEvent(Event updatedEvent);
 
 	User signUp(User user, Address address);
 
@@ -40,6 +40,10 @@ public interface UserDAO {
 	Venue updateVenue(Venue updatedVenue);
 
 	Address updateAddress(Address updatedAddress);
+
+	List<Event> findEventsByVenueId(int venueId);
+
+	Event findEventById(int eventId);
 
 	
 	

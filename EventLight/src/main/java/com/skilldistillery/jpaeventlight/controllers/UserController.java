@@ -1,6 +1,8 @@
 package com.skilldistillery.jpaeventlight.controllers;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,15 +32,9 @@ public class UserController {
 	private String home(Model model) {
 		User TEST = userDao.findByUsernameAndPassword("admin", "1234");
 		model.addAttribute("SMOKETEST", TEST);
-//		model.addAttribute("eventList", userDao.findAllEvents());
 		return "home";
 	}
 
-//	@GetMapping(path = {"/", "home.do"})
-//	private String home(Model model) {
-//		model.addAttribute("eventList", userDao.findAllEvents());
-//		return "home";
-//	}
 	@GetMapping(path = "listAll.do")
 	public String listAllEvents(Model model) {
 		List<Event> events = userDao.findAllEvents();
@@ -67,6 +63,7 @@ public class UserController {
 	public String signInPage() {
 		return "SignIn";
 	}
+
 	@RequestMapping(path = "updateVenuePage.do")
 	public String updateVenuePage(HttpSession session) {
 		User user = (User) session.getAttribute("user");
@@ -74,9 +71,10 @@ public class UserController {
 		session.setAttribute("venue", venue);
 		return "UpdateVenue";
 	}
+
 	@RequestMapping(path = "goHome.do")
 	public String goToHome(HttpSession session) {
-		
+
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
 			if (user.getRole().equals("att")) {
@@ -93,25 +91,19 @@ public class UserController {
 		session.removeAttribute("user");
 		return "home";
 	}
-	
+
 	@RequestMapping(path = "SignUpPage.do")
 	public String signUpPage() {
 		return "SignUp";
 	}
-	
+
 	@RequestMapping(path = "signUp.do")
-	public String signUp(HttpSession session, Model model,
-			@RequestParam("username") String username,
-			@RequestParam("password") String password,
-			@RequestParam("role") String role,
-			@RequestParam("firstName") String fName,
-			@RequestParam("lastName") String lName,
-			@RequestParam("profilePicture") String profilePicture,
-			@RequestParam("aboutMe") String aboutMe,
-			@RequestParam("street") String street,
-			@RequestParam("city") String city,
-			@RequestParam("state") String state,
-			@RequestParam("zip") String zip){
+	public String signUp(HttpSession session, Model model, @RequestParam("username") String username,
+			@RequestParam("password") String password, @RequestParam("role") String role,
+			@RequestParam("firstName") String fName, @RequestParam("lastName") String lName,
+			@RequestParam("profilePicture") String profilePicture, @RequestParam("aboutMe") String aboutMe,
+			@RequestParam("street") String street, @RequestParam("city") String city,
+			@RequestParam("state") String state, @RequestParam("zip") String zip) {
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
@@ -123,88 +115,88 @@ public class UserController {
 		user.setCreatedAt(LocalDateTime.now());
 		user.setEnabled(true);
 
-		
 		Address address = new Address();
 		address.setCity(city);
 		address.setState(state);
 		address.setStreet(street);
 		address.setZip(zip);
-		
+
 		user.setAddress(address);
 
 		user = userDao.signUp(user, address);
 		session.setAttribute("user", user);
-		
-		//CREATE A PAGE TELLING THE USER THAT THE USERNAME WAS CREATED!!!!
+
+		// CREATE A PAGE TELLING THE USER THAT THE USERNAME WAS CREATED!!!!
 
 		return "home";
 	}
-	
+
 	@PostMapping(path = "createVenue.do")
-	public String createVenue(HttpSession session, 
-			@RequestParam("name") String name,
-			@RequestParam("description") String description,
-			@RequestParam("phoneNumber") String phoneNumber,
-			@RequestParam("picture") String picture,
-			@RequestParam("logo") String logo,
-			@RequestParam("street") String street,
-			@RequestParam("city") String city,
-			@RequestParam("state") String state,
-			@RequestParam("zip") String zip) {
-		
+	public String createVenue(HttpSession session, @RequestParam("name") String name,
+			@RequestParam("description") String description, @RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("picture") String picture, @RequestParam("logo") String logo,
+			@RequestParam("street") String street, @RequestParam("city") String city,
+			@RequestParam("state") String state, @RequestParam("zip") String zip) {
+
 		Venue venue = new Venue();
 		venue.setName(name);
 		venue.setDescription(description);
 		venue.setPhoneNumber(phoneNumber);
 		venue.setPicture(picture);
 		venue.setPictureLogo(logo);
-		
+
 		Address address = new Address();
 		address.setStreet(street);
 		address.setCity(city);
 		address.setState(state);
 		address.setZip(zip);
-		
+
 		venue.setAddress(address);
-		
+
 		User user = (User) session.getAttribute("user");
 		venue.setUser(user);
 
 		venue = userDao.createVenue(venue, address);
-		
+
 		session.setAttribute("venue", venue);
 		return "User-vo-home";
 	}
-	
-	
+
 	@PostMapping(path = "updateVenue.do")
-	public String updateVenue(HttpSession session,
-			@RequestParam("name") String name,
-			@RequestParam("description") String description,
-			@RequestParam("phoneNumber") String phoneNumber,
-			@RequestParam("picture") String picture,
-			@RequestParam("logo") String logo,
-			@RequestParam("street") String street,
-			@RequestParam("city") String city,
-			@RequestParam("state") String state,
-			@RequestParam("zip") String zip) {
+	public String updateVenue(HttpSession session, @RequestParam("name") String name,
+			@RequestParam("description") String description, @RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("picture") String picture, @RequestParam("logo") String logo,
+			@RequestParam("street") String street, @RequestParam("city") String city,
+			@RequestParam("state") String state, @RequestParam("zip") String zip) {
 		Venue existingVenue = (Venue) session.getAttribute("venue");
 		existingVenue.setName(name);
 		existingVenue.setDescription(description);
 		existingVenue.setPhoneNumber(phoneNumber);
 		existingVenue.setPicture(picture);
 		existingVenue.setPictureLogo(logo);
-		
+
 		Address existingAddress = existingVenue.getAddress();
 		existingAddress.setStreet(street);
 		existingAddress.setCity(city);
 		existingAddress.setState(state);
 		existingAddress.setZip(zip);
-		
+
 		userDao.updateAddress(existingAddress);
 		userDao.updateVenue(existingVenue);
 		return "User-vo-home";
 	}
+
+	@GetMapping(path = "SeeMyEvents.do")
+	public String seeEventsByVenue(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		Venue venue = user.getVenue();
+		int id = venue.getId();
+		List<Event> eventsById = userDao.findEventsByVenueId(id);
+		session.setAttribute("eventsById", eventsById);
+		return "listbyvenueid";
+	}
+
+//	SeeMyEvents.do
 
 	@GetMapping(path = "favorites.do")
 	public ModelAndView showByUserFavorites() {
@@ -222,7 +214,6 @@ public class UserController {
 		return null;
 	}
 
-
 	@GetMapping(path = "createEvent.do")
 	public ModelAndView createEvent() {
 		return null;
@@ -238,10 +229,31 @@ public class UserController {
 		return null;
 	}
 
+	@RequestMapping(path = "updateEventPage.do")
+	public String updateEventPage(HttpSession session, @RequestParam("id") int id) {
+		Event event = userDao.findEventById(id);
+		session.setAttribute("event", event);
+		return "UpdateEvent";
+	}
 
-	@GetMapping(path = "updateEvent.do")
-	public ModelAndView updateEvent() {
-		return null;
+	@PostMapping(path = "updateEvent.do")
+	public String updateEvent(HttpSession session, 
+			@RequestParam("title") String title,
+			@RequestParam("description") String description,
+			@RequestParam("eventDate") LocalDate eventDate,
+			@RequestParam("startTime") LocalTime startTime, 
+			@RequestParam("endTime") LocalTime endTime,
+			@RequestParam("image") String image) {
+		Event event = (Event) session.getAttribute("event");
+		event.setTitle(title);
+		event.setDescription(description);
+		event.setEventDate(eventDate);
+		event.setStartTime(startTime);
+		event.setEndTime(endTime);
+		event.setImage(image);
+		event = userDao.updateEvent(event);
+		session.setAttribute("event", event);
+		return "User-vo-home";
 	}
 
 	@GetMapping(path = "deleteArtist.do")
@@ -263,7 +275,6 @@ public class UserController {
 	public ModelAndView deleteEvent() {
 		return null;
 	}
-
 
 	@GetMapping(path = "filter.do")
 	public ModelAndView filterBy() {

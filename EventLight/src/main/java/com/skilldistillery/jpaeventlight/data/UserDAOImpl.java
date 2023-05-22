@@ -109,17 +109,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Event updateEvent(int eventId, Event updatedEvent) {
-		Event event = em.find(Event.class, eventId);
-		event.setEventDate(updatedEvent.getEventDate());
-		event.setTitle(updatedEvent.getTitle());
-		event.setDescription(updatedEvent.getDescription());
-		event.setImage(updatedEvent.getImage());
-		event.setVenue(updatedEvent.getVenue());
-		event.setStartTime(updatedEvent.getStartTime());
-		event.setEndTime(updatedEvent.getEndTime());
-		event.setBands(updatedEvent.getBands());
-		return event;
+	public Event updateEvent(Event updatedEvent) {
+		return em.merge(updatedEvent);
 
 	}
 
@@ -188,6 +179,19 @@ public class UserDAOImpl implements UserDAO {
 	public List<Event> findAllEvents() {
 		String jpql = "SELECT e FROM Event e";
 		return em.createQuery(jpql, Event.class).getResultList();
+	}
+	
+	@Override
+	public List<Event> findEventsByVenueId(int venueId){
+		String jpql = "SELECT e FROM Event e WHERE e.venue.id = :venueId";
+		List<Event> eventsById = em.createQuery(jpql, Event.class).setParameter("venueId", venueId).getResultList();
+		return eventsById;
+		
+	}
+	
+	@Override
+	public Event findEventById(int eventId) {
+		return em.find(Event.class, eventId);
 	}
 
 }
