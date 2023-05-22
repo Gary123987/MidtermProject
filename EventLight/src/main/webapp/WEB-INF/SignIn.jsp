@@ -7,14 +7,14 @@
 <title>Log In</title>
 </head>
 <body>
-	<form action="login.do" method="post">
+	<form action="login.do" method="get">
 		<label for="username">Username</label> <input type="text"
 			name="username" value="${user.username }" /> 
 			<br> 
 			<label for="password">Password</label> <input type="password" name="password"
 			value="${user.password}" /> <br>
 			<input type="submit" value="Log In"/>
-			<input type="hidden" name="userId" value="${user.id}"/>
+			
 	</form>
 	
 	<form action ="home.do">
