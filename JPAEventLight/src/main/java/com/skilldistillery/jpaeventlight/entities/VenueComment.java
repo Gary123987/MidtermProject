@@ -122,8 +122,7 @@ public class VenueComment {
 
 	@Override
 	public String toString() {
-		return "VenueComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + ", user=" + user
-				+ ", venue=" + venue + ", parentComment=" + parentComment + ", replies=" + replies + "]";
+		return "VenueComment [id=" + id + "]";
 	}
 	
 	

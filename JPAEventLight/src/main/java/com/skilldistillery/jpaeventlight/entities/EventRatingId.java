@@ -43,7 +43,7 @@ public class EventRatingId implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EventRatingId [userId=" + userId + ", eventId=" + eventId + "]";
+		return "EventRatingId [userId=" + userId  + "]";
 	}
 
 	@Override

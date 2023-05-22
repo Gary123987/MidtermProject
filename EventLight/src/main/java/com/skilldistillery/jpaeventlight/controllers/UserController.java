@@ -30,17 +30,17 @@ public class UserController {
 		return "home";
 	}
 
-//	@RequestMapping(path = {"/", "home.do"})
+//	@GetMapping(path = {"/", "home.do"})
 //	private String home(Model model) {
 //		model.addAttribute("eventList", userDao.findAllEvents());
 //		return "home";
-////	}
-//	@RequestMapping(path = "listAll.do", method = RequestMethod.GET)
-//	public String listAllEvents(Model model) {
-//		List<Event> events = userDao.findAllEvents();
-//		model.addAttribute(events);
-//		return "listAllEvents";
 //	}
+	@GetMapping(path = "listAll.do")
+	public String listAllEvents(Model model) {
+		List<Event> events = userDao.findAllEvents();
+		model.addAttribute(events);
+		return "listAllEvents";
+	}
 
 	@GetMapping("login.do")
 	public ModelAndView userLogin(String userName, String password, HttpSession session) {

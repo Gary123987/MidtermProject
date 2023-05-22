@@ -88,8 +88,7 @@ public class Artist {
 
 	@Override
 	public String toString() {
-		return "Artist [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", stageName=" + stageName
-				+ ", instrument=" + instrument + ", bandArtist=" + bandArtist + "]";
+		return "Artist [id=" + id  + "]";
 	}
 
 	@Override

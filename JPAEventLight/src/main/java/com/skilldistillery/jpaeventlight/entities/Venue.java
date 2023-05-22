@@ -178,10 +178,7 @@ public class Venue {
 
 	@Override
 	public String toString() {
-		return "Venue [id=" + id + ", phoneNumber=" + phoneNumber + ", description=" + description + ", name=" + name
-				+ ", picture=" + picture + ", pictureLogo=" + pictureLogo + ", createdAt=" + createdAt + ", lastUpdate="
-				+ lastUpdate + ", user=" + user + ", address=" + address + ", venueComments=" + venueComments
-				+ ", events=" + events + "]";
+		return "Venue [id=" + id  + "]";
 	}
 
 	
