@@ -349,7 +349,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (1, 'admin', '1234', 1, 'admin', 'Gary', 'Fultz', '2023-01-05 10:34', '2023-01-10 05:25', NULL, 'Just a dude that likes music', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (1, 'admin', '1234', 1, 'att', 'Gary', 'Fultz', '2023-01-05 10:34', '2023-01-10 05:25', NULL, 'Just a dude that likes music', 1);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (2, 'NoOne', 'NoOne25', 1, 'vo', 'Arya', 'Stark', '2023-02-15 11:55', '2023-02-15 11:55', NULL, 'Likes vacationing down south.', 2);
 
 COMMIT;

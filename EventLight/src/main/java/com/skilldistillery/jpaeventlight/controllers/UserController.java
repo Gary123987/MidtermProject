@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpaeventlight.data.UserDAO;
@@ -45,9 +43,17 @@ public class UserController {
 	@GetMapping("login.do")
 	public ModelAndView userLogin(String userName, String password, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		User info = userDao.findByUsernameAndPassword(userName, password);
-		session.setAttribute("user", info);
-		mv.setViewName("account");
+		User user = userDao.findByUsernameAndPassword(userName, password);
+		session.setAttribute("user", user);
+		if (user.getRole().equals("att")) {
+			mv.setViewName("User-att-home");
+		}
+		else if (user.getRole().equals("vo")) {
+			mv.setViewName("User-vo-home");
+		}
+		else if (user == null) {
+			mv.setViewName("SignInFailiure");
+		}
 		return mv;
 	}
 
