@@ -12,10 +12,10 @@
 <h1>WELCOME TO EVENT LIGHT</h1>
 
 ${SMOKETEST}
-<!-- <form action="listAll.do" method="GET">
+<form action="listAll.do" method="GET">
 		<input type="submit" value="List All Events" />
 
-</form> -->
+</form> 
 
 </body>
 </html>

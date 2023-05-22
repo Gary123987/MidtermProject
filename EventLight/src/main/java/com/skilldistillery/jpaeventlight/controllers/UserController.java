@@ -21,26 +21,27 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
-	
-	@GetMapping(path = {"/", "home.do"})
+
+	@GetMapping(path = { "/", "home.do" })
 	private String home(Model model) {
-		User TEST= userDao.findByUsernameAndPassword("admin", "1234");
+		User TEST = userDao.findByUsernameAndPassword("admin", "1234");
 		model.addAttribute("SMOKETEST", TEST);
 //		model.addAttribute("eventList", userDao.findAllEvents());
 		return "home";
 	}
+
 //	@RequestMapping(path = {"/", "home.do"})
 //	private String home(Model model) {
 //		model.addAttribute("eventList", userDao.findAllEvents());
 //		return "home";
-//	}
+////	}
 //	@RequestMapping(path = "listAll.do", method = RequestMethod.GET)
 //	public String listAllEvents(Model model) {
 //		List<Event> events = userDao.findAllEvents();
 //		model.addAttribute(events);
 //		return "listAllEvents";
 //	}
-	
+
 	@GetMapping("login.do")
 	public ModelAndView userLogin(String userName, String password, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -49,111 +50,89 @@ public class UserController {
 		mv.setViewName("account");
 		return mv;
 	}
-	
-	@GetMapping(path="logout.do")
+
+	@GetMapping(path = "logout.do")
 	public ModelAndView userLogOut(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		session.removeAttribute("user");
 		mv.setViewName("index");
 		return mv;
 	}
-	
-	@GetMapping (path="favorites.do")
+
+	@GetMapping(path = "favorites.do")
 	public ModelAndView showByUserFavorites() {
 		return null;
-		//todo
+		// todo
 	}
-	
-	@GetMapping(path="createArtist.do")
+
+	@GetMapping(path = "createArtist.do")
 	public ModelAndView createArtist() {
 		return null;
 	}
-	
-	@GetMapping(path="createBand.do")
+
+	@GetMapping(path = "createBand.do")
 	public ModelAndView createBand() {
 		return null;
 	}
-	
-	@GetMapping(path="createVenue.do")
+
+	@GetMapping(path = "createVenue.do")
 	public ModelAndView createVenue() {
 		return null;
 	}
-	@GetMapping(path="createEvent.do")
+
+	@GetMapping(path = "createEvent.do")
 	public ModelAndView createEvent() {
 		return null;
 	}
-	
-	@GetMapping(path="updateArtist.do")
+
+	@GetMapping(path = "updateArtist.do")
 	public ModelAndView updateArtist() {
 		return null;
 	}
-	
-	@GetMapping(path="updateBand.do")
+
+	@GetMapping(path = "updateBand.do")
 	public ModelAndView updateBand() {
 		return null;
 	}
-	
-	@GetMapping(path="updateVenue.do")
+
+	@GetMapping(path = "updateVenue.do")
 	public ModelAndView updateVenue() {
 		return null;
 	}
-	
-	@GetMapping(path="updateEvent.do")
+
+	@GetMapping(path = "updateEvent.do")
 	public ModelAndView updateEvent() {
 		return null;
 	}
-	
-	@GetMapping(path="deleteArtist.do")
+
+	@GetMapping(path = "deleteArtist.do")
 	public ModelAndView deleteArtist() {
 		return null;
 	}
-	
-	@GetMapping(path="deleteBand.do")
+
+	@GetMapping(path = "deleteBand.do")
 	public ModelAndView deleteBand() {
 		return null;
 	}
-	
-	@GetMapping(path="deleteVenue.do")
+
+	@GetMapping(path = "deleteVenue.do")
 	public ModelAndView deleteVenue() {
 		return null;
 	}
-	
-	@GetMapping(path="deleteEvent.do")
+
+	@GetMapping(path = "deleteEvent.do")
 	public ModelAndView deleteEvent() {
 		return null;
 	}
-	
-	@GetMapping(path="signUp.do")
+
+	@GetMapping(path = "signUp.do")
 	public ModelAndView signUp() {
 		return null;
 	}
-	
-	@GetMapping(path="filter.do")
+
+	@GetMapping(path = "filter.do")
 	public ModelAndView filterBy() {
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
