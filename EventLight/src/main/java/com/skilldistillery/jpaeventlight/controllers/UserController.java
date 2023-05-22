@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpaeventlight.data.UserDAO;
+import com.skilldistillery.jpaeventlight.entities.Address;
 import com.skilldistillery.jpaeventlight.entities.Event;
 import com.skilldistillery.jpaeventlight.entities.User;
 
@@ -81,7 +82,11 @@ public class UserController {
 			@RequestParam("firstName") String fName,
 			@RequestParam("lastName") String lName,
 			@RequestParam("profilePicture") String profilePicture,
-			@RequestParam("aboutMe") String aboutMe) {
+			@RequestParam("aboutMe") String aboutMe,
+			@RequestParam("street") String street,
+			@RequestParam("city") String city,
+			@RequestParam("state") String state,
+			@RequestParam("zip") String zip){
 		User user = new User();
 		user.setAboutMe(aboutMe);
 		user.setCreatedAt(LocalDateTime.now());
@@ -89,8 +94,16 @@ public class UserController {
 		user.setFirstName(fName);
 		user.setLastName(lName);
 		user.setRole(role);
-		user = userDao.signUp(user);
 		
+		Address address = new Address();
+		address.setCity(city);
+		address.setState(state);
+		address.setStreet(street);
+		address.setZip(zip);
+		
+		user.setAddress(address);
+
+		user = userDao.signUp(user);
 		
 		return "SignUp";
 	}
