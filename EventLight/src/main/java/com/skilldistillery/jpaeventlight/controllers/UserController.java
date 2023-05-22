@@ -56,6 +56,14 @@ public class UserController {
 		}
 		return mv;
 	}
+	
+	@GetMapping("loginpage.do")
+	public ModelAndView goToSignIn() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("SingIn");
+		return mv;
+		
+	}
 
 	@GetMapping(path = "logout.do")
 	public ModelAndView userLogOut(HttpSession session) {
