@@ -93,12 +93,16 @@ public class UserController {
 			@RequestParam("state") String state,
 			@RequestParam("zip") String zip){
 		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setRole(role);
+		user.setFirstName(fName);
+		user.setLastName(lName);
+		user.setProfilePicture(profilePicture);
 		user.setAboutMe(aboutMe);
 		user.setCreatedAt(LocalDateTime.now());
 		user.setEnabled(true);
-		user.setFirstName(fName);
-		user.setLastName(lName);
-		user.setRole(role);
+
 		
 		Address address = new Address();
 		address.setCity(city);
@@ -108,10 +112,10 @@ public class UserController {
 		
 		user.setAddress(address);
 
-		user = userDao.signUp(user);
+		user = userDao.signUp(user, address);
 		
 		//CREATE A PAGE TELLING THE USER THAT THE USERNAME WAS CREATED!!!!
-		return "redirect:home";
+		return "home";
 	}
 
 	@GetMapping(path = "favorites.do")

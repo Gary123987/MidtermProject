@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.jpaeventlight.entities.Address;
 import com.skilldistillery.jpaeventlight.entities.Artist;
 import com.skilldistillery.jpaeventlight.entities.Band;
 import com.skilldistillery.jpaeventlight.entities.Event;
@@ -20,65 +21,72 @@ public class UserDAOImpl implements UserDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public User findByUsernameAndPassword(String username, String password) {
 		User user = null;
 		String jpql = "SELECT u FROM User u WHERE u.username = :un AND u.password = :pw AND u.enabled = true";
-		try{
-			user = em.createQuery(jpql, User.class)
-				.setParameter("un", username)
-				.setParameter("pw", password)
-				.getSingleResult();
+		try {
+			user = em.createQuery(jpql, User.class).setParameter("un", username).setParameter("pw", password)
+					.getSingleResult();
 			return user;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.err.println("Invalid login");
 			return user;
 		}
 	}
-	
+
 //	@Override
 //	public void loginService() {
 //		//todo
 //	}
-	
+
 	@Override
-	public User signUp(User user) {
+	public User signUp(User user, Address address) {
+		em.persist(address);
 		em.persist(user);
+		//em.flush();
 		return user;
-		}
-	
+	}
+
+//	@Override
+//	public TVShow add(TVShow show) {
+//		em.persist(show);
+//		em.flush();
+//		return show;
+//	}
+
 //	@Override
 //	public void showFavorites() {
 //		//todo
 //	}
-	
+
 	@Override
 	public Artist createArtist(Artist artist) {
 		em.persist(artist);
 		return artist;
 	}
-	
+
 	@Override
 	public Band createBand(Band band) {
 		em.persist(band);
 		return band;
-		
+
 	}
-	
+
 	@Override
 	public Venue createVenue(Venue venue) {
 		em.persist(venue);
 		return venue;
 	}
-	
+
 	@Override
 	public Event createEvent(Event event) {
 		em.persist(event);
 		return event;
-		
+
 	}
-	
+
 //	@Override
 //	public void updateArtist() {
 //		
@@ -88,7 +96,7 @@ public class UserDAOImpl implements UserDAO {
 //	public void updateBand() {
 //		
 //	}
-	
+
 	@Override
 	public Venue updateVenue(int venueId, Venue updatedVenue) {
 		Venue venue = em.find(Venue.class, venueId);
@@ -103,7 +111,7 @@ public class UserDAOImpl implements UserDAO {
 		venue.setEvents(updatedVenue.getEvents());
 		return venue;
 	}
-	
+
 	@Override
 	public Event updateEvent(int eventId, Event updatedEvent) {
 		Event event = em.find(Event.class, eventId);
@@ -116,9 +124,9 @@ public class UserDAOImpl implements UserDAO {
 		event.setEndTime(updatedEvent.getEndTime());
 		event.setBands(updatedEvent.getBands());
 		return event;
-		
+
 	}
-	
+
 	@Override
 	public boolean deleteArtist(int artistId) {
 		Artist artist = em.find(Artist.class, artistId);
@@ -128,9 +136,9 @@ public class UserDAOImpl implements UserDAO {
 		} else {
 			return false;
 		}
-		
+
 	}
-	
+
 	@Override
 	public boolean deleteBand(int bandId) {
 		Band band = em.find(Band.class, bandId);
@@ -141,7 +149,7 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean deleteVenue(int venueId) {
 		Venue venue = em.find(Venue.class, venueId);
@@ -151,9 +159,9 @@ public class UserDAOImpl implements UserDAO {
 		} else {
 			return false;
 		}
-		
+
 	}
-	
+
 	@Override
 	public boolean deleteEvent(int eventId) {
 		Event event = em.find(Event.class, eventId);
@@ -164,7 +172,7 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean deleteUser(int userId) {
 		User user = em.find(User.class, userId);
@@ -179,17 +187,11 @@ public class UserDAOImpl implements UserDAO {
 //	public void filter() {
 //		
 //	}
-	
+
 	@Override
-	public List<Event> findAllEvents(){
+	public List<Event> findAllEvents() {
 		String jpql = "SELECT e FROM Event e";
-		return em.createQuery(jpql, Event.class).getResultList();	
-		}
-	
-	
-	
-	
-	
-	
+		return em.createQuery(jpql, Event.class).getResultList();
+	}
 
 }

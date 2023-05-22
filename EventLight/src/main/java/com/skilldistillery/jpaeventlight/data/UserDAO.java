@@ -2,6 +2,7 @@ package com.skilldistillery.jpaeventlight.data;
 
 import java.util.List;
 
+import com.skilldistillery.jpaeventlight.entities.Address;
 import com.skilldistillery.jpaeventlight.entities.Artist;
 import com.skilldistillery.jpaeventlight.entities.Band;
 import com.skilldistillery.jpaeventlight.entities.Event;
@@ -30,13 +31,13 @@ public interface UserDAO {
 
 	boolean deleteArtist(int artistId);
 
-	User signUp(User user);
-
 	boolean deleteUser(int userId);
 
 	Event updateEvent(int eventId, Event updatedEvent);
 
 	Venue updateVenue(int venueId, Venue updatedVenue);
+
+	User signUp(User user, Address address);
 
 	
 	
