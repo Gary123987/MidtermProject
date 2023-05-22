@@ -30,10 +30,11 @@ public class UserDAOImpl implements UserDAO {
 				.setParameter("un", username)
 				.setParameter("pw", password)
 				.getSingleResult();
+			return user;
 		} catch(Exception e) {
 			System.err.println("Invalid login");
+			return user;
 		}
-		return user;
 	}
 	
 //	@Override

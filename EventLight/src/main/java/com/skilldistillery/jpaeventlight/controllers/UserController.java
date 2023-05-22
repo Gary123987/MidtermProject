@@ -1,5 +1,6 @@
 package com.skilldistillery.jpaeventlight.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpaeventlight.data.UserDAO;
@@ -41,24 +43,23 @@ public class UserController {
 		return "listAllEvents";
 	}
 
-	@GetMapping("login.do")
-	public ModelAndView userLogin(String userName, String password, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping("login.do")
+	public String userLogin(Model model, HttpSession session, @RequestParam("username") String userName,
+			@RequestParam("password") String password) {
 		User user = userDao.findByUsernameAndPassword(userName, password);
 		session.setAttribute("user", user);
-		if (user.getRole().equals("att")) {
-			mv.setViewName("User-att-home");
+		model.addAttribute("user", user);
+		if (user != null) {
+			if (user.getRole().equals("att")) {
+				return "User-att-home";
+			} else if (user.getRole().equals("vo")) {
+				return "User-vo-home";
+			}
 		}
-		else if (user.getRole().equals("vo")) {
-			mv.setViewName("User-vo-home");
-		}
-		else if (user == null) {
-			mv.setViewName("SignInFailiure");
-		}
-		return mv;
+		return "SignInFailiure";
+
 	}
-	
-	
+
 	@RequestMapping(path = "loginpage.do")
 	public String signInPage() {
 		return "SignIn";
@@ -70,6 +71,28 @@ public class UserController {
 		session.removeAttribute("user");
 		mv.setViewName("index");
 		return mv;
+	}
+	
+	@RequestMapping(path = "signUp.do")
+	public String signUp(HttpSession session, Model model,
+			@RequestParam("username") String username,
+			@RequestParam("password") String password,
+			@RequestParam("role") String role,
+			@RequestParam("firstName") String fName,
+			@RequestParam("lastName") String lName,
+			@RequestParam("profilePicture") String profilePicture,
+			@RequestParam("aboutMe") String aboutMe) {
+		User user = new User();
+		user.setAboutMe(aboutMe);
+		user.setCreatedAt(LocalDateTime.now());
+		user.setEnabled(true);
+		user.setFirstName(fName);
+		user.setLastName(lName);
+		user.setRole(role);
+		user = userDao.signUp(user);
+		
+		
+		return "SignUp";
 	}
 
 	@GetMapping(path = "favorites.do")
@@ -138,10 +161,6 @@ public class UserController {
 		return null;
 	}
 
-	@GetMapping(path = "signUp.do")
-	public ModelAndView signUp() {
-		return null;
-	}
 
 	@GetMapping(path = "filter.do")
 	public ModelAndView filterBy() {

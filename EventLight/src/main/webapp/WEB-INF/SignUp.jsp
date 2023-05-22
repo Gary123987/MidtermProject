@@ -16,8 +16,8 @@
 			<input type="password" name="password" required/> 
 			<br>
 		    <label for="role">Role: </label>
-			<INPUT TYPE="radio" name="role" value="VO"/>Venue Owner
-			<INPUT TYPE="radio" NAME="role" VALUE="ATT"/>Attendee
+			<INPUT TYPE="radio" name="role" value="vo"/>Venue Owner
+			<INPUT TYPE="radio" NAME="role" VALUE="att"/>Attendee
 			<br>
 		    <label for="firstName">First Name: </label>
 			<input type="text" name="firstName" required/> 
