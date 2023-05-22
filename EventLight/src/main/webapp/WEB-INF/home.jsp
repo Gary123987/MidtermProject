@@ -32,5 +32,10 @@ ${SMOKETEST}
 
 </form>
 
+<form action="logout.do">
+	<input type="submit" value="logout"/>
+
+</form>
+
 </body>
 </html>

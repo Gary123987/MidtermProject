@@ -75,7 +75,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Venue createVenue(Venue venue) {
+	public Venue createVenue(Venue venue, Address address) {
+		em.persist(address);
 		em.persist(venue);
 		return venue;
 	}
@@ -98,18 +99,13 @@ public class UserDAOImpl implements UserDAO {
 //	}
 
 	@Override
-	public Venue updateVenue(int venueId, Venue updatedVenue) {
-		Venue venue = em.find(Venue.class, venueId);
-		venue.setPhoneNumber(updatedVenue.getPhoneNumber());
-		venue.setDescription(updatedVenue.getDescription());
-		venue.setName(updatedVenue.getName());
-		venue.setPicture(updatedVenue.getPicture());
-		venue.setPictureLogo(updatedVenue.getPictureLogo());
-		venue.setUser(updatedVenue.getUser());
-		venue.setAddress(updatedVenue.getAddress());
-		venue.setVenueComments(updatedVenue.getVenueComments());
-		venue.setEvents(updatedVenue.getEvents());
-		return venue;
+	public Venue updateVenue(Venue updatedVenue) {
+		return em.merge(updatedVenue);
+	}
+	
+	@Override
+	public Address updateAddress(Address updatedAddress) {
+		return em.merge(updatedAddress);
 	}
 
 	@Override

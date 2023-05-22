@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,7 @@ import com.skilldistillery.jpaeventlight.data.UserDAO;
 import com.skilldistillery.jpaeventlight.entities.Address;
 import com.skilldistillery.jpaeventlight.entities.Event;
 import com.skilldistillery.jpaeventlight.entities.User;
+import com.skilldistillery.jpaeventlight.entities.Venue;
 
 @Controller
 public class UserController {
@@ -65,6 +67,13 @@ public class UserController {
 	public String signInPage() {
 		return "SignIn";
 	}
+	@RequestMapping(path = "updateVenuePage.do")
+	public String updateVenuePage(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		Venue venue = user.getVenue();
+		session.setAttribute("venue", venue);
+		return "UpdateVenue";
+	}
 	@RequestMapping(path = "goHome.do")
 	public String goToHome(HttpSession session) {
 		
@@ -80,11 +89,9 @@ public class UserController {
 	}
 
 	@GetMapping(path = "logout.do")
-	public ModelAndView userLogOut(HttpSession session) {
-		ModelAndView mv = new ModelAndView();
+	public String userLogOut(HttpSession session) {
 		session.removeAttribute("user");
-		mv.setViewName("index");
-		return mv;
+		return "home";
 	}
 	
 	@RequestMapping(path = "SignUpPage.do")
@@ -132,6 +139,72 @@ public class UserController {
 
 		return "home";
 	}
+	
+	@PostMapping(path = "createVenue.do")
+	public String createVenue(HttpSession session, 
+			@RequestParam("name") String name,
+			@RequestParam("description") String description,
+			@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("picture") String picture,
+			@RequestParam("logo") String logo,
+			@RequestParam("street") String street,
+			@RequestParam("city") String city,
+			@RequestParam("state") String state,
+			@RequestParam("zip") String zip) {
+		
+		Venue venue = new Venue();
+		venue.setName(name);
+		venue.setDescription(description);
+		venue.setPhoneNumber(phoneNumber);
+		venue.setPicture(picture);
+		venue.setPictureLogo(logo);
+		
+		Address address = new Address();
+		address.setStreet(street);
+		address.setCity(city);
+		address.setState(state);
+		address.setZip(zip);
+		
+		venue.setAddress(address);
+		
+		User user = (User) session.getAttribute("user");
+		venue.setUser(user);
+
+		venue = userDao.createVenue(venue, address);
+		
+		session.setAttribute("venue", venue);
+		return "User-vo-home";
+	}
+	
+	
+	@PostMapping(path = "updateVenue.do")
+	public String updateVenue(HttpSession session,
+			@RequestParam("name") String name,
+			@RequestParam("description") String description,
+			@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("picture") String picture,
+			@RequestParam("logo") String logo,
+			@RequestParam("street") String street,
+			@RequestParam("city") String city,
+			@RequestParam("state") String state,
+			@RequestParam("zip") String zip) {
+		Venue existingVenue = (Venue) session.getAttribute("venue");
+		existingVenue.setName(name);
+		existingVenue.setDescription(description);
+		existingVenue.setPhoneNumber(phoneNumber);
+		existingVenue.setPicture(picture);
+		existingVenue.setPictureLogo(logo);
+		
+		Address existingAddress = existingVenue.getAddress();
+		existingAddress.setStreet(street);
+		existingAddress.setCity(city);
+		existingAddress.setState(state);
+		existingAddress.setZip(zip);
+		
+		userDao.updateAddress(existingAddress);
+		userDao.updateVenue(existingVenue);
+		return "User-vo-home";
+	}
 
 	@GetMapping(path = "favorites.do")
 	public ModelAndView showByUserFavorites() {
@@ -149,10 +222,6 @@ public class UserController {
 		return null;
 	}
 
-	@GetMapping(path = "createVenue.do")
-	public ModelAndView createVenue() {
-		return null;
-	}
 
 	@GetMapping(path = "createEvent.do")
 	public ModelAndView createEvent() {
@@ -169,10 +238,6 @@ public class UserController {
 		return null;
 	}
 
-	@GetMapping(path = "updateVenue.do")
-	public ModelAndView updateVenue() {
-		return null;
-	}
 
 	@GetMapping(path = "updateEvent.do")
 	public ModelAndView updateEvent() {

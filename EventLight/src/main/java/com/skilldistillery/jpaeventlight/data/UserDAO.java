@@ -17,8 +17,6 @@ public interface UserDAO {
 
 	Event createEvent(Event event);
 
-	Venue createVenue(Venue venue);
-
 	Artist createArtist(Artist artist);
 
 	Band createBand(Band band);
@@ -35,9 +33,13 @@ public interface UserDAO {
 
 	Event updateEvent(int eventId, Event updatedEvent);
 
-	Venue updateVenue(int venueId, Venue updatedVenue);
-
 	User signUp(User user, Address address);
+
+	Venue createVenue(Venue venue, Address address);
+
+	Venue updateVenue(Venue updatedVenue);
+
+	Address updateAddress(Address updatedAddress);
 
 	
 	
