@@ -31,6 +31,18 @@
 		    <label for="aboutMe">About Me: </label>
 			<input type="text" name="aboutMe"/> 
 			<br>
+			 <label for="street">Street: </label>
+			<input type="text" name="street" required/> 
+			<br>
+		    <label for="city">City: </label>
+			<input type="text" name="city"required/> 
+			<br>
+		    <label for="state">State: </label>
+			<input type="text" name="state"/> 
+			<br>
+		    <label for="zip">Zip Code:  </label>
+			<input type="text" name="zip"/> 
+			<br>
 			<input type="submit" value="Submit" />
 			</form>
 			<a href="home.do" class="btn btn-secondary" role="button">Back to
