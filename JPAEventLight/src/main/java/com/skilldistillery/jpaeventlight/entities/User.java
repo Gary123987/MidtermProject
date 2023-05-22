@@ -252,9 +252,7 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
 				+ ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName + ", createdAt=" + createdAt
 				+ ", lastUpdate=" + lastUpdate + ", profilePicture=" + profilePicture + ", aboutMe=" + aboutMe
-				+ ", address=" + address + ", bandComments=" + bandComments + ", venue=" + venue + ", venueComments="
-				+ venueComments + ", favoriteBands=" + favoriteBands + ", favoriteEvents=" + favoriteEvents
-				+ ", eventRatings=" + eventRatings + "]";
+				+ "]";
 	}
 
 

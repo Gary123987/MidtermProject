@@ -119,11 +119,10 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", country=" + country + ", user=" + user + ", venue=" + venue + "]";
+				+ ", country=" + country + " ]";
+	
+	
+	
+	
 	}
-	
-	
-	
-	
-
 }
