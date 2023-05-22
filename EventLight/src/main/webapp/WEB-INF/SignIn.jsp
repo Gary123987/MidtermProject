@@ -11,7 +11,7 @@
 		<label for="username">Username</label> <input type="text"
 			name="username" value="${user.username }" /> 
 			<br> 
-			<label for="password">Password</label> <input type="password" name="style"
+			<label for="password">Password</label> <input type="password" name="password"
 			value="${user.password}" /> <br>
 			<input type="submit" value="Log In"/>
 			<input type="hidden" name="userId" value="${user.id}"/>

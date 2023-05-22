@@ -17,5 +17,10 @@ ${SMOKETEST}
 
 </form> 
 
+<form action="loginpage.do" method="GET">
+		<input type="submit" value="Log in" />
+
+</form> 
+
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpaeventlight.data.UserDAO;
@@ -57,12 +58,10 @@ public class UserController {
 		return mv;
 	}
 	
-	@GetMapping("loginpage.do")
-	public ModelAndView goToSignIn() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("SingIn");
-		return mv;
-		
+	
+	@RequestMapping(path = "loginpage.do")
+	public String signInPage() {
+		return "SignIn";
 	}
 
 	@GetMapping(path = "logout.do")
