@@ -65,6 +65,19 @@ public class UserController {
 	public String signInPage() {
 		return "SignIn";
 	}
+	@RequestMapping(path = "goHome.do")
+	public String goToHome(HttpSession session) {
+		
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			if (user.getRole().equals("att")) {
+				return "User-att-home";
+			} else if (user.getRole().equals("vo")) {
+				return "User-vo-home";
+			}
+		}
+		return "home";
+	}
 
 	@GetMapping(path = "logout.do")
 	public ModelAndView userLogOut(HttpSession session) {
@@ -113,8 +126,10 @@ public class UserController {
 		user.setAddress(address);
 
 		user = userDao.signUp(user, address);
+		session.setAttribute("user", user);
 		
 		//CREATE A PAGE TELLING THE USER THAT THE USERNAME WAS CREATED!!!!
+
 		return "home";
 	}
 

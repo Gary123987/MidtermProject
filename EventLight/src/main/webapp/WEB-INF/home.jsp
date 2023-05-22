@@ -27,5 +27,10 @@ ${SMOKETEST}
 
 </form> 
 
+<form action="goHome.do">
+	<input type="submit" value="goToHome"/>
+
+</form>
+
 </body>
 </html>
