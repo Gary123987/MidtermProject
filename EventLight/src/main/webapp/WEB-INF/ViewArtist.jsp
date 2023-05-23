@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>View Artist Details</title>
 </head>
 <body>
+<h2>Artist Details</h2>
+<h3>${artist.firstName } ${artist.lastName }</h3>
+<ul>
+<li>Stage Name: ${artist.stageName }</li>
+<li>Instrument: ${artist.instrument }</li>
+<li>Artist ID: ${artist.id }</li>
+
+</ul>
+<a href="home.do" class="btn btn-secondary" role="button">Back to
+		Home</a>
 
 </body>
 </html>

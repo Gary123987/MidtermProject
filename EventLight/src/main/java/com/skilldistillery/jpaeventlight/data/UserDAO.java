@@ -51,6 +51,8 @@ public interface UserDAO {
 
 	Band findBandById(int bandId);
 
+	Artist findArtistById(int artistId);
+
 
 
 	

@@ -208,6 +208,11 @@ public class UserDAOImpl implements UserDAO {
 		Band band = em.find(Band.class, bandId);
 		return band;
 	}
+	@Override
+	public Artist findArtistById(int artistId) {
+		Artist artist = em.find(Artist.class, artistId);
+		return artist;
+	}
 	
 	@Override
 	public List<Event> addToFavoriteEvents(int eventId, int userId){

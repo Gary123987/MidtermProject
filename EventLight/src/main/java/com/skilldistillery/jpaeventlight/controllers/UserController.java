@@ -361,4 +361,10 @@ public class UserController {
 		session.setAttribute("band", band);
 		return "ViewBand";
 	}
+	@GetMapping(path="ViewArtistPage.do")
+	public String viewArtist(HttpSession session, @RequestParam("artistId") int artistId) {
+		Artist artist = userDao.findArtistById(artistId);
+		session.setAttribute("artist", artist);
+		return "ViewArtist";
+	}
 }
