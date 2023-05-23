@@ -116,7 +116,7 @@ public class UserController {
 	@GetMapping(path = "logout.do")
 	public String userLogOut(HttpSession session) {
 		session.removeAttribute("user");
-		return "home";
+		return "index";
 	}
 
 	@RequestMapping(path = "SignUpPage.do")
