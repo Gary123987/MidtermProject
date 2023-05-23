@@ -347,5 +347,18 @@ public class UserController {
 	public ModelAndView filterBy() {
 		return null;
 	}
+	
+	@GetMapping(path="ViewVenuePage.do")
+	public String viewVenue(HttpSession session, @RequestParam("venueId") int venueId) {
+		Venue venue = userDao.findVenueById(venueId);
+		session.setAttribute("venue", venue);
+		return "ViewVenue";
+	}
 
+	@GetMapping(path="ViewBandPage.do")
+	public String viewBand(HttpSession session, @RequestParam("bandId") int bandId) {
+		Band band = userDao.findBandById(bandId);
+		session.setAttribute("band", band);
+		return "ViewBand";
+	}
 }

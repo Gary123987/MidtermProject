@@ -47,6 +47,10 @@ public interface UserDAO {
 
 	List<Event> addToFavoriteEvents(int eventId, int userId);
 
+	Venue findVenueById(int venueId);
+
+	Band findBandById(int bandId);
+
 
 
 	
