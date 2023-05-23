@@ -98,7 +98,11 @@ body>main {
 				<label for="password" class="form-label">Password</label>
 				<input type="password" class="form-control" name="password" value="${user.password}">
 				</div>
-				<button type="submit" class="btn btn-primary">Log In</button>
+				<button type="submit" class="btn btn-primary btn-md">Log In</button>
+			</form>
+			
+			<form action="SignUpPage.do">
+				<button type="submit" class="btn btn-success btn-md mt-2">Sign Up</button>
 			</form>
 		</div>
 
