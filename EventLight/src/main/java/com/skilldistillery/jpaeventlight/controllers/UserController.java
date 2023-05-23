@@ -64,6 +64,22 @@ public class UserController {
 	public String signInPage() {
 		return "SignIn";
 	}
+	
+	@RequestMapping(path = "aboutUs.do")
+	public String aboutUs() {
+		return "aboutUs";
+	}
+	
+	@RequestMapping(path = "contactUs.do")
+	public String contactUs() {
+		return "contactUs";
+	}
+	
+	@RequestMapping(path = "index.do")
+	public String index() {
+		return "index";
+	}
+	
 
 	@RequestMapping(path = "updateVenuePage.do")
 	public String updateVenuePage(HttpSession session) {

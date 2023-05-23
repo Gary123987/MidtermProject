@@ -14,7 +14,6 @@
 ${SMOKETEST}
 <form action="listAll.do" method="GET">
 		<input type="submit" value="List All Events" />
-
 </form> 
 
 <form action="loginpage.do" method="GET">
@@ -34,6 +33,11 @@ ${SMOKETEST}
 
 <form action="logout.do">
 	<input type="submit" value="logout"/>
+
+</form>
+
+<form action="index.do">
+	<input type="submit" value="index"/>
 
 </form>
 
