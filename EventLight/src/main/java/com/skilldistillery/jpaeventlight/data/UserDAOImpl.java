@@ -199,6 +199,17 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
+	public Venue findVenueById(int venueId) {
+		Venue venue = em.find(Venue.class, venueId);
+		return venue;
+	}
+	@Override
+	public Band findBandById(int bandId) {
+		Band band = em.find(Band.class, bandId);
+		return band;
+	}
+	
+	@Override
 	public List<Event> addToFavoriteEvents(int eventId, int userId){
 		Event event = em.find(Event.class, eventId);
 		User user = em.find(User.class, userId);
