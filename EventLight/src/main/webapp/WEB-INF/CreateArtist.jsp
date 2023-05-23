@@ -24,6 +24,7 @@
 			<br> 
 			<input type="submit" value="Submit" />
 </form>
+
 <a href="home.do" class="btn btn-secondary" role="button">Back to
 		Home</a>
 
