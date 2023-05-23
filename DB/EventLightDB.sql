@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `venue` (
   `picture_logo` VARCHAR(2000) NULL,
   `created_at` DATETIME NULL,
   `last_update` DATETIME NULL,
+  `enabled` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_venue_user1_idx` (`user_id` ASC),
   INDEX `fk_venue_address1_idx` (`address_id` ASC),
@@ -108,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `last_update` DATETIME NULL,
   `start_time` TIME NULL,
   `end_time` TIME NULL,
+  `enabled` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   INDEX `fk_event_venue1_idx` (`venue_id` ASC),
   CONSTRAINT `fk_event_venue1`
@@ -362,8 +364,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `venue` (`id`, `user_id`, `phone_number`, `address_id`, `description`, `name`, `picture`, `picture_logo`, `created_at`, `last_update`) VALUES (1, 1, '(555)555-5555', 1, '\"Small dive bar atmosphere with one main stage\"', 'FreeBird', NULL, NULL, '2023-04-18 22:58', '2023-04-18 22:58');
-INSERT INTO `venue` (`id`, `user_id`, `phone_number`, `address_id`, `description`, `name`, `picture`, `picture_logo`, `created_at`, `last_update`) VALUES (2, 2, '(123)456-7890', 3, 'Indoor/Outdoor seating with a main stage inside', 'Lions', NULL, NULL, '2023-05-16 13:13', '2023-05-16 13:13');
+INSERT INTO `venue` (`id`, `user_id`, `phone_number`, `address_id`, `description`, `name`, `picture`, `picture_logo`, `created_at`, `last_update`, `enabled`) VALUES (1, 1, '(555)555-5555', 1, '\"Small dive bar atmosphere with one main stage\"', 'FreeBird', NULL, NULL, '2023-04-18 22:58', '2023-04-18 22:58', DEFAULT);
+INSERT INTO `venue` (`id`, `user_id`, `phone_number`, `address_id`, `description`, `name`, `picture`, `picture_logo`, `created_at`, `last_update`, `enabled`) VALUES (2, 2, '(123)456-7890', 3, 'Indoor/Outdoor seating with a main stage inside', 'Lions', NULL, NULL, '2023-05-16 13:13', '2023-05-16 13:13', DEFAULT);
 
 COMMIT;
 
@@ -373,8 +375,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`) VALUES (1, '2023-07-30', 1, 'The most amazing show ever', 'Metallica playing at FreeBird', NULL, '2023-05-01 07:22', '2023-05-01 07:22', '20:00', '23:00');
-INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`) VALUES (2, '2023-08-12', 1, 'A cool band plays cool music', 'Metallica again', NULL, '2023-06-14 02:55', '2023-06-14 02:55', '19:00', '22:00');
+INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`, `enabled`) VALUES (1, '2023-07-30', 1, 'The most amazing show ever', 'Metallica playing at FreeBird', NULL, '2023-05-01 07:22', '2023-05-01 07:22', '20:00', '23:00', DEFAULT);
+INSERT INTO `event` (`id`, `event_date`, `venue_id`, `title`, `description`, `image`, `created_at`, `last_update`, `start_time`, `end_time`, `enabled`) VALUES (2, '2023-08-12', 1, 'A cool band plays cool music', 'Metallica again', NULL, '2023-06-14 02:55', '2023-06-14 02:55', '19:00', '22:00', DEFAULT);
 
 COMMIT;
 
