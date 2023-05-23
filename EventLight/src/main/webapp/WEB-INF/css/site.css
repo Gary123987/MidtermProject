@@ -1,0 +1,28 @@
+main>.container {
+    padding: 60px 15px 0;
+    margin-bottom: 5rem;
+}
+
+body > main {
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+.sticky-footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.homeBG {
+    width: 100%;
+    background: url(/img/GridBG.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.minHeight{
+    min-height: 80vh;
+}

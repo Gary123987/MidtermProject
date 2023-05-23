@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -89,18 +88,44 @@ body>main {
 	<main class="flex-shrink-0">
 		<div class="container text-center mt-5">
 			
-			<form action="login.do" method="get">
-				<div class="mb-3">
-				<label for="username" class="form-label">Username</label>
-				<input type="text" class="form-control" name="username" value="${user.username}">
-				</div>
-				<div class="mb-3">
-				<label for="password" class="form-label">Password</label>
-				<input type="password" class="form-control" name="password" value="${user.password}">
-				</div>
-				<button type="submit" class="btn btn-primary">Log In</button>
-			</form>
-		</div>
+			
+	<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <h1 class="mb-3">Contact Us</h1>
+      <form>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" required>
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="col-md-6">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" name="subject">
+          </div>
+          <div class="col-12">
+            <label for="message" class="form-label">Comment</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-dark w-100 fw-bold">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+	
+			
+			
 
 	</main>
 	

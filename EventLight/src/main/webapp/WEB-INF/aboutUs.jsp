@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -87,22 +86,30 @@ body>main {
 
 
 	<main class="flex-shrink-0">
-		<div class="container text-center mt-5">
-			
-			<form action="login.do" method="get">
-				<div class="mb-3">
-				<label for="username" class="form-label">Username</label>
-				<input type="text" class="form-control" name="username" value="${user.username}">
-				</div>
-				<div class="mb-3">
-				<label for="password" class="form-label">Password</label>
-				<input type="password" class="form-control" name="password" value="${user.password}">
-				</div>
-				<button type="submit" class="btn btn-primary">Log In</button>
-			</form>
-		</div>
+    <div class="container text-center mt-5">
+        <h1 class="text-black display-3">About Us</h1>
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus dui quis commodo vulputate. Maecenas
+            interdum ante mi, eget cursus nisl bibendum sit amet. Curabitur varius, elit non feugiat rutrum, urna nisl
+            consequat eros, et bibendum risus libero vitae enim. Nullam consequat semper odio id ultricies. Suspendisse
+            sollicitudin neque ligula, sed ultrices mauris suscipit eu. In ac fringilla elit, non tristique metus.
+            Suspendisse potenti. Nullam consequat arcu id congue pellentesque. Donec lacinia, nisl id aliquam dapibus,
+            nisi justo iaculis mauris, eu malesuada nisi lorem nec sem. Nulla facilisi. Nam id tellus dolor. Integer
+            commodo arcu eget risus rutrum, a mattis risus tincidunt.
+        </p>
+        <p>
+            Vivamus eu ex quis justo volutpat tincidunt. Mauris ultrices, lorem sit amet blandit ullamcorper, orci lectus
+            mattis massa, vel elementum lectus tellus ut massa. Curabitur sagittis nulla odio, eget auctor libero feugiat
+            sed. Sed vestibulum mauris in neque vulputate, sit amet dignissim lectus faucibus. Suspendisse volutpat
+            tincidunt nulla at elementum. Suspendisse in mauris in elit mollis pellentesque. Quisque in felis ut orci
+            hendrerit tincidunt ut at est. Nulla convallis lacinia elit. Ut lacinia cursus dolor sed auctor. Sed vitae
+            lectus ante. Fusce hendrerit est vel mi ultricies, sed dignissim nisl tristique. Suspendisse malesuada, orci
+            at maximus luctus, neque nunc vulputate neque, ac finibus arcu purus a enim.
+        </p>
+    </div>
+</main>
 
-	</main>
+	
 	
 	
 	<footer class="footer mt-auto py-3 bg-dark sticky-footer">

@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -88,23 +87,11 @@ body>main {
 
 	<main class="flex-shrink-0">
 		<div class="container text-center mt-5">
-			
-			<form action="login.do" method="get">
-				<div class="mb-3">
-				<label for="username" class="form-label">Username</label>
-				<input type="text" class="form-control" name="username" value="${user.username}">
-				</div>
-				<div class="mb-3">
-				<label for="password" class="form-label">Password</label>
-				<input type="password" class="form-control" name="password" value="${user.password}">
-				</div>
-				<button type="submit" class="btn btn-primary">Log In</button>
-			</form>
+			<h1 class="text-black display-3">Discover, Connect, and
+				Experience with EventLight</h1>
+			<h3 class="text-black">Your One Stop Shop to Find Events and Connect with the Community</h3>
 		</div>
-
 	</main>
-	
-	
 	<footer class="footer mt-auto py-3 bg-dark sticky-footer">
 		<div class="container-fluid text-center">
 			<span class="text-white">© 2023 EventLight. All rights
