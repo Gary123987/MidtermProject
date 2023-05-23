@@ -24,7 +24,7 @@
 					<li>Bands:</li>
 					<li><ul>
 							<c:forEach var="band" items="${event.bands}">
-								<li>${band }</li>
+								<li>${band.name}</li>
 							</c:forEach>
 						</ul></li>
 				</ul>

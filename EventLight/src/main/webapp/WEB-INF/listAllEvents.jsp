@@ -23,7 +23,13 @@
 <li>${event.startTime } - ${event.endTime }</li>
 <li>${event.description }</li>
 <li>${event.venue }</li>
-<li>${event.bands }</li>
+<li>Bands:</li>
+					<li><ul>
+							<c:forEach var="band" items="${event.bands}">
+								<li>${band.name }</li>
+								
+							</c:forEach>
+						</ul></li>
 <li><a href="favoriteEvents.do?eventId=${event.id}">Add event to favorites</a></li>
 </ul>
 </c:forEach>

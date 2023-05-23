@@ -22,7 +22,7 @@ public class Band {
 
 	@Override
 	public String toString() {
-		return "Band [id=" + id + "]";
+		return "Band [id=" + id + ", name=" + name + ", genre=" + genre + "]";
 	}
 
 	@Id
