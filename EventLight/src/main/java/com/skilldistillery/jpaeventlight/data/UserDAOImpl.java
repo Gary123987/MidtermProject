@@ -225,6 +225,7 @@ public class UserDAOImpl implements UserDAO {
 			user.setFavoriteEvents(favorites);
 		}
 		return favorites;
+	}
 	
 
 	public List<Band> listAllBands(){
@@ -244,10 +245,5 @@ public class UserDAOImpl implements UserDAO {
 		return em.createQuery(jpql, Artist.class).getResultList();
 	}
 	
-	@Override
-	public Artist findArtistById(int id) {
-		String jpql = "Select a From Artist a where id = :id";
-		return em.createQuery(jpql, Artist.class).setParameter("id", id).getSingleResult();
-	}
 
 }

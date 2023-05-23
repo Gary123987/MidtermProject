@@ -62,7 +62,7 @@ public interface UserDAO {
 
 	List<Artist> findAllArtists();
 
-	Artist findArtistById(int id);
+
 
 
 	
