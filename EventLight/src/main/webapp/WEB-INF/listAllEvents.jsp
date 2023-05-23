@@ -20,7 +20,7 @@
 <li>${event.description }</li>
 <li>${event.venue }</li>
 <li>${event.bands }</li>
-<li></li>
+<li><a href="favoriteEvents.do?eventId=${event.id}">Add event to favorites</a></li>
 <li></li>
 <li></li>
 

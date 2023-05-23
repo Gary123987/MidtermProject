@@ -50,7 +50,7 @@ public class UserController {
 			@RequestParam("password") String password) {
 		User user = userDao.findByUsernameAndPassword(userName, password);
 		session.setAttribute("user", user);
-		model.addAttribute("user", user);
+//		model.addAttribute("user", user);
 		if (user != null) {
 			if (user.getRole().equals("att")) {
 				return "User-att-home";
@@ -80,6 +80,8 @@ public class UserController {
 
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
+			user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+			session.setAttribute("user", user);
 			if (user.getRole().equals("att")) {
 				return "User-att-home";
 			} else if (user.getRole().equals("vo")) {
@@ -201,11 +203,28 @@ public class UserController {
 
 //	SeeMyEvents.do
 
-	@GetMapping(path = "favorites.do")
-	public ModelAndView showByUserFavorites() {
-		return null;
-		// todo
+	@GetMapping(path = "favoriteEvents.do")
+	public String addEventFavorites(HttpSession session, Model model,
+			@RequestParam(name="eventId") int eventId) {
+		User user = (User) session.getAttribute("user");
+		List<Event> favEvents = userDao.addToFavoriteEvents(eventId, user.getId());
+//		List<Event> favEvents = user.getFavoriteEvents();
+		
+		favEvents.size();
+		model.addAttribute("events", favEvents);
+		user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+		session.setAttribute("user", user);
+		return "User-att-home";
 	}
+	
+//	
+//	@GetMapping(path="favoriteEventsPage.do")
+//	public String showEventFavorites(HttpSession session, Model model) {
+//		User user = (User) session.getAttribute("user");
+//		List<Event> favEvents = user.getFavoriteEvents();
+//		model.addAttribute("events", favEvents);
+//		return "User-att-home";
+//	}
 	
 	@GetMapping(path = "createArtistPage.do")
 	public String createArtist() {

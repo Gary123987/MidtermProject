@@ -22,7 +22,6 @@
 			<li>${event.bands }</li>
 			<li><a href="updateEventPage.do?id=${event.id }">Update
 					Event</a></li>
-			<li>
 				<form action="deleteEventForm.do" method="post">
 					<input type="hidden" name="eventId" value="${event.id}"> <input
 						type="submit" value="Remove this Event">
