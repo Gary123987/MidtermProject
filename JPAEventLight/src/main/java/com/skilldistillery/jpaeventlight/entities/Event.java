@@ -58,10 +58,19 @@ public class Event {
 	private List<User> usersFavorited;
 	
 
-
 	@ManyToMany(mappedBy = "events")
 	private List<Band> bands;
 	
+	private boolean enabled;
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	public List<User> getUsersFavorited() {
 		return usersFavorited;
 	}
@@ -197,7 +206,9 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id +  "]";
+		return "Event [id=" + id + ", eventDate=" + eventDate + ", title=" + title + ", description=" + description
+				+ ", image=" + image + ", createdAt=" + createdAt + ", lastUpdate=" + lastUpdate + ", startTime="
+				+ startTime + ", endTime=" + endTime + ", venue=" + venue + ", enabled=" + enabled + "]";
 	}
 	
 	

@@ -45,7 +45,7 @@ public class UserDAOImpl implements UserDAO {
 	public User signUp(User user, Address address) {
 		em.persist(address);
 		em.persist(user);
-		//em.flush();
+		// em.flush();
 		return user;
 	}
 
@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 	public Venue updateVenue(Venue updatedVenue) {
 		return em.merge(updatedVenue);
 	}
-	
+
 	@Override
 	public Address updateAddress(Address updatedAddress) {
 		return em.merge(updatedAddress);
@@ -152,17 +152,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean deleteEvent(int eventId) {
 		Event event = em.find(Event.class, eventId);
-		String jpql = "DELETE FROM Band_Has_Event WHERE event_id = :eventId";
-		Object o = em.createNativeQuery(jpql).setParameter("eventId", eventId).executeUpdate();
-		
-		System.out.println("*********************" + o);
-		System.out.println("*********************" + event);
-		em.remove(event);
 		if (event == null) {
-			return true;
-		} else {
 			return false;
 		}
+		event.setEnabled(false);
+
+		return true;
 	}
 
 	@Override
@@ -182,21 +177,25 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<Event> findAllEvents() {
-		String jpql = "SELECT e FROM Event e";
+		String jpql = "SELECT e FROM Event e WHERE e.enabled = true";
 		return em.createQuery(jpql, Event.class).getResultList();
 	}
-	
+
 	@Override
-	public List<Event> findEventsByVenueId(int venueId){
-		String jpql = "SELECT e FROM Event e WHERE e.venue.id = :venueId";
+	public List<Event> findEventsByVenueId(int venueId) {
+		String jpql = "SELECT e FROM Event e WHERE e.venue.id = :venueId and e.enabled = true";
 		List<Event> eventsById = em.createQuery(jpql, Event.class).setParameter("venueId", venueId).getResultList();
 		return eventsById;
-		
+
 	}
-	
+
 	@Override
 	public Event findEventById(int eventId) {
-		return em.find(Event.class, eventId);
+		Event event = em.find(Event.class, eventId);
+		if (!event.isEnabled()) {
+			event = null;
+		}
+		return event;
 	}
 
 }

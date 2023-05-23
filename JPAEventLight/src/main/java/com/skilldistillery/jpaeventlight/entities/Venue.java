@@ -56,6 +56,16 @@ public class Venue {
 	
 	@OneToMany(mappedBy="venue")
 	private List<Event> events;
+	
+	private boolean enabled;
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	public Venue() {
 		super();
@@ -178,7 +188,9 @@ public class Venue {
 
 	@Override
 	public String toString() {
-		return "Venue [id=" + id  + "]";
+		return "Venue [id=" + id + ", phoneNumber=" + phoneNumber + ", description=" + description + ", name=" + name
+				+ ", picture=" + picture + ", pictureLogo=" + pictureLogo + ", createdAt=" + createdAt + ", lastUpdate="
+				+ lastUpdate + ", enabled=" + enabled + "]";
 	}
 
 	
