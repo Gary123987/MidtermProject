@@ -45,6 +45,7 @@ public interface UserDAO {
 
 	Event findEventById(int eventId);
 
+
 	List<Event> addToFavoriteEvents(int eventId, int userId);
 
 	Venue findVenueById(int venueId);
@@ -53,6 +54,15 @@ public interface UserDAO {
 
 	Artist findArtistById(int artistId);
 
+
+
+	List<Band> listAllBands();
+
+	Band findBandByName(String bandName);
+
+	List<Artist> findAllArtists();
+
+	Artist findArtistById(int id);
 
 
 	

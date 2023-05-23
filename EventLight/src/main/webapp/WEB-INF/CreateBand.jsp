@@ -22,15 +22,8 @@
  <label for="description">Band Description: </label>
 			<input type="text" name="description"/> 
 			<br> 
-			
- 		
-			
-			
-			
-			
-			
-			
-			<input type="submit" value="Submit" />
+				
+			<input type="submit" value="Create Band and Add Artists" />
 </form>
 <a href="home.do" class="btn btn-secondary" role="button">Back to
 		Home</a>

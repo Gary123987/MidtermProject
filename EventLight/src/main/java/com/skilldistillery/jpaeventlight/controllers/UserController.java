@@ -3,6 +3,8 @@ package com.skilldistillery.jpaeventlight.controllers;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -266,18 +268,109 @@ public class UserController {
 		artist.setBandArtist(band);
 		
 		artist = userDao.createArtist(artist);
+		session.setAttribute("allArtists", userDao.findAllArtists());
 
+		return "SelectArtists";
+	}
+	@GetMapping(path = "createBandPage.do")
+	public String createBandPage(HttpSession session) {
 		return "CreateBand";
 	}
 
-	@GetMapping(path = "createBand.do")
-	public ModelAndView createBand() {
-		return null;
-	}
+	@PostMapping(path = "createBand.do")
+	public String createBand(HttpSession session, Model model,
+			@RequestParam("name") String name,
+			@RequestParam("genre") String genre,
+			@RequestParam("image") String image,
+			@RequestParam("description") String description) {
+		Band band = new Band();
+		band.setName(name);
+		band.setGenre(genre);
+		band.setImage(image);
+		band.setDescription(description);
+		
+		Event event = (Event) session.getAttribute("event");
+		List<Event> events = new ArrayList<>();
+		events.add(event);
+		band.setEvents(events);
+		session.setAttribute("band", band);
+		userDao.createBand(band);
+		
+		List<Artist> artists = new ArrayList<>();
+		artists = userDao.findAllArtists();
+		System.out.println(artists);
+		session.setAttribute("allArtists", artists);
+		model.addAttribute("allArtists", artists);
+		
 
+		return "SelectArtists";
+	}
+	@PostMapping(path="addArtistsToBand.do")
+	public String addArtistsToBand(HttpSession session, Model model,
+			@RequestParam("artistSelected") String artists) {
+		List<String> ids = Arrays.asList(artists.split(","));
+		Band band = (Band) session.getAttribute("band");
+		List<Artist> artistsToAdd = new ArrayList<>();
+		
+		for (String id  : ids) {
+			int parsedId = Integer.parseInt(id);
+			Artist artist = userDao.findArtistById(parsedId);
+			artistsToAdd.add(artist);
+		}
+		
+		band.setArtists(artistsToAdd);
+		session.setAttribute("allBands", userDao.listAllBands());
+		
+		return "SelectBands";
+	}
+		
+	
+	@GetMapping(path = "createEventPage.do")
+	public String createEventPage(HttpSession session) {
+		return "CreateEvent";
+	}
 	@GetMapping(path = "createEvent.do")
-	public ModelAndView createEvent() {
-		return null;
+	public String createEvent(HttpSession session, Model model,
+			@RequestParam("name") String name,
+			@RequestParam("description") String description,
+			@RequestParam("date") String date,
+			@RequestParam("start") String start,
+			@RequestParam("end") String end) {
+		User user = (User) session.getAttribute("user");
+		Venue venue = user.getVenue();
+		Event event = new Event();
+		event.setTitle(name);
+		event.setDescription(description);
+		LocalDate parsedDate = LocalDate.parse(date);
+		event.setEventDate(parsedDate);
+		LocalTime parsedStart = LocalTime.parse(start);
+		event.setStartTime(parsedStart);
+		LocalTime parsedEnd = LocalTime.parse(end);
+		event.setEndTime(parsedEnd);
+		
+		event.setVenue(venue);
+		event.setEnabled(true);
+		
+		event = userDao.createEvent(event);
+		session.setAttribute("event", event);
+		model.addAttribute("event", event);
+		List<Band> allBands = userDao.listAllBands();
+		model.addAttribute("allBands", allBands);
+		return "SelectBands";
+	}
+	
+	@PostMapping(path="addBandsToEvent.do")
+	public String addBandsToEvent(HttpSession session, Model model,
+			@RequestParam("bandsSelected") String bandsSelected) {
+		List<String> bandList = Arrays.asList(bandsSelected.split(","));
+		Event event = (Event) session.getAttribute("event");
+		List<Band> bands = new ArrayList<>();
+		for (String bandName : bandList) {
+			Band band = userDao.findBandByName(bandName);
+			bands.add(band);
+		}
+		event.setBands(bands);
+		return "User-vo-home";
 	}
 
 	@GetMapping(path = "updateArtist.do")

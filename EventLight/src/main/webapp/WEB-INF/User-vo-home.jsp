@@ -9,17 +9,15 @@
 </head>
 <body>
 
-you are a venue owner
-
 <c:choose>
 <c:when test="${not empty user.venue}">
 
-update a venue
 
-you currently own the venue ${user.venue.name }
+<h2>You currently own the venue ${user.venue.name }</h2><br><br>
 
 <a href="updateVenuePage.do">Update Venue</a><br>
-<a href="SeeMyEvents.do">See My Events</a>
+<a href="SeeMyEvents.do">See My Events</a><br>
+<a href="createEventPage.do">Create an Event for this Venue</a><br>
 
 
 
