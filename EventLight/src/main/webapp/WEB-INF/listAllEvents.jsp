@@ -16,7 +16,7 @@
 <h1>All Events</h1>
 <c:forEach var="event" items="${eventList }">
 <ul>
-<h3>Event ID: ${event.id }</h3>
+<li><strong>Event ID: ${event.id }</strong></li>
 <li>${event.title }</li>
 <li><img src ="${event.image }" width="250" height="200"></li>
 <li>${event.eventDate }</li>
@@ -25,8 +25,8 @@
 <li>${event.venue }</li>
 <li>${event.bands }</li>
 <li><a href="favoriteEvents.do?eventId=${event.id}">Add event to favorites</a></li>
-<li></li>
-<li></li>
+</ul>
+</c:forEach>
 
 <!-- Bootstrap CSS -->
 <link
