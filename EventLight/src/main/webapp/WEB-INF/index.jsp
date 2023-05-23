@@ -86,11 +86,60 @@ body>main {
 
 
 	<main class="flex-shrink-0">
+	
+
+
 		<div class="container text-center mt-5">
 			<h1 class="text-black display-3">Discover, Connect, and
 				Experience with EventLight</h1>
 			<h3 class="text-black">Your One Stop Shop to Find Events and Connect with the Community</h3>
 		</div>
+		
+		
+		
+	<div class="container-fluid text-center mt-5 bg-light">
+      <h1 class="text-center mb-4">Latest Events</h1>
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Description</th>
+            <th>Venue</th>
+            <th>Bands</th>
+            <th>Add to Favorites</th>
+          </tr>
+        </thead>
+        <tbody>
+          <c:forEach var="event" items="${eventList}">
+            <tr>
+              <td><strong>${event.id}</strong></td>
+              <td>${event.title}</td>
+              <td>${event.eventDate}</td>
+              <td>${event.startTime} - ${event.endTime}</td>
+              <td>${event.description}</td>
+              <td><a href="ViewVenuePage.do?venueId=${event.venue.id}">${event.venue.name}</a></td>
+              <td>
+                <ul>
+                  <c:forEach var="band" items="${event.bands}">
+                    <li><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></li>
+                  </c:forEach>
+                </ul>
+              </td>
+              <td><a href="favoriteEvents.do?eventId=${event.id}">Add event to favorites</a></td>
+            </tr>
+          </c:forEach>
+        </tbody>
+      </table>
+  </div>
+		
+		
+		
+		
+		
 	</main>
 	<footer class="footer mt-auto py-3 bg-dark sticky-footer">
 		<div class="container-fluid text-center">

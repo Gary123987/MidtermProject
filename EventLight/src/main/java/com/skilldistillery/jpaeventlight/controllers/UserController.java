@@ -41,7 +41,7 @@ public class UserController {
 	@GetMapping(path = "listAll.do")
 	public String listAllEvents(Model model) {
 		List<Event> events = userDao.findAllEvents();
-		model.addAttribute(events);
+		model.addAttribute("eventList", events);
 		return "listAllEvents";
 	}
 
@@ -77,8 +77,11 @@ public class UserController {
 		return "contactUs";
 	}
 	
+	
 	@RequestMapping(path = "index.do")
-	public String index() {
+	public String index(Model model) {
+		List<Event> events = userDao.findAllEvents();
+		model.addAttribute("eventList", events);
 		return "index";
 	}
 	
