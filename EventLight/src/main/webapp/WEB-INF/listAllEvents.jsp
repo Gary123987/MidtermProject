@@ -22,11 +22,11 @@
 <li>${event.eventDate }</li>
 <li>${event.startTime } - ${event.endTime }</li>
 <li>${event.description }</li>
-<li>${event.venue }</li>
+<li><a href="ViewVenuePage.do?venueId=${event.venue.id}">${event.venue.name }</a></li>
 <li>Bands:</li>
 					<li><ul>
 							<c:forEach var="band" items="${event.bands}">
-								<li>${band.name }</li>
+								<li><a href="ViewBandPage.do?bandId=${band.id}">${band.name }</a></li>
 								
 							</c:forEach>
 						</ul></li>
