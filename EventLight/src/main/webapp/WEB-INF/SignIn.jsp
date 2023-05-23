@@ -58,16 +58,20 @@ body>main {
 
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">EventLight</a>
+			<a class="navbar-brand" href="index.do">EventLight</a>
+			
+			
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 				aria-controls="navbarCollapse" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			
+			
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						aria-current="page" href="index.do">Home</a></li>
 
 					<li class="nav-item"><a class="nav-link" href="aboutUs.do">About
@@ -81,6 +85,7 @@ body>main {
 				</ul>
 
 				<a href="loginpage.do" class="btn btn-primary">Login</a>
+				<a href="home.do" class="btn btn-secondary m-1">Home</a>
 			</div>
 		</div>
 	</nav>
@@ -88,22 +93,27 @@ body>main {
 
 	<main class="flex-shrink-0">
 		<div class="container text-center mt-5">
-			
-			<form action="login.do" method="get">
-				<div class="mb-3">
-				<label for="username" class="form-label">Username</label>
-				<input type="text" class="form-control" name="username" value="${user.username}">
-				</div>
-				<div class="mb-3">
-				<label for="password" class="form-label">Password</label>
-				<input type="password" class="form-control" name="password" value="${user.password}">
-				</div>
-				<button type="submit" class="btn btn-primary btn-md">Log In</button>
-			</form>
-			
-			<form action="SignUpPage.do">
-				<button type="submit" class="btn btn-success btn-md mt-2">Sign Up</button>
-			</form>
+			<div class="container">
+ 				 <div class="row justify-content-center">
+			<div class= "col-3">
+				<form action="login.do" method="get">
+					<div class="mb-3">
+					<label for="username" class="form-label">Username</label>
+					<input type="text" class="form-control" name="username" value="${user.username}">
+					</div>
+					<div class="mb-3">
+					<label for="password" class="form-label">Password</label>
+					<input type="password" class="form-control" name="password" value="${user.password}">
+					</div>
+					<button type="submit" class="btn btn-primary btn-md">Log In</button>
+				</form>
+				
+				<form action="SignUpPage.do">
+					<button type="submit" class="btn btn-success btn-md mt-2">Sign Up</button>
+				</form>
+			</div>
+			</div>
+			</div>
 		</div>
 
 	</main>

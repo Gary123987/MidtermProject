@@ -33,7 +33,6 @@ ${SMOKETEST}
 
 <form action="logout.do">
 	<input type="submit" value="logout"/>
-
 </form>
 
 <form action="index.do">
