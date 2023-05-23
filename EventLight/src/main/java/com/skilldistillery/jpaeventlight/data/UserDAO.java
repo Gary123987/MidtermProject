@@ -45,6 +45,14 @@ public interface UserDAO {
 
 	Event findEventById(int eventId);
 
+	List<Band> listAllBands();
+
+	Band findBandByName(String bandName);
+
+	List<Artist> findAllArtists();
+
+	Artist findArtistById(int id);
+
 	
 	
 	

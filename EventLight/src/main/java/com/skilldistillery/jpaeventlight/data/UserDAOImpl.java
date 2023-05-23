@@ -197,5 +197,29 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return event;
 	}
+	
+	@Override
+	public List<Band> listAllBands(){
+		String jpql = "SELECT b FROM Band b";
+		return em.createQuery(jpql, Band.class).getResultList();
+	}
+	
+	@Override 
+	public Band findBandByName(String bandName) {
+		String jpql = "Select b From Band b where b.name = :bandName ";
+		return em.createQuery(jpql, Band.class).setParameter("bandName", bandName).getSingleResult();
+	}
+	
+	@Override
+	public List<Artist> findAllArtists() {
+		String jpql = "Select a From Artist a";
+		return em.createQuery(jpql, Artist.class).getResultList();
+	}
+	
+	@Override
+	public Artist findArtistById(int id) {
+		String jpql = "Select a From Artist a where id = :id";
+		return em.createQuery(jpql, Artist.class).setParameter("id", id).getSingleResult();
+	}
 
 }
