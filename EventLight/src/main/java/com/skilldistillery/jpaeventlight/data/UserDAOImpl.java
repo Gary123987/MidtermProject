@@ -245,5 +245,11 @@ public class UserDAOImpl implements UserDAO {
 		return em.createQuery(jpql, Artist.class).getResultList();
 	}
 	
+	@Override
+	public void addBandToEvent(Band band, Event event) {
+		em.merge(band);
+		em.merge(event);
+	}
+	
 
 }

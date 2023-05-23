@@ -63,6 +63,9 @@ public interface UserDAO {
 	List<Artist> findAllArtists();
 
 
+	void addBandToEvent(Band band, Event event);
+
+
 
 
 	

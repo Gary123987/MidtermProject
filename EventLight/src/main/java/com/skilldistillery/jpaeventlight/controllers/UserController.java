@@ -367,9 +367,19 @@ public class UserController {
 		List<Band> bands = new ArrayList<>();
 		for (String bandName : bandList) {
 			Band band = userDao.findBandByName(bandName);
+			List<Event> events = new ArrayList<>();
+			if (band.getEvents() != null) {
+				List<Event> bandsEvents = band.getEvents();
+				for (Event e : bandsEvents) {
+					events.add(e);
+				}
+			}
 			bands.add(band);
+			events.add(event);
+			event.setBands(bands);
+			band.setEvents(events);
+			userDao.addBandToEvent(band, event);
 		}
-		event.setBands(bands);
 		return "User-vo-home";
 	}
 
