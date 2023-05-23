@@ -32,8 +32,16 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
+	
+	
+	@RequestMapping(path = {"/", "index.do"})
+	public String index(Model model) {
+		List<Event> events = userDao.findAllEvents();
+		model.addAttribute("eventList", events);
+		return "index";
+	}
 
-	@GetMapping(path = { "/", "home.do" })
+	@GetMapping(path = "home.do")
 	private String home(Model model) {
 		User TEST = userDao.findByUsernameAndPassword("admin", "1234");
 		model.addAttribute("SMOKETEST", TEST);
@@ -79,13 +87,6 @@ public class UserController {
 		return "contactUs";
 	}
 	
-	
-	@RequestMapping(path = "index.do")
-	public String index(Model model) {
-		List<Event> events = userDao.findAllEvents();
-		model.addAttribute("eventList", events);
-		return "index";
-	}
 	
 
 	@RequestMapping(path = "updateVenuePage.do")

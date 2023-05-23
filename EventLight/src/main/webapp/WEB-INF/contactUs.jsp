@@ -57,16 +57,20 @@ body>main {
 
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">EventLight</a>
+			<a class="navbar-brand" href="index.do">EventLight</a>
+			
+			
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
 				aria-controls="navbarCollapse" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			
+			
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						aria-current="page" href="index.do">Home</a></li>
 
 					<li class="nav-item"><a class="nav-link" href="aboutUs.do">About
@@ -75,11 +79,12 @@ body>main {
 					<li class="nav-item"><a class="nav-link" href="listAll.do">See
 							All Events</a></li>
 
-					<li class="nav-item"><a class="nav-link" href="contactUs.do">Contact
+					<li class="nav-item"><a class="nav-link active" href="contactUs.do">Contact
 							Us</a></li>
 				</ul>
 
 				<a href="loginpage.do" class="btn btn-primary">Login</a>
+				<a href="home.do" class="btn btn-secondary m-1">Home</a>
 			</div>
 		</div>
 	</nav>
