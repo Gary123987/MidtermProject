@@ -152,6 +152,11 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean deleteEvent(int eventId) {
 		Event event = em.find(Event.class, eventId);
+		String jpql = "DELETE FROM Band_Has_Event WHERE event_id = :eventId";
+		Object o = em.createNativeQuery(jpql).setParameter("eventId", eventId).executeUpdate();
+		
+		System.out.println("*********************" + o);
+		System.out.println("*********************" + event);
 		em.remove(event);
 		if (event == null) {
 			return true;

@@ -14,6 +14,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 public class Band {
 
@@ -48,6 +51,7 @@ public class Band {
 	@JoinTable(name = "band_has_event", 
 	joinColumns = @JoinColumn(name = "band_id"),
 	inverseJoinColumns = @JoinColumn(name = "event_id"))
+	//@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Event> events;
 	
 	
