@@ -206,8 +206,8 @@ public class UserController {
 	}
 
 	@GetMapping(path = "createArtist.do")
-	public ModelAndView createArtist() {
-		return null;
+	public String createArtist() {
+		return "CreateArtist";
 	}
 
 	@GetMapping(path = "createBand.do")
