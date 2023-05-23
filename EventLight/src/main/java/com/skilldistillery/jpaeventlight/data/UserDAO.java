@@ -45,6 +45,10 @@ public interface UserDAO {
 
 	Event findEventById(int eventId);
 
+	List<Event> addToFavoriteEvents(int eventId, int userId);
+
+
+
 	
 	
 	
