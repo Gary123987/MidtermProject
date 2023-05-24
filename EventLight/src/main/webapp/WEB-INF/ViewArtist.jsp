@@ -12,6 +12,8 @@
 <ul>
 <li>Stage Name: ${artist.stageName }</li>
 <li>Instrument: ${artist.instrument }</li>
+<li>Description: ${artist.description }</li>
+<li><img src="${artist.image }" height="250" width="200"></li>
 <li>Artist ID: ${artist.id }</li>
 
 </ul>

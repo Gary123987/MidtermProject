@@ -279,12 +279,16 @@ public class UserController {
 			@RequestParam("firstName") String fName,
 			@RequestParam("lastName") String lName,
 			@RequestParam("stageName") String stageName,
-			@RequestParam("instrument") String instrument) {
+			@RequestParam("instrument") String instrument,
+			@RequestParam("image") String image,
+			@RequestParam("description") String description) {
 		Artist artist = new Artist();
 		artist.setFirstName(fName);
 		artist.setLastName(lName);
 		artist.setStageName(stageName);
 		artist.setInstrument(instrument);
+		artist.setImage(image);
+		artist.setDescription(description);
 		
 //		Band band = (Band) session.getAttribute("band");
 //		artist.setBandArtist(band);
