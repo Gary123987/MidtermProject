@@ -8,9 +8,9 @@
 - Kristen Tsuboi (Developer, Scrum Master)
 
 ## Overview
-In a group setting build a full stack application using __Java, Spring MVC, and JPA__. This project includes a fully developed database schema, C.R.U.D., user logins authenticated by a mySQL table with different types of users having different permissions, and implementation of a session object.
+In a group setting build a full stack application using **_Java, Spring MVC, and JPA_**. This project includes a fully developed database schema, C.R.U.D., user logins authenticated by a mySQL table with different types of users having different permissions, and implementation of a session object.
 <br>
-__EventLight__ is an application that displays different events at different venues. 
+**_EventLight_** is an application that displays different events at different venues. 
 
 ## Description
 how it works and what each user can do
