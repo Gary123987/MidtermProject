@@ -86,6 +86,8 @@ body>main {
 	
 	
 	
+	<!-- Footer -->
+	<jsp:include page="footer.jsp" />
 	
 	<!-- Bootstrap JS -->
 	<script

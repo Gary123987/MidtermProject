@@ -112,7 +112,8 @@ body>main {
 		</div>
 	</main>
 	
-	
+	<!-- Footer -->
+	<jsp:include page="footer.jsp" />
 	
 	<!-- Bootstrap JS -->
 	<script
