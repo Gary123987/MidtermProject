@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +36,22 @@
 							Us</a></li>
 				</ul>
 
-				<a href="logout.do" class="btn btn-primary">Log out</a>
-				<a href="home.do" class="btn btn-secondary m-1">Home</a>
+				<c:choose>
+
+			        <c:when test="${empty user}">
+			  
+			          <a href="loginpage.do" class="btn btn-primary">Log in</a>
+			        
+			        </c:when>
+			
+			        <c:otherwise>
+			         
+			          <a href="logout.do" class="btn btn-primary">Log out</a>
+			
+			        </c:otherwise>
+
+				</c:choose>	
+				
 			</div>
 		</div>
 	</nav>
