@@ -35,18 +35,36 @@ public class UserController {
 	
 	
 	@RequestMapping(path = {"/", "index.do"})
-	public String index(Model model) {
+	public String index(Model model, HttpSession session) {
 		List<Event> events = userDao.findAllEvents();
 		model.addAttribute("eventList", events);
-		return "index";
+		
+		User user = (User) session.getAttribute("user");
+		
+		if (user != null) {
+			if (user.getRole().equals("att")) {
+				return "User-att-home";
+			} else if (user.getRole().equals("vo")) {
+				return "User-vo-home";
+			}
+		}
+			return "index";
 	}
 
 	@GetMapping(path = "home.do")
-	private String home(Model model) {
-		User TEST = userDao.findByUsernameAndPassword("admin", "1234");
-		model.addAttribute("SMOKETEST", TEST);
-		return "home";
+	private String home(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		
+		if (user != null) {
+			if (user.getRole().equals("att")) {
+				return "User-att-home";
+			} else if (user.getRole().equals("vo")) {
+				return "User-vo-home";
+			}
+		}
+			return "index";
 	}
+
 
 	@GetMapping(path = "listAll.do")
 	public String listAllEvents(Model model) {
@@ -83,9 +101,12 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "contactUs.do")
-	public String contactUs() {
+	public String contactUs(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");		
 		return "contactUs";
 	}
+	
+	
 	
 	
 
