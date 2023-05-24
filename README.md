@@ -17,6 +17,7 @@ In a group setting build a full stack application using **_Java, Spring MVC, and
 An already build out venue account can be accessed with the following log in credentials:
 - username: Gary 
 - password: 1234
+
 An already build out user account can be accessed with the following log in credentials:
 - username: attendee
 - password: 1234
