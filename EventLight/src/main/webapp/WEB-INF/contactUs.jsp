@@ -57,6 +57,8 @@ body>main {
 
 	
 
+	<jsp:include page="navmain.jsp" />
+
 	<main class="flex-shrink-0">
 		<div class="container text-center mt-5">
 			
