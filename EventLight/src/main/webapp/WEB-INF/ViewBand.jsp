@@ -79,6 +79,10 @@ body>main {
 						      <td>${band.description}</td>
 						    </tr>
 						    <tr>
+						      <td>Image:</td>
+						      <td><img src="${band.image}" height="200" width="250"></td>
+						    </tr>
+						    <tr>
 						      <td>Band Members:</td>
 						      <td></td>
 						    </tr>
