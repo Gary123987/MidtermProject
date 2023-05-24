@@ -142,7 +142,7 @@ DROP TABLE IF EXISTS `artist` ;
 
 CREATE TABLE IF NOT EXISTS `artist` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `band_id` INT NOT NULL,
+  `band_id` INT NULL,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NULL,
   `stage_name` VARCHAR(45) NULL,
@@ -387,6 +387,7 @@ COMMIT;
 START TRANSACTION;
 USE `eventlightdb`;
 INSERT INTO `band` (`id`, `name`, `genre`, `image`, `description`) VALUES (1, 'Metallica', 'Metal', NULL, 'Old School metal band');
+INSERT INTO `band` (`id`, `name`, `genre`, `image`, `description`) VALUES (2, 'Red Hot Chilli Peppers', 'Rock', NULL, 'Make some good tunes');
 
 COMMIT;
 
@@ -400,6 +401,10 @@ INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, 
 INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (2, 1, 'James', 'Hetfield', NULL, 'Vocals');
 INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (3, 1, 'Lars', 'Ulrich', NULL, 'Drums');
 INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (4, 1, 'Kirk', 'Hammett', NULL, 'Lead Guitar');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (5, 2, 'Michael', 'Balazary', 'Flea', 'Bass');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (6, 2, 'Anthony', 'Kiedis', NULL, 'Vocals');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (7, 2, 'Chad', 'Smith', NULL, 'Drums');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (8, 2, 'John', 'Frusciante', NULL, 'Guitar');
 
 COMMIT;
 

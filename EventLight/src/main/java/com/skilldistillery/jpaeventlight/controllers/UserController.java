@@ -265,11 +265,19 @@ public class UserController {
 		artist.setStageName(stageName);
 		artist.setInstrument(instrument);
 		
-		Band band = (Band) session.getAttribute("band");
-		artist.setBandArtist(band);
+//		Band band = (Band) session.getAttribute("band");
+//		artist.setBandArtist(band);
 		
 		artist = userDao.createArtist(artist);
-		session.setAttribute("allArtists", userDao.findAllArtists());
+		List<Artist> artists = userDao.findAllArtists();
+		List<Artist> artists2 = new ArrayList<>(artists);
+		for (Artist a : artists) {
+			if (a.getBandArtist() != null) {
+				artists2.remove(a);
+			}
+			artists = artists2;
+		}
+		session.setAttribute("allArtists", artists);
 
 		return "SelectArtists";
 	}
@@ -299,7 +307,13 @@ public class UserController {
 		
 		List<Artist> artists = new ArrayList<>();
 		artists = userDao.findAllArtists();
-		System.out.println(artists);
+		List<Artist> artists2 = new ArrayList<>(artists);
+		for (Artist a : artists) {
+			if (a.getBandArtist() != null) {
+				artists2.remove(a);
+			}
+			artists = artists2;
+		}
 		session.setAttribute("allArtists", artists);
 		model.addAttribute("allArtists", artists);
 		
