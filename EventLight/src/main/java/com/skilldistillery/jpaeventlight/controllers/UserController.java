@@ -78,7 +78,7 @@ public class UserController {
 			@RequestParam("password") String password) {
 		User user = userDao.findByUsernameAndPassword(userName, password);
 		session.setAttribute("user", user);
-//		model.addAttribute("user", user);
+
 		if (user != null) {
 			if (user.getRole().equals("att")) {
 				return "User-att-home";
@@ -106,9 +106,7 @@ public class UserController {
 		return "contactUs";
 	}
 	
-	
-	
-	
+
 
 	@RequestMapping(path = "updateVenuePage.do")
 	public String updateVenuePage(HttpSession session) {
@@ -174,7 +172,6 @@ public class UserController {
 		user = userDao.signUp(user, address);
 		session.setAttribute("user", user);
 
-		// CREATE A PAGE TELLING THE USER THAT THE USERNAME WAS CREATED!!!!
 
 		return "home";
 	}
@@ -244,14 +241,12 @@ public class UserController {
 		return "listbyvenueid";
 	}
 
-//	SeeMyEvents.do
 
 	@GetMapping(path = "favoriteEvents.do")
 	public String addEventFavorites(HttpSession session, Model model,
 			@RequestParam(name="eventId") int eventId) {
 		User user = (User) session.getAttribute("user");
 		List<Event> favEvents = userDao.addToFavoriteEvents(eventId, user.getId());
-//		List<Event> favEvents = user.getFavoriteEvents();
 		
 		favEvents.size();
 		model.addAttribute("events", favEvents);
@@ -260,14 +255,6 @@ public class UserController {
 		return "User-att-home";
 	}
 	
-//	
-//	@GetMapping(path="favoriteEventsPage.do")
-//	public String showEventFavorites(HttpSession session, Model model) {
-//		User user = (User) session.getAttribute("user");
-//		List<Event> favEvents = user.getFavoriteEvents();
-//		model.addAttribute("events", favEvents);
-//		return "User-att-home";
-//	}
 	
 	@GetMapping(path = "createArtistPage.do")
 	public String createArtist() {
@@ -289,9 +276,6 @@ public class UserController {
 		artist.setInstrument(instrument);
 		artist.setImage(image);
 		artist.setDescription(description);
-		
-//		Band band = (Band) session.getAttribute("band");
-//		artist.setBandArtist(band);
 		
 		artist = userDao.createArtist(artist);
 		List<Artist> artists = userDao.findAllArtists();
@@ -324,9 +308,6 @@ public class UserController {
 		band.setDescription(description);
 		
 		Event event = (Event) session.getAttribute("event");
-//		List<Event> events = new ArrayList<>();
-//		events.add(event);
-//		band.setEvents(events);
 		session.setAttribute("band", band);
 		userDao.createBand(band);
 		
@@ -423,15 +404,6 @@ public class UserController {
 		return "User-vo-home";
 	}
 
-	@GetMapping(path = "updateArtist.do")
-	public ModelAndView updateArtist() {
-		return null;
-	}
-
-	@GetMapping(path = "updateBand.do")
-	public ModelAndView updateBand() {
-		return null;
-	}
 
 	@RequestMapping(path = "updateEventPage.do")
 	public String updateEventPage(HttpSession session, @RequestParam("id") int id) {
@@ -463,20 +435,6 @@ public class UserController {
 		return "User-vo-home";
 	}
 
-	@GetMapping(path = "deleteArtist.do")
-	public ModelAndView deleteArtist() {
-		return null;
-	}
-
-	@GetMapping(path = "deleteBand.do")
-	public ModelAndView deleteBand() {
-		return null;
-	}
-
-	@GetMapping(path = "deleteVenue.do")
-	public ModelAndView deleteVenue() {
-		return null;
-	}
 	
 	@RequestMapping(path = "deleteEventForm.do", method = RequestMethod.POST)
 	public String deleteEventForm(HttpSession session, @RequestParam("eventId") int eventId) {
