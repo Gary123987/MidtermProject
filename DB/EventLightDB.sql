@@ -147,6 +147,8 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `last_name` VARCHAR(45) NULL,
   `stage_name` VARCHAR(45) NULL,
   `instrument` VARCHAR(45) NULL,
+  `image` VARCHAR(3000) NULL,
+  `description` TEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_artist_band1_idx` (`band_id` ASC),
   CONSTRAINT `fk_artist_band1`
@@ -355,6 +357,7 @@ USE `eventlightdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (1, 'Gary', '1234', 1, 'vo', 'Gary', 'Fultz', '2023-01-05 10:34', '2023-01-10 05:25', NULL, 'Just a dude that likes music', 1);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (2, 'NoOne', 'NoOne25', 1, 'vo', 'Arya', 'Stark', '2023-02-15 11:55', '2023-02-15 11:55', NULL, 'Likes vacationing down south.', 2);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (3, 'Kristen', '1234', 1, 'vo', 'Kristen', 'Tsuboi', '2023-04-16 05:20', '2023-04-17 10:00', NULL, 'I like cheese and a quarter Japanese', 4);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (4, 'attendee', '1234', 1, 'att', 'Anyone', 'Anyname', '2023-04-15 05:20', '2023-04-16 10:00', NULL, NULL, NULL);
 
 COMMIT;
 
@@ -397,14 +400,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventlightdb`;
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (1, 1, 'Robert', 'Trujilo', NULL, 'Bass');
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (2, 1, 'James', 'Hetfield', NULL, 'Vocals');
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (3, 1, 'Lars', 'Ulrich', NULL, 'Drums');
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (4, 1, 'Kirk', 'Hammett', NULL, 'Lead Guitar');
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (5, 2, 'Michael', 'Balazary', 'Flea', 'Bass');
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (6, 2, 'Anthony', 'Kiedis', NULL, 'Vocals');
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (7, 2, 'Chad', 'Smith', NULL, 'Drums');
-INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`) VALUES (8, 2, 'John', 'Frusciante', NULL, 'Guitar');
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (1, 1, 'Robert', 'Trujilo', NULL, 'Bass', NULL, NULL);
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (2, 1, 'James', 'Hetfield', NULL, 'Vocals', NULL, NULL);
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (3, 1, 'Lars', 'Ulrich', NULL, 'Drums', NULL, NULL);
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (4, 1, 'Kirk', 'Hammett', NULL, 'Lead Guitar', NULL, NULL);
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (5, 2, 'Michael', 'Balazary', 'Flea', 'Bass', NULL, NULL);
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (6, 2, 'Anthony', 'Kiedis', NULL, 'Vocals', NULL, NULL);
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (7, 2, 'Chad', 'Smith', NULL, 'Drums', NULL, NULL);
+INSERT INTO `artist` (`id`, `band_id`, `first_name`, `last_name`, `stage_name`, `instrument`, `image`, `description`) VALUES (8, 2, 'John', 'Frusciante', NULL, 'Guitar', NULL, NULL);
 
 COMMIT;
 
