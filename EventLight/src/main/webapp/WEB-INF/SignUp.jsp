@@ -67,7 +67,7 @@ body>main {
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						aria-current="page" href="index.do">Home</a></li>
 
 					<li class="nav-item"><a class="nav-link" href="aboutUs.do">About
@@ -86,82 +86,88 @@ body>main {
 	</nav>
 
 
-	<main class="flex-shrink-0">
+<main class="flex-shrink-0">
 		<div class="container text-center mt-5">
+			<div class="container">
+ 				 <div class="row justify-content-center">
+					<div class= "col-4">
+						<div class="container">
 		
-			<h2>Please fill in the below details for an account:</h2>
-			
-			<form action="signUp.do" method="POST" class="container">
-				<div class="mb-3">
-					<label for="username" class="form-label">Username:</label>
-					<input type="text" name="username" class="form-control form-control-sm" required/>
-				</div>
-			
-				<div class="mb-3">
-					<label for="password" class="form-label">Password:</label>
-					<input type="password" name="password" class="form-control form-control-sm" required/>
-				</div>
-			
-				<div class="mb-3">
-					<label for="role" class="form-label">Role:</label>
-					<div class="form-check">
-						<input type="radio" name="role" value="vo" id="voRadio" class="form-check-input" required/>
-						<label for="voRadio" class="form-check-label">Venue Owner</label>
-					</div>
-					<div class="form-check">
-						<input type="radio" name="role" value="att" id="attRadio" class="form-check-input" required/>
-						<label for="attRadio" class="form-check-label">Attendee</label>
-					</div>
-				</div>
-			
-				<div class="mb-3">
-					<label for="firstName" class="form-label">First Name:</label>
-					<input type="text" name="firstName" class="form-control form-control-sm" required/>
-				</div>
-			
-				<div class="mb-3">
-					<label for="lastName" class="form-label">Last Name:</label>
-					<input type="text" name="lastName" class="form-control form-control-sm" required/>
-				</div>
-			
-				<div class="mb-3">
-					<label for="profilePicture" class="form-label">Profile Picture Image Link:</label>
-					<input type="text" name="profilePicture" class="form-control form-control-sm"/>
-				</div>
-			
-				<div class="mb-3">
-					<label for="aboutMe" class="form-label">About Me:</label>
-					<input type="text" name="aboutMe" class="form-control form-control-sm"/>
-				</div>
-				
-				<div class="mb-3">
-					<label for="street" class="form-label">Street:</label>
-					<input type="text" name="street" class="form-control form-control-sm" required/>
-				</div>
-				
-				<div class="mb-3">
-					<label for="city" class="form-label">City:</label>
-					<input type="text" name="city" class="form-control form-control-sm" required/>
-				</div>
-				
-				<div class="mb-3">
-					<label for="state" class="form-label">State:</label>
-					<input type="text" name="state" class="form-control form-control-sm"/>
-				</div>
-				
-				<div class="mb-3">
-					<label for="zip" class="form-label">Zip Code:</label>
-					<input type="text" name="zip" class="form-control form-control-sm"/>
-				</div>
-				
-				<input type="submit" value="Submit" class="btn btn-primary"/>
-			</form>
+							<h2>Please fill in the below details for an account:</h2>
 
-
-			
-			
+						<form action="signUp.do" method="POST" class="container">
+							  <div class="mb-3">
+							    <label for="username" class="form-label">Username:</label>
+							    <input type="text" name="username" class="form-control" required/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="password" class="form-label">Password:</label>
+							    <input type="password" name="password" class="form-control" required/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="role" class="form-label">Role:</label>
+							    <div class="form-check">
+							      <input type="radio" name="role" value="vo" id="voRadio" class="form-check-input" required/>
+							      <label for="voRadio" class="form-check-label">Venue Owner</label>
+							    </div>
+							    
+							    <div class="form-check">
+							      <input type="radio" name="role" value="att" id="attRadio" class="form-check-input" required/>
+							      <label for="attRadio" class="form-check-label">Attendee</label>
+							    </div>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="firstName" class="form-label">First Name:</label>
+							    <input type="text" name="firstName" class="form-control" required/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="lastName" class="form-label">Last Name:</label>
+							    <input type="text" name="lastName" class="form-control" required/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="profilePicture" class="form-label">Profile Picture Image Link:</label>
+							    <input type="text" name="profilePicture" class="form-control"/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="aboutMe" class="form-label">About Me:</label>
+							    <input type="text" name="aboutMe" class="form-control"/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="street" class="form-label">Street:</label>
+							    <input type="text" name="street" class="form-control" required/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="city" class="form-label">City:</label>
+							    <input type="text" name="city" class="form-control" required/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="state" class="form-label">State:</label>
+							    <input type="text" name="state" class="form-control"/>
+							  </div>
+							
+							  <div class="mb-3">
+							    <label for="zip" class="form-label">Zip Code:</label>
+							    <input type="text" name="zip" class="form-control"/>
+							  </div>
+							
+							  <input type="submit" value="Submit" class="btn btn-primary">
+						</form>
+							
+					</div>
+				</div>
+			</div>
 		</div>
-	</main>
+	</div>
+</main>
 	
 	
 	<footer class="footer mt-auto py-3 bg-dark sticky-footer">

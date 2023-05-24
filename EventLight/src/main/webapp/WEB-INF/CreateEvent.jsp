@@ -98,6 +98,8 @@ body>main {
 					<div class= "col-3">
 						<div class="container">
 							  <h2>Create an Event</h2>
+							  
+							  
 							  <form action="createEvent.do" class="mt-4">
 							    <div class="form-group">
 							      <label for="name">Event Name:</label>
