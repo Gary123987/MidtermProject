@@ -1,42 +1,169 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!doctype html>
+<html lang="en" class="h-100">
 
-<!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<title>Attendee Home</title>
+<title>Welcome to EventLight</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+
+<!-- In line CSS -->
+
+<style type="text/css">
+main>.container {
+	padding: 60px 15px 0;
+	margin-bottom: 5rem;
+}
+
+body>main {
+	margin-top: 20px;
+	margin-bottom: 60px;
+}
+
+.sticky-footer {
+	position: sticky;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.homeBG {
+	width: 100%;
+	background-color: lighgray;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.minHeight {
+	min-height: 80vh;
+}
+</style>
+
 </head>
-<body>
-	<c:choose>
-		<c:when test="${!empty user.favoriteEvents}">
-			<h1>Your Favorite Events</h1>
-			<c:forEach var="event" items="${user.favoriteEvents}">
-				<ul>
-					<li><strong>Event ID: ${event.id }</strong></li>
-					<li><a href="ViewEventPage.do?eventId=${event.id}">${event.title}</a></li>
-					<li><img src="${event.image }" width="250" height="200"></li>
-					<li>${event.eventDate }</li>
-					<li>${event.startTime }-${event.endTime }</li>
-					<li>${event.description }</li>
-					<li>${event.venue }</li>
-					<li>Bands:</li>
-		<li><ul>
-				<c:forEach var="band" items="${event.bands}">
-					<li><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></li>
-				</c:forEach>
-			</ul></li>
+
+<body class="d-flex flex-column h-100 homeBG">
+
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="index.do">EventLight</a>
+			
+			
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+				aria-controls="navbarCollapse" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav me-auto mb-2 mb-md-0">
+					<li class="nav-item"><a class="nav-link"
+						aria-current="page" href="home.do">Home</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="aboutUs.do">About
+							Us</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="listAll.do">See
+							All Events</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="contactUs.do">Contact
+							Us</a></li>
 				</ul>
-			</c:forEach>
-		</c:when>
+
+				<a href="logout.do" class="btn btn-primary">Log out</a>
+				<a href="home.do" class="btn btn-secondary m-1">Home</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<main class="flex-shrink-0">
+		<div class="container text-center mt-5">
+		
+			<c:choose>
+			
+			
+			<c:when test="${not empty user.favoriteEvents}">
+    <h1>Your Favorite Events</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Event ID</th>
+                <th>Event Title</th>
+                <th>Event Image</th>
+                <th>Event Date</th>
+                <th>Event Time</th>
+                <th>Description</th>
+                <th>Venue</th>
+                <th>Bands</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="event" items="${user.favoriteEvents}">
+                <tr>
+                    <td><strong>Event ID: ${event.id}</strong></td>
+                    <td><a href="ViewEventPage.do?eventId=${event.id}">${event.title}</a></td>
+                    <td><img src="${event.image}" width="250" height="200"></td>
+                    <td>${event.eventDate}</td>
+                    <td>${event.startTime}-${event.endTime}</td>
+                    <td>${event.description}</td>
+                    <td>${event.venue}</td>
+                    <td>Bands:</td>
+                    <td>
+                        <table>
+                            <c:forEach var="band" items="${event.bands}">
+                                <tr>
+                                    <td><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</c:when>
+
+
+	
 		<c:otherwise>
+		
 				<h2>No favorite events in your list...</h2>
 		
 		</c:otherwise>
 	</c:choose>
-	<a href="home.do" class="btn btn-secondary" role="button">Back to
-		Home</a> you are an attendee
+			
 
+		</div>
+	</main>
+	
+	
+	<footer class="footer mt-auto py-3 bg-dark sticky-footer">
+		<div class="container-fluid text-center">
+			<span class="text-white">© 2023 EventLight. All rights
+				reserved.</span>
+		</div>
+	</footer>
+	<!-- Bootstrap JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+		crossorigin="anonymous">
+		
+	</script>
 </body>
+
 </html>

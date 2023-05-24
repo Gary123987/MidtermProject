@@ -55,7 +55,7 @@ body>main {
 
 <body class="d-flex flex-column h-100 homeBG">
 
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="index.do">EventLight</a>
 			
@@ -87,8 +87,11 @@ body>main {
 				<a href="home.do" class="btn btn-secondary m-1">Home</a>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
 
+
+	<jsp:include page="navvenueowner.jsp" />
+	
 
 	<main class="flex-shrink-0">
 	
