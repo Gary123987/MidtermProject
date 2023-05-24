@@ -193,6 +193,11 @@ public class UserDAOImpl implements UserDAO {
 	public List<Event> findEventsByVenueId(int venueId) {
 		String jpql = "SELECT e FROM Event e WHERE e.venue.id = :venueId and e.enabled = true";
 		List<Event> eventsById = em.createQuery(jpql, Event.class).setParameter("venueId", venueId).getResultList();
+		Collections.sort(eventsById, new Comparator<Event>() {
+			  public int compare(Event o1, Event o2) {
+			      return o1.getEventDate().compareTo(o2.getEventDate());
+			  }
+			});
 		return eventsById;
 
 	}
