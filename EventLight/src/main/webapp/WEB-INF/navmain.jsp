@@ -35,8 +35,9 @@
 							Us</a></li>
 				</ul>
 
-				<a href="logout.do" class="btn btn-primary">Log out</a>
-				<a href="home.do" class="btn btn-secondary m-1">Home</a>
+				<a href="loginpage.do" class="btn btn-primary">Log in</a>
+			
+				
 			</div>
 		</div>
 	</nav>
