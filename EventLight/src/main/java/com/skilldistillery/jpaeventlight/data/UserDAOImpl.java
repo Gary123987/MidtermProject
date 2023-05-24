@@ -1,5 +1,7 @@
 package com.skilldistillery.jpaeventlight.data;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -178,7 +180,13 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<Event> findAllEvents() {
 		String jpql = "SELECT e FROM Event e WHERE e.enabled = true";
-		return em.createQuery(jpql, Event.class).getResultList();
+		List<Event> events = em.createQuery(jpql, Event.class).getResultList();
+		Collections.sort(events, new Comparator<Event>() {
+			  public int compare(Event o1, Event o2) {
+			      return o1.getEventDate().compareTo(o2.getEventDate());
+			  }
+			});
+				return events;
 	}
 
 	@Override
