@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.skilldistillery.jpaeventlight.data.UserDAO;
 import com.skilldistillery.jpaeventlight.entities.Address;
@@ -132,11 +133,11 @@ public class UserController {
 		return "home";
 	}
 
-	@GetMapping(path = "logout.do")
-	public String userLogOut(HttpSession session) {
-		session.removeAttribute("user");
-		return "index";
-	}
+	 @GetMapping(path = "logout.do")
+	    public RedirectView userLogOut(HttpSession session) {
+	        session.removeAttribute("user");
+	        return new RedirectView("/");
+	    }
 
 	@RequestMapping(path = "SignUpPage.do")
 	public String signUpPage() {
