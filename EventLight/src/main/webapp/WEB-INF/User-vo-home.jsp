@@ -79,7 +79,7 @@ body>main {
 					<li class="nav-item"><a class="nav-link" href="listAll.do">See
 							All Events</a></li>
 
-					<li class="nav-item"><a class="nav-link active" href="contactUs.do">Contact
+					<li class="nav-item"><a class="nav-link" href="contactUs.do">Contact
 							Us</a></li>
 				</ul>
 
