@@ -474,4 +474,10 @@ public class UserController {
 		session.setAttribute("artist", artist);
 		return "ViewArtist";
 	}
+	@GetMapping(path="ViewEventPage.do")
+	public String viewEvent(HttpSession session, @RequestParam("eventId") int eventId) {
+		Event event = userDao.findEventById(eventId);
+		session.setAttribute("event", event);
+		return "ViewEvent";
+	}
 }

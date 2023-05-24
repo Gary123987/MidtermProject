@@ -15,18 +15,18 @@
 			<c:forEach var="event" items="${user.favoriteEvents}">
 				<ul>
 					<li><strong>Event ID: ${event.id }</strong></li>
-					<li>${event.title }</li>
+					<li><a href="ViewEventPage.do?eventId=${event.id}">${event.title}</a></li>
 					<li><img src="${event.image }" width="250" height="200"></li>
 					<li>${event.eventDate }</li>
 					<li>${event.startTime }-${event.endTime }</li>
 					<li>${event.description }</li>
 					<li>${event.venue }</li>
 					<li>Bands:</li>
-					<li><ul>
-							<c:forEach var="band" items="${event.bands}">
-								<li>${band.name}</li>
-							</c:forEach>
-						</ul></li>
+		<li><ul>
+				<c:forEach var="band" items="${event.bands}">
+					<li><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></li>
+				</c:forEach>
+			</ul></li>
 				</ul>
 			</c:forEach>
 		</c:when>
