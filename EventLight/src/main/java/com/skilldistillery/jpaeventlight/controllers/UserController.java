@@ -246,13 +246,16 @@ public class UserController {
 	public String addEventFavorites(HttpSession session, Model model,
 			@RequestParam(name="eventId") int eventId) {
 		User user = (User) session.getAttribute("user");
-		List<Event> favEvents = userDao.addToFavoriteEvents(eventId, user.getId());
-		
-		favEvents.size();
-		model.addAttribute("events", favEvents);
-		user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-		session.setAttribute("user", user);
+//		user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+//		session.setAttribute("user", user);
+		if (user != null) {
+			List<Event> favEvents = userDao.addToFavoriteEvents(eventId, user.getId());
+			favEvents.size();
+			model.addAttribute("events", favEvents);
 		return "User-att-home";
+		} else {
+			return "SignIn";
+		}
 	}
 	
 	

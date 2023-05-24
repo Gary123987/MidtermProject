@@ -55,6 +55,7 @@ body>main {
 
 <body class="d-flex flex-column h-100 homeBG">
 
+	<jsp:include page="navattendee.jsp" />
 
 	<main class="flex-shrink-0">
 		<div class="container text-center mt-5">
@@ -86,8 +87,7 @@ body>main {
                     <td>${event.eventDate}</td>
                     <td>${event.startTime}-${event.endTime}</td>
                     <td>${event.description}</td>
-                    <td>${event.venue}</td>
-                    <td>Bands:</td>
+                    <td><a href="ViewVenuePage.do?venueId=${event.venue.id}">${event.venue.name}</a></td>
                     <td>
                         <table>
                             <c:forEach var="band" items="${event.bands}">
