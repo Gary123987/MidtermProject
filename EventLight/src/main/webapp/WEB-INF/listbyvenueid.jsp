@@ -115,7 +115,7 @@ body>main {
             <c:forEach var="event" items="${eventsById}">
               <tr>
                 <td>${event.id}</td>
-                <td>${event.title}</td>
+                <td><a href="ViewEventPage.do?eventId=${event.id}">${event.title}</a></td>
                 <td>${event.eventDate}</td>
                 <td>${event.startTime} - ${event.endTime}</td>
                 <td>  <ul>
