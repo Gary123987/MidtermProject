@@ -109,13 +109,26 @@ body>main {
             </tr>
           </thead>
           <tbody>
+          
+          
+          
             <c:forEach var="event" items="${eventsById}">
               <tr>
                 <td>${event.id}</td>
                 <td>${event.title}</td>
                 <td>${event.eventDate}</td>
                 <td>${event.startTime} - ${event.endTime}</td>
-                <td>${event.bands}</td>
+                <td>  <ul>
+                
+                
+                
+                  <c:forEach var="band" items="${event.bands}">
+                    <li><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></li>
+                  </c:forEach>
+                  
+                  
+              
+                </ul></td>
                 <td>
                   <a href="updateEventPage.do?id=${event.id}" class="btn btn-primary">Update Event</a>
                   <form action="deleteEventForm.do" method="post" class="d-inline">
@@ -125,6 +138,10 @@ body>main {
                 </td>
               </tr>
             </c:forEach>
+            
+            
+            
+            
           </tbody>
         </table>
       </div>

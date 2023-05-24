@@ -291,9 +291,9 @@ public class UserController {
 		band.setDescription(description);
 		
 		Event event = (Event) session.getAttribute("event");
-		List<Event> events = new ArrayList<>();
-		events.add(event);
-		band.setEvents(events);
+//		List<Event> events = new ArrayList<>();
+//		events.add(event);
+//		band.setEvents(events);
 		session.setAttribute("band", band);
 		userDao.createBand(band);
 		
