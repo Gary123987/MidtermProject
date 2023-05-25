@@ -97,6 +97,7 @@ body>main {
                             </c:forEach>
                         </table>
                     </td>
+                    <td><a href="removeFavorite.do?eventId=${event.id}">Remove event from favorites</a></td>
                 </tr>
             </c:forEach>
         </tbody>

@@ -247,8 +247,8 @@ public class UserController {
 	public String addEventFavorites(HttpSession session, Model model,
 			@RequestParam(name="eventId") int eventId) {
 		User user = (User) session.getAttribute("user");
-//		user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-//		session.setAttribute("user", user);
+		user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+		session.setAttribute("user", user);
 		if (user != null) {
 			List<Event> favEvents = userDao.addToFavoriteEvents(eventId, user.getId());
 			favEvents.size();
@@ -257,6 +257,20 @@ public class UserController {
 		} else {
 			return "SignIn";
 		}
+	}
+	
+	@GetMapping(path = "removeFavorite.do")
+	public String removeEventFavorite(HttpSession session, Model model,
+	@RequestParam(name="eventId") int eventId){
+		User user = (User) session.getAttribute("user");
+		user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+		session.setAttribute("user", user);
+		List<Event> favEvents = userDao.removeFavoriteEvent(eventId, user.getId());
+		favEvents.size();
+		model.addAttribute("events", favEvents);
+		return "User-att-home";
+		
+		
 	}
 	
 	

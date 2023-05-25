@@ -65,6 +65,8 @@ public interface UserDAO {
 
 	void addBandToEvent(Band band, Event event);
 
+	List<Event> removeFavoriteEvent(int eventId, int userId);
+
 
 
 

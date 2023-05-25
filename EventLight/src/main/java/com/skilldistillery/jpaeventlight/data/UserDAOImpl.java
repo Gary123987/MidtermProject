@@ -239,6 +239,17 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return favorites;
 	}
+	@Override
+	public List<Event> removeFavoriteEvent(int eventId, int userId){
+		Event event = em.find(Event.class, eventId);
+		User user = em.find(User.class, userId);
+		List<Event> favorites = user.getFavoriteEvents();
+		if (favorites.contains(event)) {
+			favorites.remove(event);
+			user.setFavoriteEvents(favorites);
+		}
+		return favorites;
+	}
 	
 
 	public List<Band> listAllBands(){
