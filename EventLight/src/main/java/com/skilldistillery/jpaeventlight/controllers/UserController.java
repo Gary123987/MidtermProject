@@ -401,7 +401,8 @@ public class UserController {
 			@RequestParam("description") String description,
 			@RequestParam("date") String date,
 			@RequestParam("start") String start,
-			@RequestParam("end") String end) {
+			@RequestParam("end") String end,
+			@RequestParam("image") String image) {
 		User user = (User) session.getAttribute("user");
 		Venue venue = user.getVenue();
 		Event event = new Event();
@@ -413,6 +414,7 @@ public class UserController {
 		event.setStartTime(parsedStart);
 		LocalTime parsedEnd = LocalTime.parse(end);
 		event.setEndTime(parsedEnd);
+		event.setImage(image);
 		
 		event.setVenue(venue);
 		event.setEnabled(true);

@@ -55,7 +55,8 @@ body>main {
 
 <body class="d-flex flex-column h-100 homeBG">
 
-	
+	<!-- nav bar -->
+	<jsp:include page="navvenueowner.jsp" />
 		
 	<main class="flex-shrink-0">
 		<div class="container text-center mt-5">
