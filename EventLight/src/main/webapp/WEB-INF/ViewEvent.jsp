@@ -93,11 +93,11 @@ body>main {
 						    <tr>
 						      <td></td>
 						      <td>
-						        <ul>
+						        
 						          <c:forEach var="band" items="${event.bands}">
-						            <li><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></li>
+						            <a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a>
 						          </c:forEach>
-						        </ul>
+						       
 						      </td>
 						    </tr>
 						    <tr>

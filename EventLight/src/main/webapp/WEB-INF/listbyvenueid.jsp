@@ -86,17 +86,17 @@ body>main {
                 <td><a href="ViewEventPage.do?eventId=${event.id}">${event.title}</a></td>
                 <td>${event.eventDate}</td>
                 <td>${event.startTime} - ${event.endTime}</td>
-                <td>  <ul>
+                <td>  
                 
                 
                 
                   <c:forEach var="band" items="${event.bands}">
-                    <li><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></li>
+                    <a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a>
                   </c:forEach>
                   
                   
               
-                </ul></td>
+                </td>
                 <td>
                   <a href="updateEventPage.do?id=${event.id}" class="btn btn-primary">Update Event</a>
                   <form action="deleteEventForm.do" method="post" class="d-inline">
