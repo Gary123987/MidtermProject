@@ -93,8 +93,12 @@ body>main {
 							    <label for="image">Image:</label>
 							    <input type="text" name="image" value="${event.image}" class="form-control"/>
 							  </div>
-							  <input type="submit" value="Submit" class="btn btn-primary"/>
-							</form>						
+							  <input type="submit" value="Submit" class="btn btn-primary mt-2"/>
+							</form>	
+							
+							<form action="selectBandsPage.do">
+							<input type="submit" value="Update Bands" class="btn btn-success mt-2"/>
+							</form>				
 					</div>
 				</div>
 			</div>

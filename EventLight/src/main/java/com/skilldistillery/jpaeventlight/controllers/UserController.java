@@ -51,10 +51,19 @@ public class UserController {
 		}
 			return "index";
 	}
+	
+	 @GetMapping(path = "mainIndex.do")
+	    public String mainIndex(Model model, HttpSession session) {
+		 	List<Event> events = userDao.findAllEvents();
+			model.addAttribute("eventList", events);
+	        return "index";
+	    }
 
 	@GetMapping(path = "home.do")
 	private String home(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		List<Event> events = userDao.findAllEvents();
+		model.addAttribute("eventList", events);
 		
 		if (user != null) {
 			if (user.getRole().equals("att")) {
@@ -202,6 +211,8 @@ public class UserController {
 		venue.setUser(user);
 
 		venue = userDao.createVenue(venue, address);
+		
+		user.setVenue(venue);
 
 		session.setAttribute("venue", venue);
 		return "User-vo-home";
@@ -405,12 +416,29 @@ public class UserController {
 		return "SelectBands";
 	}
 	
+	@GetMapping(path="selectBandsPage.do")
+	public String selectBandsPage(HttpSession session) {
+		Event event = (Event) session.getAttribute("event");
+		session.setAttribute("event", event);
+		List<Band> bands = userDao.listAllBands();
+		session.setAttribute("allBands", bands);
+		return "SelectBands";
+	}
+	
 	@PostMapping(path="addBandsToEvent.do")
 	public String addBandsToEvent(HttpSession session, Model model,
 			@RequestParam("bandsSelected") String bandsSelected) {
 		List<String> bandList = Arrays.asList(bandsSelected.split(","));
 		Event event = (Event) session.getAttribute("event");
 		List<Band> bands = new ArrayList<>();
+		event.setBands(bands);
+		List<Band> allBands = userDao.listAllBands();
+		for (Band band : allBands)
+		if (band.getEvents().contains(event)) {
+			List<Event> events = band.getEvents();
+			events.remove(event);
+			band.setEvents(events);
+		}
 		for (String bandName : bandList) {
 			Band band = userDao.findBandByName(bandName);
 			List<Event> events = new ArrayList<>();
