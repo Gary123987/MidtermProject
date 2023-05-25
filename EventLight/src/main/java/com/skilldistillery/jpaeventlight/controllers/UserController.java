@@ -202,6 +202,8 @@ public class UserController {
 		venue.setUser(user);
 
 		venue = userDao.createVenue(venue, address);
+		
+		user.setVenue(venue);
 
 		session.setAttribute("venue", venue);
 		return "User-vo-home";
