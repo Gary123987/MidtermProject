@@ -74,7 +74,7 @@ public class UserController {
 		return "listAllEvents";
 	}
 
-	@RequestMapping("login.do")
+	@RequestMapping(path ="login.do", method = RequestMethod.POST)
 	public String userLogin(Model model, HttpSession session, @RequestParam("username") String userName,
 			@RequestParam("password") String password) {
 		User user = userDao.findByUsernameAndPassword(userName, password);
