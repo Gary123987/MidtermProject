@@ -355,9 +355,10 @@ COMMIT;
 START TRANSACTION;
 USE `eventlightdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (1, 'Gary', '1234', 1, 'vo', 'Gary', 'Fultz', '2023-01-05 10:34', '2023-01-10 05:25', NULL, 'Just a dude that likes music', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (2, 'NoOne', 'NoOne25', 1, 'vo', 'Arya', 'Stark', '2023-02-15 11:55', '2023-02-15 11:55', NULL, 'Likes vacationing down south.', 2);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (2, 'NoOne', '1234', 1, 'vo', 'Arya', 'Stark', '2023-02-15 11:55', '2023-02-15 11:55', NULL, 'Likes vacationing down south.', 2);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (3, 'Kristen', '1234', 1, 'vo', 'Kristen', 'Tsuboi', '2023-04-16 05:20', '2023-04-17 10:00', NULL, 'I like cheese and a quarter Japanese', 4);
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (4, 'attendee', '1234', 1, 'att', 'Anyone', 'Anyname', '2023-04-15 05:20', '2023-04-16 10:00', NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `first_name`, `last_name`, `created_at`, `last_update`, `profile_picture`, `about_me`, `address_id`) VALUES (5, 'Brailyn', '1234', 1, 'vo', 'Brailyn', 'Pichardo', '2023-04-10 05:00', '2023-04-10 05:00', NULL, 'cool dude', 3);
 
 COMMIT;
 
