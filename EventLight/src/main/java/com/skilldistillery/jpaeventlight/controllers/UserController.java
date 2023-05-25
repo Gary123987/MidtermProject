@@ -171,10 +171,9 @@ public class UserController {
 		user.setAddress(address);
 
 		user = userDao.signUp(user, address);
-		session.setAttribute("user", user);
 
 
-		return "home";
+		return "SignIn";
 	}
 
 	@PostMapping(path = "createVenue.do")
@@ -287,6 +286,7 @@ public class UserController {
 			@RequestParam("instrument") String instrument,
 			@RequestParam("image") String image,
 			@RequestParam("description") String description) {
+		
 		Artist artist = new Artist();
 		artist.setFirstName(fName);
 		artist.setLastName(lName);
@@ -296,18 +296,25 @@ public class UserController {
 		artist.setDescription(description);
 		
 		artist = userDao.createArtist(artist);
+		
 		List<Artist> artists = userDao.findAllArtists();
 		List<Artist> artists2 = new ArrayList<>(artists);
+		
 		for (Artist a : artists) {
 			if (a.getBandArtist() != null) {
 				artists2.remove(a);
 			}
+			
 			artists = artists2;
 		}
+		
 		session.setAttribute("allArtists", artists);
 
 		return "SelectArtists";
 	}
+	
+	
+	
 	@GetMapping(path = "createBandPage.do")
 	public String createBandPage(HttpSession session) {
 		return "CreateBand";

@@ -72,6 +72,8 @@ body>main {
 				</c:when>
 
 				<c:otherwise>
+					
+					<h3>Register Your Venue</h3>
 					<form action=createVenue.do method="POST">
 						 <label for="name">Name of Venue: </label>
 									<input type="text" name="name" required/> 

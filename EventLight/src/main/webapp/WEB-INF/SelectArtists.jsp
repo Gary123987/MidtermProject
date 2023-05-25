@@ -82,7 +82,7 @@ body>main {
 							  <input type="submit" value="Add these Artists to your Band" class="btn btn-primary">
 							</form>
 							
-							<a href="createArtistPage.do" class="btn btn-secondary">Create a New Artist</a>
+							<a href="createArtistPage.do" class="btn btn-secondary mt-2">Create New Artists</a>
 
 							
   
