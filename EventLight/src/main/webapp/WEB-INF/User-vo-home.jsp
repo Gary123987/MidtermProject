@@ -65,6 +65,7 @@ body>main {
 	
 					<h2>You currently own the venue ${user.venue.name }</h2><br><br>
 					
+					<a href="ViewVenuePage.do?venueId=${user.venue.id }"> View My Venue Details</a><br>
 					<a href="updateVenuePage.do">Update Venue</a><br>
 					<a href="SeeMyEvents.do">See My Events</a><br>
 					<a href="createEventPage.do">Create an Event for this Venue</a><br>

@@ -68,7 +68,7 @@ body>main {
     <table>
         <thead>
             <tr>
-                <th>Event ID</th>
+               <!--  <th>Event ID</th> -->
                 <th>Event Title</th>
                 <th>Event Image</th>
                 <th>Event Date</th>
