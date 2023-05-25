@@ -10,7 +10,7 @@
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="index.do">EventLight</a>
+			<a class="navbar-brand" href="mainIndex.do">EventLight</a>
 			
 			
 			<button class="navbar-toggler" type="button"
