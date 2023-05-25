@@ -68,7 +68,7 @@ body>main {
         <table class="table mt-4">
           <thead>
             <tr>
-              <th>Event ID</th>
+              <!-- <th>Event ID</th> -->
               <th>Title</th>
               <th>Event Date</th>
               <th>Time</th>
@@ -82,7 +82,7 @@ body>main {
           
             <c:forEach var="event" items="${eventsById}">
               <tr>
-                <td>${event.id}</td>
+         <%--        <td>${event.id}</td> --%>
                 <td><a href="ViewEventPage.do?eventId=${event.id}">${event.title}</a></td>
                 <td>${event.eventDate}</td>
                 <td>${event.startTime} - ${event.endTime}</td>

@@ -66,10 +66,10 @@ body>main {
 					<h2>${event.title}</h2>
 						<table class="table">
 						  <tbody>
-						    <tr>
+						  <%--   <tr>
 						      <td>ID:</td>
 						      <td>${event.id}</td>
-						    </tr>
+						    </tr> --%>
 						    <tr>
 						      <td>Venue:</td>
 						      <td><a href="ViewVenuePage.do?venueId=${event.venue.id}">${event.venue.name}</a></td>

@@ -81,7 +81,7 @@ body>main {
         <tbody>
             <c:forEach var="event" items="${user.favoriteEvents}">
                 <tr>
-                    <td><strong>Event ID: ${event.id}</strong></td>
+                  <%--   <td><strong>Event ID: ${event.id}</strong></td> --%>
                     <td><a href="ViewEventPage.do?eventId=${event.id}">${event.title}</a></td>
                     <td><img src="${event.image}" width="250" height="200"></td>
                     <td>${event.eventDate}</td>

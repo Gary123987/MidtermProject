@@ -66,10 +66,10 @@ body>main {
 					<h2>${band.name}</h2>
 						<table class="table">
 						  <tbody>
-						    <tr>
+						   <%--  <tr>
 						      <td>ID:</td>
 						      <td>${band.id}</td>
-						    </tr>
+						    </tr> --%>
 						    <tr>
 						      <td>Genre:</td>
 						      <td>${band.genre}</td>

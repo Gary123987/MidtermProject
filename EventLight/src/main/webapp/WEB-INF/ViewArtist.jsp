@@ -72,7 +72,7 @@ body>main {
 						      <th>Instrument</th>
 						      <th>Description</th>
 						      <th>Image</th>
-						      <th>Artist ID</th>
+						     <!--  <th>Artist ID</th> -->
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -82,7 +82,7 @@ body>main {
 						      <td>${artist.instrument}</td>
 						      <td>${artist.description}</td>
 						      <td><img src="${artist.image}" height="250" width="200"></td>
-						      <td>${artist.id}</td>
+						      <%-- <td>${artist.id}</td> --%>
 						    </tr>
 						  </tbody>
 						</table>	

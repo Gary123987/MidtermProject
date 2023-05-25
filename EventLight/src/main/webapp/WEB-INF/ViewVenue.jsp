@@ -66,10 +66,10 @@ body>main {
 					<h2>${venue.name}</h2>
 						<table class="table">
 						  <tbody>
-						    <tr>
+						  <%--   <tr>
 						      <td>ID:</td>
 						      <td>${venue.id}</td>
-						    </tr>
+						    </tr> --%>
 						    <tr>
 						      <td>Address:</td>
 						      <td>${venue.address.street}<br>${venue.address.city}, ${venue.address.state} ${venue.address.zip}</td>
