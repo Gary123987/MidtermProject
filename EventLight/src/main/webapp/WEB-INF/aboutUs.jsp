@@ -63,22 +63,10 @@ body>main {
     <div class="container text-center mt-5">
         <h1 class="text-black display-3">About Us</h1>
         <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus dui quis commodo vulputate. Maecenas
-            interdum ante mi, eget cursus nisl bibendum sit amet. Curabitur varius, elit non feugiat rutrum, urna nisl
-            consequat eros, et bibendum risus libero vitae enim. Nullam consequat semper odio id ultricies. Suspendisse
-            sollicitudin neque ligula, sed ultrices mauris suscipit eu. In ac fringilla elit, non tristique metus.
-            Suspendisse potenti. Nullam consequat arcu id congue pellentesque. Donec lacinia, nisl id aliquam dapibus,
-            nisi justo iaculis mauris, eu malesuada nisi lorem nec sem. Nulla facilisi. Nam id tellus dolor. Integer
-            commodo arcu eget risus rutrum, a mattis risus tincidunt.
+            EventLight brings the events to you. We strive in maintaining our event tracker with accurate and up to date information. EventLight is a social media tracker for events by specific venue. It allows it’s users to favorite events of their choosing.
         </p>
         <p>
-            Vivamus eu ex quis justo volutpat tincidunt. Mauris ultrices, lorem sit amet blandit ullamcorper, orci lectus
-            mattis massa, vel elementum lectus tellus ut massa. Curabitur sagittis nulla odio, eget auctor libero feugiat
-            sed. Sed vestibulum mauris in neque vulputate, sit amet dignissim lectus faucibus. Suspendisse volutpat
-            tincidunt nulla at elementum. Suspendisse in mauris in elit mollis pellentesque. Quisque in felis ut orci
-            hendrerit tincidunt ut at est. Nulla convallis lacinia elit. Ut lacinia cursus dolor sed auctor. Sed vitae
-            lectus ante. Fusce hendrerit est vel mi ultricies, sed dignissim nisl tristique. Suspendisse malesuada, orci
-            at maximus luctus, neque nunc vulputate neque, ac finibus arcu purus a enim.
+            EventLight is brought to you buy three Java Full Stack Bootcamp Skill Distillery students. EventLight was founded in 2023.
         </p>
     </div>
 </main>
