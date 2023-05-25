@@ -93,7 +93,7 @@ body>main {
 						  </tbody>
 						</table>
 
-	
+					<a href= "home.do">Go Back to Dashboard</a>
 			</div>
 		</div>
 	</div>
