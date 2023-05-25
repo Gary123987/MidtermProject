@@ -349,10 +349,11 @@ public class UserController {
 		band.setGenre(genre);
 		band.setImage(image);
 		band.setDescription(description);
+		band.setArtists(null);
 		
 		Event event = (Event) session.getAttribute("event");
+		band = userDao.createBand(band);
 		session.setAttribute("band", band);
-		userDao.createBand(band);
 		
 		List<Artist> artists = new ArrayList<>();
 		artists = userDao.findAllArtists();
@@ -379,6 +380,7 @@ public class UserController {
 		for (String id  : ids) {
 			int parsedId = Integer.parseInt(id);
 			Artist artist = userDao.findArtistById(parsedId);
+			artist.setBandArtist(band);
 			artistsToAdd.add(artist);
 		}
 		
