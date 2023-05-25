@@ -4,7 +4,7 @@
 
 ### Team Members
 - Gary Fultz (Developer, DBA)
-- Braylin Gutierrez (Developer, Repo Owner)
+- Braylin Pichardo (Developer, Repo Owner)
 - Kristen Tsuboi (Developer, Scrum Master)
 
 ## Overview
