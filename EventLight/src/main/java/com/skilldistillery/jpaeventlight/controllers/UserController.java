@@ -145,7 +145,7 @@ public class UserController {
 	 @GetMapping(path = "logout.do")
 	    public RedirectView userLogOut(HttpSession session) {
 	        session.removeAttribute("user");
-	        return new RedirectView("/");
+	        return new RedirectView("index.do");
 	    }
 
 	@RequestMapping(path = "SignUpPage.do")
