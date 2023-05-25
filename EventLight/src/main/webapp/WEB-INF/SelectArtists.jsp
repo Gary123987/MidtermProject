@@ -69,7 +69,7 @@ body>main {
 							
 							<h2>Select Artists for the Band: ${band.name}</h2><br><br>
 
-							<form action="addArtistsToBand.do" method="POST">
+							<form action="addArtistsToBand.do" method="POST" class="form" onsubmit="return validateForm()">
 							  <c:forEach var="artist" items="${allArtists}">
 							    <div class="form-check">
 							      <input class="form-check-input" type="checkbox" name="artistSelected" value="${artist.id}" id="artist${artist.id}">
@@ -79,8 +79,29 @@ body>main {
 							    </div>
 							    <br>
 							  </c:forEach>
-							  <input type="submit" value="Add these Artists to your Band" class="btn btn-primary">
+							  <input type="submit" value="Add these Artists to your Band" class="btn btn-primary" >
 							</form>
+							
+							<script>
+							  function validateForm() {
+							    var checkboxes = document.getElementsByName('artistSelected');
+							    var checked = false;
+							
+							    for (var i = 0; i < checkboxes.length; i++) {
+							      if (checkboxes[i].checked) {
+							        checked = true;
+							        break;
+							      }
+							    }
+							
+							    if (!checked) {
+							      alert('Please select at least one artist.');
+							      return false;
+							    }
+							
+							    return true;
+							  }
+							</script>
 							
 							<a href="createArtistPage.do" class="btn btn-secondary mt-2">Create New Artists</a>
 

@@ -67,30 +67,50 @@ body>main {
 						<div class="container">
 							 <h2>Select Bands for the Event: ${event.title }</h2><br><br>
 
-								<form action="addBandsToEvent.do" method="POST" class="form">
 								
-									  <div class="row">
-									    <div class="col-md-6">
-									      <c:forEach var="band" items="${allBands }">
-									        <div class="form-check">
-									          <input class="form-check-input" type="checkbox" name="bandsSelected" value="${band.name }" id="band-${band.name }">
-									          <label class="form-check-label" for="band-${band.name }">${band.name }</label>
-									        </div>
-									      </c:forEach>
-									    </div>
-									  </div>
+								<form action="addBandsToEvent.do" method="POST" class="form" onsubmit="return validateForm()">
+								  <div class="row">
+								    <div class="col-md-6">
+								      <c:forEach var="band" items="${allBands}">
+								        <div class="form-check">
+								          <input class="form-check-input" type="checkbox" name="bandsSelected" value="${band.name}" id="band-${band.name}">
+								          <label class="form-check-label" for="band-${band.name}">${band.name}</label>
+								        </div>
+								      </c:forEach>
+								    </div>
+								  </div>
 								
-									  <div class="row mt-3">
-									    <div class="col-md-6">
-									      <button type="submit" class="btn btn-primary">Add these Bands to your Event</button>
-									    </div>
-									    
-									     <div class="col-md-6">
-									      <a href="createBandPage.do" class="btn btn-secondary m-1">Create a new Band</a>
-									    </div>
-									  </div>
-								
+								  <div class="row mt-3">
+								    <div class="col-md-6">
+								      <button type="submit" class="btn btn-primary" id="submitButton">Add these Bands to your Event</button>
+								    </div>
+								    <div class="col-md-6">
+								      <a href="createBandPage.do" class="btn btn-secondary m-1">Create a new Band</a>
+								    </div>
+								  </div>
 								</form>
+
+							<script>
+							  function validateForm() {
+							    var checkboxes = document.getElementsByName('bandsSelected');
+							    var checked = false;
+							
+							    for (var i = 0; i < checkboxes.length; i++) {
+							      if (checkboxes[i].checked) {
+							        checked = true;
+							        break;
+							      }
+							    }
+							
+							    if (!checked) {
+							      alert('Please select at least one band.');
+							      return false;
+							    }
+							
+							    return true;
+							  }
+							</script>
+
 
 							</div>
 						</div>
