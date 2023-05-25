@@ -257,8 +257,14 @@ public class UserController {
 	public String addEventFavorites(HttpSession session, Model model,
 			@RequestParam(name="eventId") int eventId) {
 		User user = (User) session.getAttribute("user");
+		
+		 if (user == null) {
+		        return "SignIn"; 
+		    }
+		
 		user = userDao.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 		session.setAttribute("user", user);
+		
 		if (user != null) {
 			List<Event> favEvents = userDao.addToFavoriteEvents(eventId, user.getId());
 			favEvents.size();
@@ -268,6 +274,7 @@ public class UserController {
 			return "SignIn";
 		}
 	}
+	
 	
 	@GetMapping(path = "removeFavorite.do")
 	public String removeEventFavorite(HttpSession session, Model model,

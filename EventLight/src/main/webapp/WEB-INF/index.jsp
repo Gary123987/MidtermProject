@@ -30,6 +30,12 @@ body>main {
 	margin-bottom: 60px;
 }
 
+.mainDiv {
+		
+			min-height: 1200px;
+		
+		}
+
 .sticky-footer {
 	position: sticky;
 	left: 0;
@@ -49,6 +55,28 @@ body>main {
 .minHeight {
 	min-height: 80vh;
 }
+
+
+ .newsletter-section {
+            background-color: #4287f5;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            min-height: 400px;]
+        }
+        
+        .newsletter-title {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
 </style>
 
 </head>
@@ -58,21 +86,25 @@ body>main {
 
 	<jsp:include page="navmain.jsp" />
 	
+	
+	
+	
 
-	<main class="flex-shrink-0">
+	<main class="flex-shrink-0 mb-0">
 	
 
 
-		<div class="container text-center mt-5">
+		<div class="container text-center mt-5 mainDiv">
 			<h1 class="text-black display-3">Discover, Connect, and
 				Experience with EventLight</h1>
 			<h3 class="text-black">Your One Stop Shop to Find Events and Connect with the Community</h3>
 		</div>
 		
 		
+		<jsp:include page="indexsection1.jsp" />
 		
-	<div class="container-fluid text-center mt-5 bg-light">
-      <h1 class="text-center mb-4">Latest Events</h1>
+		<div><h1 class="text-center mb-4">Latest Events</h1></div>
+	<div class="container-fluid text-center bg-light">
       
       <table class="table">
         <thead>
@@ -107,11 +139,26 @@ body>main {
         </tbody>
       </table>
   </div>
-  
-
-  
-		
+ 		
 	</main>
+	
+	
+	<section class="newsletter-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="newsletter-title">Sign Up for Our Newsletter</h2>
+                <p class="newsletter-description">Stay up-to-date with the latest news and updates.</p>
+                <form class="form-inline justify-content-center" action="#" method="post">
+                    <div class="form-group">
+                        <input class="form-control mr-2" type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <button class="btn btn-danger mt-3" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 	
 	<!-- Footer -->
 	<jsp:include page="footer.jsp" />
