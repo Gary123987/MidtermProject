@@ -97,11 +97,9 @@ body>main {
               <td>${event.description}</td>
               <td><a href="ViewVenuePage.do?venueId=${event.venue.id}">${event.venue.name}</a></td>
               <td>
-                <ul>
                   <c:forEach var="band" items="${event.bands}">
-                    <li><a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a></li>
+                    <a href="ViewBandPage.do?bandId=${band.id}">${band.name}</a>
                   </c:forEach>
-                </ul>
               </td>
               <td><a href="favoriteEvents.do?eventId=${event.id}">Add event to favorites</a></td>
             </tr>
@@ -109,6 +107,9 @@ body>main {
         </tbody>
       </table>
   </div>
+  
+
+  
 		
 	</main>
 	
