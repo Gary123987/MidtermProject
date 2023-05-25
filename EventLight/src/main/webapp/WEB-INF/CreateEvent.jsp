@@ -125,6 +125,10 @@ body>main {
 							      <input type="time" name="end" class="form-control" required/>
 							    </div>
 							    <div class="form-group">
+							      <label for="image">Image:</label>
+							      <input type="text" name="image" class="form-control" required/>
+							    </div>
+							    <div class="form-group">
 							      <input type="submit" value="Create Event and Select Bands" class="btn btn-primary mt-2"/>
 							    </div>
 							  </form>
