@@ -94,7 +94,11 @@ body>main {
 							    <input type="text" name="image" value="${event.image}" class="form-control"/>
 							  </div>
 							  <input type="submit" value="Submit" class="btn btn-primary"/>
-							</form>						
+							</form>	
+							
+							<form action="selectBandsPage.do">
+							<input type="submit" value="Update Bands"/>
+							</form>				
 					</div>
 				</div>
 			</div>
