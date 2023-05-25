@@ -51,10 +51,19 @@ public class UserController {
 		}
 			return "index";
 	}
+	
+	 @GetMapping(path = "mainIndex.do")
+	    public String mainIndex(Model model, HttpSession session) {
+		 	List<Event> events = userDao.findAllEvents();
+			model.addAttribute("eventList", events);
+	        return "index";
+	    }
 
 	@GetMapping(path = "home.do")
 	private String home(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		List<Event> events = userDao.findAllEvents();
+		model.addAttribute("eventList", events);
 		
 		if (user != null) {
 			if (user.getRole().equals("att")) {
